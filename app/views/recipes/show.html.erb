@@ -1,2 +1,21 @@
-<h1>Recipes#show</h1>
-<p>Find me in app/views/recipes/show.html.erb</p>
+<div class="container">
+  <div class="recipe">
+
+    <% @recipe.doses.each do |dose| %>
+    <div class="picture-recipe">
+      <% if recipe.picture %>
+        <div class="card-header" style="background-image: url('<%= cl_image_tag @recipe.picture, height: 300, width: 400, crop: :fill %>')"></div>
+      <% else %>
+        <div class="card-header" style="background-image: url('http://www.seriouseats.com/images/2014/11/20141104-cocktail-party-old-fashioneds-holiday-vicky-wasik-3.jpg')"></div>
+      <% end %>
+    </div>
+    <div class="recipe-title">
+      <h1><%= @recipe.name %></h1>
+    </div>
+
+    <% end %>
+
+  </div>
+</div>
+
+
