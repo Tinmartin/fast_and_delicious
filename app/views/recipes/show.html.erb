@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container text-center">
   <div class="recipe">
 
   <div class="picture-recipe">
@@ -9,53 +9,45 @@
         end
         %>
   </div>
-
    <div class="recipe-title">
       <h3><%= @recipe.name %></h3>
   </div>
 
-
-
     <% @recipe.doses.each do |dose| %>
-
       <div class="ingredients-cards">
-
         <div class="picture-ingredient">
           <%= if dose.ingredient.picture.url == nil
-                image_tag('https://placeholdit.co//i/80x80?')
+                image_tag('https://placeholdit.co//i/150x150?')
               else
                 cl_image_tag dose.ingredient.picture.url
               end
               %>
         </div>
-
-
+        <div class="dose-ingredient">
+          <p><%= dose.quantity %> <%= dose.ingredient.name %></p>
+        </div>
       </div>
-
     <% end %>
 
-
     <div class="number-person-eat">
-      <p><strong> il va falloir insérer la fonction multiplicatrice / nbr de personnes </strong></p>
+      <p>il va falloir insérer la fonction multiplicatrice / nbr de personnes</p>
     </div>
 
     <div class="preparation-time">
       <p> Preparation time: <%= @recipe.preparation_time %></p>
-
     </div>
 
     <div class="cooking-time">
-      <p> Cooking time: <% @recipe.cooking_time %></p>
+      <p> Cooking time: <%= @recipe.cooking_time %></p>
     </div>
 
     <div class="description-recipe">
       <p><%= @recipe.description %></p>
     </div>
 
+  </div>
+</div>
 
-
-
-</div>s
 
 
 
