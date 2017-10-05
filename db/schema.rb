@@ -27,17 +27,9 @@ ActiveRecord::Schema.define(version: 20171005091048) do
     t.index ["recipe_id"], name: "index_doses_on_recipe_id", using: :btree
   end
 
-  create_table "favorites", force: :cascade do |t|
-    t.integer  "recipe_id"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["recipe_id"], name: "index_favorites_on_recipe_id", using: :btree
-    t.index ["user_id"], name: "index_favorites_on_user_id", using: :btree
-  end
-
   create_table "ingredients", force: :cascade do |t|
     t.string   "name"
+    t.string   "picture"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -103,8 +95,6 @@ ActiveRecord::Schema.define(version: 20171005091048) do
 
   add_foreign_key "doses", "ingredients"
   add_foreign_key "doses", "recipes"
-  add_foreign_key "favorites", "recipes"
-  add_foreign_key "favorites", "users"
   add_foreign_key "profiles", "users"
   add_foreign_key "reviews", "recipes"
   add_foreign_key "reviews", "users"
