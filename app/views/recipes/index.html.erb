@@ -2,19 +2,19 @@
 
 <div class="container">
   <div class="row">
+
     <% @recipes.each do |recipe| %>
       <div class="col-xs-12 col-sm-4">
         <div class="card text-center">
-
           <% if recipe.photo %>
-            <div class="card-header" style="background-image: url('<%= image_path cocktail.picture%>')">
+            <div class="card-header" style="background-image: url('<%= image_path recipe.photo%>')">
             </div>
           <% else %>
             <div class="card-header" style="background-image: url('http://www.seriouseats.com/images/2014/11/20141104-cocktail-party-old-fashioneds-holiday-vicky-wasik-3.jpg')">
             </div>
           <% end %>
           <div class="card-body">
-            <%= link_to recipe.name, cocktail_path(recipe) %>
+            <%= link_to recipe.name, recipe_path(recipe) %>
           </div>
         </div>
       </div>
