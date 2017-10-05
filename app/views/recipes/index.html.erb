@@ -2,22 +2,21 @@
 
 <div class="container">
   <div class="row">
-
     <% @recipes.each do |recipe| %>
-      <div class="col-xs-12 col-sm-4">
-        <div class="card text-center">
-          <% if recipe[:picture] %>
-            <div class="card-header" style="background-image: url('<%= image_path recipe.photo%>')">
-            </div>
-          <% else %>
-            <div class="card-header" style="background-image: url('http://www.seriouseats.com/images/2014/11/20141104-cocktail-party-old-fashioneds-holiday-vicky-wasik-3.jpg')">
-            </div>
-          <% end %>
-          <div class="card-body">
-            <%= link_to recipe.name, recipe_path(recipe) %>
-          </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= if recipe.picture.url == nil
+      image_path('https://placeholdit.co//i/500x500?')
+    else
+      cl_image_path recipe.picture.url
+    end
+    %>')">
+          <h2><%= link_to recipe.name, recipe_path(recipe), class:"btn btn-danger" %></h2>
         </div>
       </div>
-    <% end %>
+    <%end%>
   </div>
 </div>
+
+
+
+
