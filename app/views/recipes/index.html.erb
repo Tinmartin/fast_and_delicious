@@ -11,11 +11,15 @@
     end
     %>')">
           <h2><%= link_to recipe.name, recipe_path(recipe), class:"btn btn-danger" %></h2>
+          <div class="card-description">
+            <%= recipe.cooking_time %>
+          </div>
         </div>
       </div>
     <%end%>
   </div>
 </div>
+
 
 
 
