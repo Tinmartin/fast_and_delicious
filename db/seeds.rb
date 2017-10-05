@@ -19,7 +19,7 @@ pork_with_leek = Recipe.new(
     - Brush the filet of mustard and wrap it thanks to the leek. Cook for 40 minutes in a steamer. Salt and pepper.
     - Cut into thick slices and enjoy with salad and mustard sauce.",
   cooking_time: "43 min",
-  preparation_time: "15m in",
+  preparation_time: "15 min",
   calories: 135,
 )
 # pork_with_leek.remote_photo_url = "http://cache.marieclaire.fr/data/photo/w1000_c17/cuisine/i13c/cvf090_064.jpg"

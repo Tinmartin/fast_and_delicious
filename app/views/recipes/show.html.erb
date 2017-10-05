@@ -1,21 +1,61 @@
 <div class="container">
   <div class="recipe">
 
+  <div class="picture-recipe">
+    <%= if @recipe.picture.url == nil
+          image_tag('https://placeholdit.co//i/500x500?')
+        else
+          cl_image_tag @recipe.picture.url
+        end
+        %>
+  </div>
+
+   <div class="recipe-title">
+      <h3><%= @recipe.name %></h3>
+  </div>
+
+
+
     <% @recipe.doses.each do |dose| %>
-    <div class="picture-recipe">
-      <% if recipe.picture %>
-        <div class="card-header" style="background-image: url('<%= cl_image_tag @recipe.picture, height: 300, width: 400, crop: :fill %>')"></div>
-      <% else %>
-        <div class="card-header" style="background-image: url('http://www.seriouseats.com/images/2014/11/20141104-cocktail-party-old-fashioneds-holiday-vicky-wasik-3.jpg')"></div>
-      <% end %>
-    </div>
-    <div class="recipe-title">
-      <h1><%= @recipe.name %></h1>
-    </div>
+
+      <div class="ingredients-cards">
+
+        <div class="picture-ingredient">
+          <%= if dose.ingredient.picture.url == nil
+                image_tag('https://placeholdit.co//i/80x80?')
+              else
+                cl_image_tag dose.ingredient.picture.url
+              end
+              %>
+        </div>
+
+
+      </div>
 
     <% end %>
 
-  </div>
-</div>
+
+    <div class="number-person-eat">
+      <p><strong> il va falloir insérer la fonction multiplicatrice / nbr de personnes </strong></p>
+    </div>
+
+    <div class="preparation-time">
+      <p> Preparation time: <%= @recipe.preparation_time %></p>
+
+    </div>
+
+    <div class="cooking-time">
+      <p> Cooking time: <% @recipe.cooking_time %></p>
+    </div>
+
+    <div class="description-recipe">
+      <p><%= @recipe.description %></p>
+    </div>
+
+
+
+
+</div>s
+
 
 

@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 20171005091048) do
     t.integer  "age"
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "photo"
+    t.string   "picture"
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 20171005091048) do
 
   create_table "recipes", force: :cascade do |t|
     t.string   "name"
-    t.string   "photo"
+    t.string   "picture"
     t.text     "description"
     t.integer  "calories"
     t.string   "cooking_time"
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 20171005091048) do
 
   create_table "reviews", force: :cascade do |t|
     t.text     "content"
-    t.string   "photo"
+    t.string   "picture"
     t.integer  "rating"
     t.integer  "recipe_id"
     t.integer  "user_id"
