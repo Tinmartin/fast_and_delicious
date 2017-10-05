@@ -20,6 +20,9 @@ gem 'figaro'
 gem 'cloudinary'
 gem 'carrierwave', '~> 0.11.2'
 
+gem 'devise'
+
+
 group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'

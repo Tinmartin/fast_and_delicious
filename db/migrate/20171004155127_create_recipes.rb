@@ -4,8 +4,9 @@ class CreateRecipes < ActiveRecord::Migration[5.0]
       t.string :name
       t.string :photo
       t.text :description
-      t.time :string
       t.integer :calories
+      t.time :cooking_time
+      t.time :preparation_time
 
       t.timestamps
     end
