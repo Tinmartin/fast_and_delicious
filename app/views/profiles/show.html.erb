@@ -1,0 +1,11 @@
+<div class="container text-center">
+  <div class="profile-picture">
+    <h2><%= %></h2>
+    <%= if @profile.picture.url == nil
+        image_tag('https://placeholdit.co//i/300x300?')
+        else
+        cl_image_tag @profile.picture.url
+        end
+    %>
+  </div>
+</div>

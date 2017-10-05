@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resource :profile, :only => :show, :as => :current_profile, :type => :current_profile
+  resource :profile, :only => :show, :as => :current_profile
   resource :profile, only: [ :edit, :destroy ]
 
 

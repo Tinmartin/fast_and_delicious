@@ -101,7 +101,7 @@ pork_with_leek = Recipe.new(
   preparation_time: "15 min",
   calories: 135,
 )
-pork_with_leek.remote_picture_url = "http://static.giantbomb.com/uploads/original/9/99864/2419866-nes_console_set.png"
+  pork_with_leek.remote_picture_url = "http://static.giantbomb.com/uploads/original/9/99864/2419866-nes_console_set.png"
 # pork_with_leek.remote_photo_url = "http://cache.marieclaire.fr/data/photo/w1000_c17/cuisine/i13c/cvf090_064.jpg"
 pork_with_leek.save!
 

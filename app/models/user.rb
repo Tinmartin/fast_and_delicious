@@ -10,7 +10,8 @@ class User < ApplicationRecord
   has_many :recipes, through: :favorites
 
   has_one :profile
-  after_create :create_profile
+  after_create :build_profile
+
 
 
   def self.find_for_facebook_oauth(auth)
@@ -33,6 +34,9 @@ class User < ApplicationRecord
 
     return user
   end
+
+
+
 end
 
 
