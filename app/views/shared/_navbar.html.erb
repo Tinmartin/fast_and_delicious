@@ -64,8 +64,8 @@ elt.tagsinput('add', { "value": 13, "text": "Cairo"       , "continent": "Africa
         <%= image_tag "http://kitt.lewagon.com/placeholder/users/shlomzer", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
           <li>
-            <%= link_to "#" do %>
-            <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+            <%= link_to current_profile_path do %>
+            <i class="fa fa-user"></i> Profilp
             <% end %>
           </li>
           <li>
