@@ -1,74 +1,46 @@
-# require 'open-uri'
-# require 'nokogiri'
-
-# Recipe.destroy_all
-# Ingredient.destroy_all
-
-# doc = Nokogiri::HTML(open("https://www.jamieoliver.com/recipes/category/books/5-ingredients-quick-easy-food-recipes/"), nil, 'utf-8')
-#   doc.search(".recipe-title")each do |recipe|
-# doc = Nokogiri::HTML(open("https://www.jamieoliver.com/recipes/beef-recipes/#{recipe}/"), nil, 'utf-8')
-#   doc.search("recipe-container")each do |item|
-
-#     name = item.search('h1.hidden-xs').text
-#     description = item.search('.method-p').text
-#     cooking_time = item.search('.recipe-detail.time').text
-#     serves = item.search('.recipe-detail-serves').text
-#     Recipe.New(name, descriptionm cooking_time, calories)
-#     dosedescription = scrapp
-#     doseunit= scrapp
-#     # diff = item.search('.m_detail_recette').text.split('-')
-#     # difficulty = diff[2]
-#     dose  = Dose.new(dosedescription,doseunit)
-#     dose.recipe =  recipe
-#     dose.ingredient = ingredient
-#   end
+puts 'Creating Ingredients...'
 
 
-# # create_table :recipes do |t|
-# #       t.string :name
-# #       t.string :photo
-# #       t.text :description
-# #       t.time :string
+steak = Ingredient.create(name: "steak")
+carott = Ingredient.create(name: "carott")
+Ingredient.create(name: "parsley")
+Ingredient.create(name: "olive oil")
+Ingredient.create(name: "pork filet mignon")
+Ingredient.create(name: "leek")
+Ingredient.create(name: "mustard")
 
 
+puts 'Creating Recipes...'
 
 
+pork_with_leek = Recipe.new(
+  name: "PORK WITH LEEK",
+  description: "- Split the leek in half. Wash it under cold water and dip it for 3 min in boiling water.
+    - Brush the filet of mustard and wrap it thanks to the leek. Cook for 40 minutes in a steamer. Salt and pepper.
+    - Cut into thick slices and enjoy with salad and mustard sauce.",
+  cooking_time: "43 min",
+  preparation_time: "15m in",
+  calories: 135,
+)
+# pork_with_leek.remote_photo_url = "http://cache.marieclaire.fr/data/photo/w1000_c17/cuisine/i13c/cvf090_064.jpg"
+pork_with_leek.save!
 
 
-# # url = "http://www.epicurious.com/search/chocolate?content=recipe"
-# # html_file = open(url).read
-# # html_doc = Nokogiri::HTML(html_file)
-
-# # html_doc.search('.summary > a').each do |element|
-# #   puts element.text
-# # end
-
-
-
-# def write_csv(ingredient)
-#   recipes= []
+beef_carrots_at_the_stove = Recipe.new(
+  name: "BEEF CARROTS AT THE STOVE",
+  description: "- Peel and grate the carrots. Cut the meat into small pieces. Wash and chop the flat parsley.
+    - Heat the oil in a frying pan and sear the pieces of meat. Let cook 1min over high heat and add carrots and parsley. Salt, pepper, cook 2 min more while stirring and taste.",
+  cooking_time: "3 min",
+  preparation_time: "10 min",
+  calories: 299,
+)
+# beef_carrots_at_the_stove.remote_photo_url = "https://images.ricardocuisine.com/services/recipes/1074x1074_5730-background.jpg"
+beef_carrots_at_the_stove.save!
 
 
+dose_beef_carrots_at_the_stove_steak = Dose.new(quantity: 1)
+dose_beef_carrots_at_the_stove_steak.ingredient = steak
+dose_beef_carrots_at_the_stove_steak.recipe = beef_carrots_at_the_stove
+dose_beef_carrots_at_the_stove_steak.save!
 
-
-# # require 'json'
-# # require 'open-uri'
-
-# # Cocktail.destroy_all
-# # Ingredient.destroy_all
-
-# # url = "http://www.thecocktaildb.com/api/json/v1/1/filter.php?g=Cocktail_glass"
-# # user_serialized = open(url).read
-# # user = JSON.parse(open(url).read)["drinks"].first(20)
-# # user.each do |item|
-# #   new_url = item['strDrinkThumb']
-# #   cocktail = Cocktail.new(name: item["strDrink"])
-# #   cocktail.remote_photo_url = new_url
-# #   cocktail.save
-# # end
-
-
-# # ingredients = %w(lemon ice mint leaves redbull jagermeister sugar tonic gin rhum)
-# # ingredients.each do |ingredient|
-# #   Ingredient.create(name:ingredient)
-# # end
+puts 'Finished!'
