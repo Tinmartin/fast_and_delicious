@@ -5,7 +5,7 @@ class CreateProfiles < ActiveRecord::Migration[5.0]
       t.integer :age
       t.string :first_name
       t.string :last_name
-      t.string :photo
+      t.string :picture
       t.references :user, foreign_key: true
 
       t.timestamps

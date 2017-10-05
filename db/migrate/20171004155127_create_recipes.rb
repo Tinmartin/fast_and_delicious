@@ -2,11 +2,11 @@ class CreateRecipes < ActiveRecord::Migration[5.0]
   def change
     create_table :recipes do |t|
       t.string :name
-      t.string :photo
+      t.string :picture
       t.text :description
       t.integer :calories
-      t.time :cooking_time
-      t.time :preparation_time
+      t.string :cooking_time
+      t.string :preparation_time
 
       t.timestamps
     end
