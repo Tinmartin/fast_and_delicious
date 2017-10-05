@@ -8,7 +8,7 @@ gem 'pg'
 gem 'puma'
 gem 'rails', '5.0.6'
 gem 'redis'
-gem 'webpacker', '~> 3.0'
+gem 'webpacker', '~> 3.2'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
@@ -34,3 +34,4 @@ group :development, :test do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
+
