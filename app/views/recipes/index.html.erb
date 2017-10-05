@@ -6,7 +6,7 @@
     <% @recipes.each do |recipe| %>
       <div class="col-xs-12 col-sm-4">
         <div class="card text-center">
-          <% if recipe.photo %>
+          <% if recipe[:photo] %>
             <div class="card-header" style="background-image: url('<%= image_path recipe.photo%>')">
             </div>
           <% else %>
