@@ -38,7 +38,6 @@ ActiveRecord::Schema.define(version: 20171004165554) do
 
   create_table "ingredients", force: :cascade do |t|
     t.string   "name"
-    t.integer  "calories"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -59,9 +58,11 @@ ActiveRecord::Schema.define(version: 20171004165554) do
     t.string   "name"
     t.string   "photo"
     t.text     "description"
-    t.time     "string"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "calories"
+    t.string   "cooking_time"
+    t.string   "preparation_time"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -69,9 +70,11 @@ ActiveRecord::Schema.define(version: 20171004165554) do
     t.string   "photo"
     t.integer  "rating"
     t.integer  "recipe_id"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["recipe_id"], name: "index_reviews_on_recipe_id", using: :btree
+    t.index ["user_id"], name: "index_reviews_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -97,4 +100,5 @@ ActiveRecord::Schema.define(version: 20171004165554) do
   add_foreign_key "favorites", "users"
   add_foreign_key "profiles", "users"
   add_foreign_key "reviews", "recipes"
+  add_foreign_key "reviews", "users"
 end
