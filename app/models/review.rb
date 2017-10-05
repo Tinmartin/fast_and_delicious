@@ -4,5 +4,5 @@ class Review < ApplicationRecord
 
   validates :content, presence: true
 
-  mount_uploader :photo, PhotoUploader
+  mount_uploader :picture, PhotoUploader
 end
