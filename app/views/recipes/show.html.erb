@@ -1,2 +1,53 @@
-<h1>Recipes#show</h1>
-<p>Find me in app/views/recipes/show.html.erb</p>
+<div class="container text-center">
+  <div class="recipe">
+
+  <div class="picture-recipe">
+    <%= if @recipe.picture.url == nil
+          image_tag('https://placeholdit.co//i/500x500?')
+        else
+          cl_image_tag @recipe.picture.url
+        end
+        %>
+  </div>
+   <div class="recipe-title">
+      <h3><%= @recipe.name %></h3>
+  </div>
+
+    <% @recipe.doses.each do |dose| %>
+      <div class="ingredients-cards">
+        <div class="picture-ingredient">
+          <%= if dose.ingredient.picture.url == nil
+                image_tag('https://placeholdit.co//i/150x150?')
+              else
+                cl_image_tag dose.ingredient.picture.url
+              end
+              %>
+        </div>
+        <div class="dose-ingredient">
+          <p><%= dose.quantity %> <%= dose.ingredient.name %></p>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="number-person-eat">
+      <p>il va falloir insérer la fonction multiplicatrice / nbr de personnes</p>
+    </div>
+
+    <div class="preparation-time">
+      <p> Preparation time: <%= @recipe.preparation_time %></p>
+    </div>
+
+    <div class="cooking-time">
+      <p> Cooking time: <%= @recipe.cooking_time %></p>
+    </div>
+
+    <div class="description-recipe">
+      <p><%= @recipe.description %></p>
+    </div>
+
+  </div>
+</div>
+
+
+
+
