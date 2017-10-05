@@ -22,7 +22,7 @@ pork_with_leek = Recipe.new(
   preparation_time: "15m in",
   calories: 135,
 )
-pork_with_leek.remote_photo_url = "http://cache.marieclaire.fr/data/photo/w1000_c17/cuisine/i13c/cvf090_064.jpg"
+# pork_with_leek.remote_photo_url = "http://cache.marieclaire.fr/data/photo/w1000_c17/cuisine/i13c/cvf090_064.jpg"
 pork_with_leek.save!
 
 
@@ -31,15 +31,16 @@ beef_carrots_at_the_stove = Recipe.new(
   description: "- Peel and grate the carrots. Cut the meat into small pieces. Wash and chop the flat parsley.
     - Heat the oil in a frying pan and sear the pieces of meat. Let cook 1min over high heat and add carrots and parsley. Salt, pepper, cook 2 min more while stirring and taste.",
   cooking_time: "3 min",
-  preparation_time: "10 min";
+  preparation_time: "10 min",
   calories: 299,
 )
-beef_carrots_at_the_stove.remote_photo_url = "https://images.ricardocuisine.com/services/recipes/1074x1074_5730-background.jpg"
+# beef_carrots_at_the_stove.remote_photo_url = "https://images.ricardocuisine.com/services/recipes/1074x1074_5730-background.jpg"
 beef_carrots_at_the_stove.save!
 
 
 dose_beef_carrots_at_the_stove_steak = Dose.new(quantity: 1)
 dose_beef_carrots_at_the_stove_steak.ingredient = steak
 dose_beef_carrots_at_the_stove_steak.recipe = beef_carrots_at_the_stove
+dose_beef_carrots_at_the_stove_steak.save!
 
 puts 'Finished!'
