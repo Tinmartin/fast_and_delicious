@@ -3,10 +3,6 @@
   background-size: cover !important;
 }
 
-.card-title {
-
-}
-
 .card {
   height: 175px;
   text-shadow: 0 1px 3px rgba(0,0,0,0.6);
@@ -56,10 +52,19 @@
   opacity: 0.1;
 }
 
+
+.card-profile{
+  background: white;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 10px;
+
 h3 {
   font-size: 25px;
   font-style: strong;
-
 }
 
 h4 {
