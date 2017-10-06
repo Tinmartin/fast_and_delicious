@@ -16,7 +16,7 @@ class Recipe < ApplicationRecord
 
   # multisearchable against: [:name, :description]
   pg_search_scope :global_search,
-     against: [ :name, :description ],
+     against: [ :name ],
      associated_against: {
        ingredients: [ :name]
      }
