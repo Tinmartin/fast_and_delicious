@@ -48,6 +48,7 @@ GEM
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
     builder (3.2.3)
+    byebug (9.1.0)
     carrierwave (0.11.2)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
@@ -133,6 +134,9 @@ GEM
     pry (0.11.1)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
+    pry-byebug (3.5.0)
+      byebug (~> 9.1)
+      pry (~> 0.10)
     pry-rails (0.3.6)
       pry (>= 0.10.4)
     puma (3.10.0)
@@ -244,6 +248,7 @@ DEPENDENCIES
   nokogiri
   omniauth-facebook
   pg
+  pry-byebug
   pry-rails
   puma
   rails (= 5.0.6)
