@@ -1,68 +1,9 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> efc8446b7c7bc7b274e2c26a4440b23eff0b0f4b
 .container {
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-  justify-content: center;
-  align-content: end;
+  padding-bottom: 50px;
+  padding-top: 50px;
+  text-align: center;
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> efc8446b7c7bc7b274e2c26a4440b23eff0b0f4b
-.recipes {
-  display: grid;
-  grid-template-columns: 350px 1fr 1fr 1fr;
-  grid-template-rows: 40% 15% 15% 15% 15%;
-  height: calc(100vh - 70px);
-  padding: 30px;
-}
-<<<<<<< HEAD
-
-=======
->>>>>>> efc8446b7c7bc7b274e2c26a4440b23eff0b0f4b
-.picture-recipe {
-  grid-row: 1 / span 5;
-  grid-column: 1 / span 1;
-}
-<<<<<<< HEAD
-
-=======
->>>>>>> efc8446b7c7bc7b274e2c26a4440b23eff0b0f4b
-.recipe-title {
-  grid-row: 1 / span 1;
-  grid-column: 2 / span 3;
-}
-<<<<<<< HEAD
-
-=======
->>>>>>> efc8446b7c7bc7b274e2c26a4440b23eff0b0f4b
-.infos {
-  grid-row: 4 / span 1;
-  grid-column: 2 / span 3;
-}
-<<<<<<< HEAD
-
-=======
->>>>>>> efc8446b7c7bc7b274e2c26a4440b23eff0b0f4b
-.description-recipe {
-  grid-row: 5 / span 1;
-  grid-column: 2 / span 3;
-}
-<<<<<<< HEAD
-
-=======
->>>>>>> efc8446b7c7bc7b274e2c26a4440b23eff0b0f4b
-.description-recipe {
-  background: white;
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
-  padding: 50px;
-  margin: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
+.card-description {
+  text-align: center;
 }
