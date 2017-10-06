@@ -15,7 +15,7 @@
   padding: 30px;
 }
 
-.recipes .picture-recipe {
+.picture-recipe {
   grid-row: 1 / span 5;
   grid-column: 1 / span 1;
 }
@@ -25,12 +25,12 @@
   grid-column: 2 / span 3;
 }
 
-.recipes .infos {
+.infos {
   grid-row: 4 / span 1;
   grid-column: 2 / span 3;
 }
 
-.recipes .description-recipe {
+.description-recipe {
   grid-row: 5 / span 1;
   grid-column: 2 / span 3;
 }
