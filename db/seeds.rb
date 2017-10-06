@@ -1,6 +1,6 @@
 require 'open-uri'
 require 'nokogiri'
-require 'pry-byebug'
+
 user_agent = "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0"
 
 Recipe.destroy_all
@@ -13,7 +13,7 @@ doc = Nokogiri::HTML(open("https://www.jamieoliver.com/recipes/category/books/5-
 
 doc.search(".recipe-block > a").each do |recipe|
   i+=1
-  #binding.pry
+
   doc = Nokogiri::HTML(open("https://www.jamieoliver.com#{recipe['href']}/", "User-Agent" => user_agent), nil, 'utf-8')
   doc.search(".recipe-container").each do |item|
     puts "Creating recipe"
