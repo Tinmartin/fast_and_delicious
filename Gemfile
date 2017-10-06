@@ -19,6 +19,8 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'cloudinary'
 gem 'carrierwave', '~> 0.11.2'
+gem 'pg_search'
+
 
 gem 'devise'
 

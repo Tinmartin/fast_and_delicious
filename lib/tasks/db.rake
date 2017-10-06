@@ -36,10 +36,11 @@ namespace :db do
 
         doc.search(".ingredient-wrapper li").each do |element|
           puts "Creating ingredient"
-          ingredient_name = element.text.strip.gsub("\\n|\s"," ").split(' ').join(' ').scan(/(?<=\sof\s)(?!.*\sof\s).+|(?<=\sg\s)(?!.*\sg\s).+/)
-          ingredient = Ingredient.new(name: ingredient_name.first)
+          ingredient_name1 = element.text.strip.gsub("\\n|\s"," ").split(' ').join(' ').scan(/^([^ ]+)\s?(g|tablespoon|tablespoons|a bunch|pack)?\so?f?([^,\n]*).*$/).flatten
+          ingredient_name = ingredient_name1[2]
+          ingredient = Ingredient.new(name:ingredient_name)
           ingredient.save!
-          array = element.text.strip.gsub("\\n|\s", " ").split(' ').join(' ').scan(/(^\d\/\d)|(^.*\d*)\s(g\s|l|kg|tablespoons|tablespoon|a bunch|a pinch|sprigs|cloves)|(^\d+)/).flatten
+          array = element.text.strip.gsub("\\n|\s", " ").split(' ').join(' ').scan(/(^\d\/\d)|(^.*\d*)\s(g\s|l\s|kg|tablespoons|tablespoon|a bunch|a pinch|sprigs|cloves)|(^\d+)/).flatten
           sleep 1
           if array[1] && array[2]
             if array[1].to_i.is_a?(Fixnum) && array[2]
