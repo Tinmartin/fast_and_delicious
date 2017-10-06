@@ -1,0 +1,22 @@
+.grid-profile {
+  height: 600px;
+  display: grid;
+  grid-template-column: 2fr, 1fr, 1fr, 1fr;
+  grid-template-rows: 50% 50%;
+}
+
+.main-section{
+  grid-row: 1 / span 2;
+  grid-column: 1 / span 1;
+}
+
+.stats-section{
+  grid-row: 1 / span 1;
+  grid-column: 2;
+
+}
+
+.description-section{
+  grid-row: 2 / span 1;
+  grid-column: 2 / span 3;
+}
