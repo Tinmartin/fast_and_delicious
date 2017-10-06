@@ -36,7 +36,7 @@ namespace :db do
 
         doc.search(".ingredient-wrapper li").each do |element|
           puts "Creating ingredient"
-          ingredient_name = element.text.strip.gsub("\\n|\s"," ").split(' ').join(' ').scan(/(?<=\sof\s)(?!.*\sof\s).+/)
+          ingredient_name = element.text.strip.gsub("\\n|\s"," ").split(' ').join(' ').scan(/(?<=\sof\s)(?!.*\sof\s).+|(?<=\sg\s)(?!.*\sg\s).+/)
           ingredient = Ingredient.new(name: ingredient_name.first)
           ingredient.save!
           array = element.text.strip.gsub("\\n|\s", " ").split(' ').join(' ').scan(/(^\d\/\d)|(^.*\d*)\s(g\s|l|kg|tablespoons|tablespoon|a bunch|a pinch|sprigs|cloves)|(^\d+)/).flatten
