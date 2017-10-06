@@ -1,50 +1,59 @@
 <div class="container text-center">
-  <div class="recipe">
 
-  <div class="picture-recipe">
-    <%= if @recipe.picture.url == nil
-          image_tag('https://placeholdit.co//i/500x500?')
-        else
-          cl_image_tag @recipe.picture.url
-        end
-        %>
-  </div>
-   <div class="recipe-title">
+  <div class="row">
+
+    <div class="picture-recipe" class="col-xs-12 col-md-4">
+      <%= if @recipe.picture.url == nil
+            image_tag('https://placeholdit.co//i/500x500?')
+          else
+            cl_image_tag @recipe.picture.url
+          end
+          %>
+    </div>
+
+    <div class="recipe-title" class="col-xs-12 col-md-8">
       <h3><%= @recipe.name %></h3>
-  </div>
+    </div>
 
-    <% @recipe.doses.each do |dose| %>
-      <div class="ingredients-cards">
-        <div class="picture-ingredient">
-          <%= if dose.ingredient.picture.url == nil
-                image_tag('https://placeholdit.co//i/150x150?')
-              else
-                cl_image_tag dose.ingredient.picture.url
-              end
-              %>
+    <div class="row">
+        <% @recipe.doses.each do |dose| %>
+          <div class="col-xs-6 col-md-2">
+            <div class="card">
+              <%= if dose.ingredient.picture.url == nil
+                    image_tag('https://placeholdit.co//i/150x150?')
+                  else
+                    cl_image_tag dose.ingredient.picture.url
+                  end
+                  %>
+              <div class="card-description">
+                <h2><%= dose.quantity %> <%= dose.unit %> <%= dose.description %> <%= dose.ingredient.name %></h2>
+              </div>
+            </div>
+          </div>
+        <% end %>
+
+        <div class="infos">
+          <div class="number-person-eat" class="col-xs-12 col-md-8">
+            <h4> For 1 person </h4>
+          </div>
+
+          <div class="preparation-time" class="col-xs-12 col-md-8">
+            <h4><%= if @recipe.preparation_time == nil
+                else
+                  "Preparation: #{@recipe.preparation_time}"
+                end
+            %></h4>
+          </div>
+
+          <div class="cooking-time" class="col-xs-12 col-md-8">
+            <h4> Cooking : <%= @recipe.cooking_time %></h4>
+          </div>
         </div>
-        <div class="dose-ingredient">
-          <p><%= dose.quantity %> <%= dose.ingredient.name %></p>
+
+        <div class="description-recipe" class="col-xs-12">
+          <p><%= @recipe.description %></p>
         </div>
-      </div>
-    <% end %>
-
-    <div class="number-person-eat">
-      <p>il va falloir insérer la fonction multiplicatrice / nbr de personnes</p>
     </div>
-
-    <div class="preparation-time">
-      <p> Preparation time: <%= @recipe.preparation_time %></p>
-    </div>
-
-    <div class="cooking-time">
-      <p> Cooking time: <%= @recipe.cooking_time %></p>
-    </div>
-
-    <div class="description-recipe">
-      <p><%= @recipe.description %></p>
-    </div>
-
   </div>
 </div>
 
