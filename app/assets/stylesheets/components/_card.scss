@@ -4,12 +4,18 @@
 }
 
 .card {
-  height: 175px;
+  height: 300px;
   text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   background-size: cover !important;
   background-position: center;
   color: white;
   position: relative;
+  border-radius: 10px;
+  border: 1px solid gray;
+  &:hover{
+    opacity: 0.8;
+    text-decoration: none;
+  }
 }
 .card-user {
   position: absolute;
@@ -47,6 +53,7 @@
   z-index: 2;
   background: black;
   opacity: 0;
+
 }
 .card-link:hover {
   opacity: 0.1;
@@ -61,6 +68,7 @@
   align-items: center;
   justify-content: space-around;
   margin: 10px;
+}
 
 h3 {
   font-size: 25px;
@@ -74,4 +82,4 @@ h4 {
 p {
   font-size: 12px;
 }
-}
+
