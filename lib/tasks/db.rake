@@ -76,6 +76,5 @@ namespace :db do
       end
       sum
     end
-
   end
 end
