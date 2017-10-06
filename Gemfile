@@ -26,6 +26,9 @@ gem 'devise'
 
 gem 'omniauth-facebook'
 
+gem 'pg_search'
+
+
 
 
 group :development, :test do
