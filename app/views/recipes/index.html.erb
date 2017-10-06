@@ -2,10 +2,7 @@
 <h1 class="text-center">All our recipes:</h1>
 
 <div class="container">
-  <% Ingredient.all.each_with_index do |ingredient, index|%>
-    <%= "#{index}: #{ingredient.name}" %>
-    <br>
-    <%end%>
+
   <div class="row">
     <% if @recipes.blank? %>
       <h4>There are no recipes containing the term <%= params[:search] %>.</h4>
