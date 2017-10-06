@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :recipes, through: :favorites
 
   has_one :profile
-  after_create :build_profile(:user_name => user.email)
+  after_create :build_profile
 
 
 
