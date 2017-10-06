@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171005091048) do
+ActiveRecord::Schema.define(version: 20171006093339) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,15 @@ ActiveRecord::Schema.define(version: 20171005091048) do
     t.datetime "updated_at",    null: false
     t.index ["ingredient_id"], name: "index_doses_on_ingredient_id", using: :btree
     t.index ["recipe_id"], name: "index_doses_on_recipe_id", using: :btree
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "recipe_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recipe_id"], name: "index_favorites_on_recipe_id", using: :btree
+    t.index ["user_id"], name: "index_favorites_on_user_id", using: :btree
   end
 
   create_table "ingredients", force: :cascade do |t|
@@ -95,6 +104,8 @@ ActiveRecord::Schema.define(version: 20171005091048) do
 
   add_foreign_key "doses", "ingredients"
   add_foreign_key "doses", "recipes"
+  add_foreign_key "favorites", "recipes"
+  add_foreign_key "favorites", "users"
   add_foreign_key "profiles", "users"
   add_foreign_key "reviews", "recipes"
   add_foreign_key "reviews", "users"
