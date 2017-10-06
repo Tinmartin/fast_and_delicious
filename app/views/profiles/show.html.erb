@@ -1,11 +1,39 @@
-<div class="container text-center">
-  <div class="profile-picture">
-    <h2><%= %></h2>
-    <%= if @profile.picture.url == nil
-        image_tag('https://placeholdit.co//i/300x300?')
-        else
-        cl_image_tag @profile.picture.url
-        end
-    %>
+<div class="container"></div>
+  <div class="grid-profile text-center">
+    <div class="card-profile main-section">
+      <div class="card-content">
+        <% avatar_url = @profile.picture || "http://placehold.it/30x30" %>
+        <%= image_tag avatar_url, class: "img-circle" %>
+        <h2><%= "#{@profile.first_name} #{@profile.last_name}"%></h2>
+        <p><%= @profile.email %></p>
+        <a href="#" class="btn btn-primary btn-lg">Get in touch</a>
+      </div>
+    </div>
+    <div class="card-profile stats-section">
+      <div class="card-content">
+        <h3>3,536</h3>
+        <p>contributions</p>
+      </div>
+    </div>
+    <div class="card-profile">
+      <div class="card-content">
+        <h3>758</h3>
+        <p>followers</p>
+      </div>
+    </div>
+    <div class="card-profile">
+      <div class="card-content">
+        <h3>119</h3>
+        <p>repositories</p>
+      </div>
+    </div>
+    <div class="card-profile description-section">
+      <div class="card-content">
+        <h3>More about <%= @profile.first_name %></h3>
+        <p class="text-justify">
+
+        </p>
+      </div>
+    </div>
   </div>
 </div>
