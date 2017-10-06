@@ -8,6 +8,9 @@
   padding: 0px 50px;
   color: rgba(0,0,0,0.3);
   text-align: center;
+  font-family: $headers-font;
+  font-size: 15px;
+
 }
 .footer-links {
   display: flex;
@@ -17,8 +20,9 @@
   color: #000;
   opacity: 1;
   text-decoration: none;
-  font-size: 18px;
   padding: 0px 10px;
+  font-size: 18px;
+
 }
 .footer-links a:hover {
   color: white;
