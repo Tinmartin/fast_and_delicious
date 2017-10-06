@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :recipes, through: :favorites
 
   has_one :profile
-  after_create :build_profile
+  before_create :build_profile
 
 
 
@@ -35,7 +35,16 @@ class User < ApplicationRecord
     return user
   end
 
+  private
 
+  def build_profile
+    self.create_profile!(
+      email: email,
+      first_name: first_name,
+      last_name: last_name,
+      picture: facebook_picture_url
+      )
+  end
 
 end
 
