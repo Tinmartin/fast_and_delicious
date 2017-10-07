@@ -19,7 +19,7 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'cloudinary'
 gem 'carrierwave', '~> 0.11.2'
-gem 'pg_search'
+
 
 
 gem 'devise'
@@ -27,6 +27,13 @@ gem 'devise'
 gem 'omniauth-facebook'
 
 gem 'pg_search'
+gem 'searchkick', '~> 2.3'
+
+gem 'elasticsearch'
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
+
+
 
 gem 'record_tag_helper', '~> 1.0'
 

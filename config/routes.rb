@@ -8,8 +8,17 @@ Rails.application.routes.draw do
     controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
   resources :recipes, only: [ :index, :show ] do
+<<<<<<< HEAD
     resource :favorite, only: %w(update destroy)
   end
+=======
+    collection do
+      get 'search'
+    end
+end
+
+  resources :ingredients
+>>>>>>> 4c2609fabefab1d5779ea7fa90fa0d2731a42f89
 
   root to: 'recipes#index'
 

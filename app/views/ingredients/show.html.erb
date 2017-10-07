@@ -1,0 +1,13 @@
+<h2><%= @ingredient.name %></h2>
+<p><%= cl_image_tag(@ingredient.picture) %></p>
+
+
+<%= simple_form_for(@ingredient) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.input :picture %>
+  <%= f.input :picture_cache, as: :hidden %>
+  <%= f.submit %>
+<% end %>
+
+

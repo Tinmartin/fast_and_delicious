@@ -1,0 +1,12 @@
+<div class="container text-center">
+
+<ul>
+  <% @ingredients.each do |ingredient| %>
+
+      <h2><%= link_to ingredient.name, ingredient_path(ingredient) %></h2>
+
+  <%end%>
+</ul>
+
+
+</div>
