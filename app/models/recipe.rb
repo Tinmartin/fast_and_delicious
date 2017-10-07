@@ -31,7 +31,6 @@ class Recipe < ApplicationRecord
   # end
 
 
-
   searchkick
 
   has_many :ingredients, through: :doses
@@ -49,6 +48,7 @@ class Recipe < ApplicationRecord
   # def self.search(search)
   #   where("name LIKE ?", "%#{search}%")
   # end
+
 
   multisearchable against: [:name, :description]
   pg_search_scope :global_search,

@@ -36,28 +36,32 @@ namespace :db do
 
         doc.search(".ingredient-wrapper li").each do |element|
           puts "Creating ingredient"
-          ingredient_name1 = element.text.strip.gsub("\\n|\s"," ").split(' ').join(' ').scan(/^([^ ]+)\s?(g|tablespoon|tablespoons|a bunch|pack)?\so?f?([^,\n]*).*$/).flatten
-          ingredient_name = ingredient_name1[2]
+       
+          ingredient_name1 = element.text.strip.gsub("\\n|\s"," ").split(' ').join(' ').scan(/^([^ ]+)\s?(kg|cm|teaspoon|teaspoons|l|ml|cl|mg|sprigs|g|tablespoon|tablespoons|a bunch|pack)?\s(of)?([^,\n]*).*$/).flatten
+          ingredient_name = ingredient_name1[3]
           ingredient = Ingredient.new(name:ingredient_name.downcase)
           ingredient.save!
-          array = element.text.strip.gsub("\\n|\s", " ").split(' ').join(' ').scan(/(^\d\/\d)|(^.*\d*)\s(g\s|l\s|kg|tablespoons|tablespoon|a bunch|a pinch|sprigs|cloves)|(^\d+)/).flatten
-          sleep 1
-          if array[1] && array[2]
-            if array[1].to_i.is_a?(Fixnum) && array[2]
-              quantity = array[1].to_i
-              unit = array[2].to_s
-              dose = Dose.new(quantity:quantity, unit:unit, ingredient:ingredient, recipe:recipe)
-              dose.save!
-            elsif array[3]
-              quantity = array[3].to_i
-              dose = Dose.new(quantity:quantity, recipe:recipe, ingredient:ingredient)
-              dose.save!
-            else
-              quantity = operate(array[0])
-              dose = Dose.new(quantity:quantity,recipe:recipe, ingredient:ingredient)
-              dose.save!
-            end
-          else
+          array = element.text.strip.gsub("\\n|\s", " ").split(' ').join(' ').scan(/(^\d\/\d)|(^.*\d*)\s(g\s|l\s|kg|ml|cl|mg|cm|tablespoons|tablespoon|teaspoon|teaspoons|a bunch|a pinch|sprigs|cloves)|(^\d+)/).flatten
+          sleep 0.1
+
+          if !(array[1].to_i.is_a?(Fixnum)) && array[2]
+            quantity = operate(array[1].strip)
+            binding.pry
+            dose = Dose.new(quantity:quantity,recipe:recipe, ingredient:ingredient)
+            dose.save!
+          elsif array[1].to_i.is_a?(Fixnum) && array[2]
+            quantity = array[1].to_i
+            unit = array[2].to_s
+            dose = Dose.new(quantity:quantity, unit:unit, ingredient:ingredient, recipe:recipe)
+            dose.save!
+          elsif array[0]
+            quantity = operate(array[0].strip)
+            dose = Dose.new(quantity:quantity,recipe:recipe, ingredient:ingredient)
+            dose.save!
+          elsif array[3]
+            quantity = array[3].to_i
+            dose = Dose.new(quantity:quantity, recipe:recipe, ingredient:ingredient)
+            dose.save!
           end
         end
       end
@@ -65,6 +69,8 @@ namespace :db do
     #end
 
     def operate(array)
+      regex = /(\d+)\s?(x|\/)\s?(\d+)/
+      array = i.scan(regex).flatten
       sum = 0
       a = array[0].to_f
       b = array[2].to_f
