@@ -18,9 +18,11 @@
         %>')">
         </div>
       <%end%>
-      <%= link_to recipe_path(recipe) do %>
-        <h4><%=recipe.name.capitalize%></h4>
-      <%end%>
+      <div class="link-box">
+        <%= link_to recipe_path(recipe) do %>
+          <%=recipe.name.capitalize%>
+        <%end%>
+      </div>
   </div>
   <%end%>
 </div>
