@@ -23,7 +23,7 @@ namespace :db do
       doc = Nokogiri::HTML(open("https://www.jamieoliver.com#{recipe['href']}/", "User-Agent" => user_agent), nil, 'utf-8')
       doc.search(".recipe-container").each do |item|
         puts "Creating recipe"
-        name = item.search('h1.hidden-xs').text
+        name = item.search('h1.hidden-xs').text.downcase
         description1 = item.search('.method-p').text.strip.gsub("\\n|\s", " ").split(' ')
         description1.delete_at(0)
         description = description1.join(' ')
@@ -36,9 +36,10 @@ namespace :db do
 
         doc.search(".ingredient-wrapper li").each do |element|
           puts "Creating ingredient"
+       
           ingredient_name1 = element.text.strip.gsub("\\n|\s"," ").split(' ').join(' ').scan(/^([^ ]+)\s?(kg|cm|teaspoon|teaspoons|l|ml|cl|mg|sprigs|g|tablespoon|tablespoons|a bunch|pack)?\s(of)?([^,\n]*).*$/).flatten
           ingredient_name = ingredient_name1[3]
-          ingredient = Ingredient.new(name:ingredient_name.capitalize)
+          ingredient = Ingredient.new(name:ingredient_name.downcase)
           ingredient.save!
           array = element.text.strip.gsub("\\n|\s", " ").split(' ').join(' ').scan(/(^\d\/\d)|(^.*\d*)\s(g\s|l\s|kg|ml|cl|mg|cm|tablespoons|tablespoon|teaspoon|teaspoons|a bunch|a pinch|sprigs|cloves)|(^\d+)/).flatten
           sleep 0.1
