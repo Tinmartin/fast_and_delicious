@@ -6,7 +6,8 @@ class RecipesController < ApplicationController
       if params[:search] == ""
         @recipes = Recipe.all
       else
-        @recipes = Recipe.global_search(params[:search]).order("created_at DESC")
+        # @recipes = Recipe.global_search(params[:search]).order("created_at DESC")
+        @recipes = Recipe.search(params[:search]).order("created_at DESC")
       end
     else
       @recipes = Recipe.all
