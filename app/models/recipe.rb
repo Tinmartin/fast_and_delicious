@@ -1,34 +1,4 @@
-# require 'elasticsearch/model'
-
 class Recipe < ApplicationRecord
-
-  #configuring Elastic Search
-  # include Elasticsearch::Model
-  # include Elasticsearch::Model::Callbacks
-
-  # # index_name Rails.application.class.parent_name.underscore
-  # # document_type self.name.downcase
-  # settings index: { number_of_shards: 1 } do
-  #   mapping dynamic: 'false' do
-  #     indexes :name, analyzer: 'english'
-  #     # indexes :ingredients do
-  #     #   indexes :name, analyzer: 'english'
-  #     # end
-  #   end
-  # end
-
-  # def self.search(query)
-  # __elasticsearch__.search(
-  #   {
-  #     query: {
-  #       multi_match: {
-  #         query: query,
-  #         fields: ['name^10']
-  #       }
-  #     }
-  #   }
-  # )
-  # end
 
 
   searchkick
@@ -91,6 +61,7 @@ class Recipe < ApplicationRecord
        ingredients: [ :name]
      }
 
+<<<<<<< HEAD
 
 
   # def self.search(query)
@@ -125,17 +96,7 @@ class Recipe < ApplicationRecord
 
 
 >>>>>>> 4c2609fabefab1d5779ea7fa90fa0d2731a42f89
+=======
+>>>>>>> a957e65616ca6f8ff691a68af0a4618511f404ea
 end
-
-# # Delete the previous articles index in Elasticsearch
-# Recipe.__elasticsearch__.client.indices.delete index: Recipe.index_name rescue nil
-
-# # Create the new index with the new mapping
-# Recipe.__elasticsearch__.client.indices.create \
-#   index: Recipe.index_name,
-#   body: { settings: Recipe.settings.to_hash, mappings: Recipe.mappings.to_hash }
-
-# # Index all article records from the DB to Elasticsearch
-# Recipe.import
-# Recipe.reindex
 
