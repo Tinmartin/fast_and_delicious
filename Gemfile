@@ -27,7 +27,6 @@ gem 'devise'
 gem 'omniauth-facebook'
 
 gem 'pg_search'
-gem 'searchkick', '~> 2.3'
 
 
 
