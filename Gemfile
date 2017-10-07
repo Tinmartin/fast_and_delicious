@@ -28,8 +28,11 @@ gem 'omniauth-facebook'
 
 gem 'pg_search'
 gem 'searchkick', '~> 2.3'
+
 gem 'elasticsearch'
 gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
+
 
 
 
