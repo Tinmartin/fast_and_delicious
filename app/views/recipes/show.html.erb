@@ -42,30 +42,26 @@
         </div>
 
         <div class="preparation-time redirect-left">
-            <h4><%= if @recipe.preparation_time == nil
-                else
-                  "Preparation: #{@recipe.preparation_time}"
-                end
-            %></h4>
-          </div>
-
+          <h4><%= if @recipe.preparation_time == nil
+          else
+            "Preparation: #{@recipe.preparation_time}"
+          end
+          %></h4>
+        </div>
         <div class="description-recipe col-xs-12 col-lg-12 redirect-left" >
           <p><%= @recipe.description %></p>
         </div>
-
-<% @recipe.doses.each do |dose| %>
-        <%= simple_form_for [@recipe, @dose] do |f| %>
-          <%= f.input :quantity, :placeholder => "nouvelle valeur", label: "#{dose.quantity}"  %>
-          <%= f.input :unit, :placeholder => "nouvelle valeur", label: "#{dose.unit}"  %>
+        <div class="doses-modification col-xs-12 col-lg-8 " >
+          <% @recipe.doses.each do |dose| %>
+          <%= simple_form_for [@recipe, @dose] do |f| %>
+          <%= f.input :quantity, :placeholder => "nouvelle valeur", label: "#{dose.quantity}" %>
+          <%= f.input :unit, :placeholder => "nouvelle valeur", label: "#{dose.unit}"%>
           <%= f.input :ingredient_id, :placeholder => "nouvelle valeur", label: "#{dose.ingredient.name}"  %>
-         <%= f.submit "modify a dose", class: "btn btn-primary" %>
-
-        <% end %>
-      <% end %>
+          <%= f.submit "modify a dose", class: "btn btn-primary"%>
+          <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
-
-
   </div>
-
 </div>
