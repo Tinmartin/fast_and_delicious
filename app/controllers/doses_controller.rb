@@ -3,9 +3,9 @@ class DosesController < ApplicationController
 
   def update
     get_dose
-    @dose.update(ingredient_params)
+    @dose.update(dose_params)
     # no need for app/views/restaurants/update.html.erb
-    redirect_to ingredient_path(@ingredient)
+    redirect_to recipe_path(@dose.recipe)
   end
 
   def dose_params
