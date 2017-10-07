@@ -28,6 +28,13 @@ gem 'omniauth-facebook'
 
 gem 'pg_search'
 
+gem 'elasticsearch'
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
+
+
+
+gem 'record_tag_helper', '~> 1.0'
 
 
 group :development, :test do
