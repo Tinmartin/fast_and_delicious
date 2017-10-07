@@ -5,8 +5,16 @@ class RecipesController < ApplicationController
     if params[:search]
       if params[:search] == ""
         @recipes = Recipe.all
+        respond_to do |format|
+        format.html { redirect_to search_recipes_path}
+        format.js
+        end
       else
         @recipes = Recipe.global_search(params[:search]).order("created_at DESC")
+        respond_to do |format|
+        format.html { redirect_to search_recipes_path }
+        format.js
+        end
       end
     else
       @recipes = Recipe.all

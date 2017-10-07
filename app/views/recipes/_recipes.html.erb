@@ -1,14 +1,4 @@
-
-<h4 class="text-center">ALL OUR RECIPES:</h4>
-
-<div class="container">
-
-
-  <div class="row" id="recipes">
-    <% if @recipes.blank? %>
-      <h4>There are no recipes containing the term <%= params[:search] %>.</h4>
-    <% end %>
-    <% @recipes.each do |recipe| %>
+<% @recipes.each do |recipe| %>
     <div class="col-xs-12 col-sm-6 col-md-4">
       <%= link_to recipe_path(recipe) do %>
         <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('<%= if recipe.picture.url == nil
@@ -26,5 +16,3 @@
       </div>
   </div>
   <%end%>
-</div>
-</div>
