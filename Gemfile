@@ -29,7 +29,6 @@ gem 'omniauth-facebook'
 gem 'pg_search'
 gem 'searchkick', '~> 2.3'
 
-<<<<<<< HEAD
 gem 'elasticsearch'
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
@@ -37,10 +36,6 @@ gem 'elasticsearch-rails'
 
 
 gem 'record_tag_helper', '~> 1.0'
-
-
-=======
->>>>>>> a957e65616ca6f8ff691a68af0a4618511f404ea
 
 
 group :development, :test do

@@ -15,9 +15,6 @@
 
         <div class="recipe-title col-xs-12 col-lg-12 redirect-left">
           <h3><%= @recipe.name %></h3>
-          <%= div_for @recipe do %>
-  <%= link_to_toggle_recipe_favorite @recipe %>
-<% end %>
         </div>
 
         <% @recipe.doses.each do |dose| %>
