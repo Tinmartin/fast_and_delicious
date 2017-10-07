@@ -1,4 +1,4 @@
-<div class="container text-center">
+<div class="container show text-center">
   <div class="row">
     <div class="picture-recipe col-xs-12 col-lg-4">
       <%= if @recipe.picture.url == nil
@@ -18,14 +18,14 @@
         </div>
 
         <% @recipe.doses.each do |dose| %>
-        <div class="card col-xs-6 col-lg-3">
+        <div class="card-ingredients col-xs-6 col-lg-3">
           <%= if dose.ingredient.picture.url == nil
             image_tag('https://placeholdit.co//i/150x150?')
           else
             cl_image_tag dose.ingredient.picture.url
           end
           %>
-          <div class="card-description">
+          <div class="card-ingredients-description">
             <h2><%= dose.ingredient.name %>: <%= dose.quantity %><%= dose.unit %></h2>
           </div>
         </div>
@@ -33,21 +33,21 @@
 
         <div class="infos col-xs-6 col-lg-12">
           <div class="number-person-eat redirect-left">
-            <h4> For 1 person </h4>
-          </div>
-
-          <div class="preparation-time redirect-left">
-            <h4><%= if @recipe.preparation_time == nil
-            else
-              "Preparation: #{@recipe.preparation_time}"
-            end
-            %></h4>
+            <h4><i class="fa fa-user" aria-hidden="true"></i> : 1 person </h4>
           </div>
 
           <div class="cooking-time redirect-left">
-            <h4> Cooking : <%= @recipe.cooking_time %></h4>
+            <h4><i class="fa fa-clock-o" aria-hidden="true"></i> Cooking : <%= @recipe.cooking_time %></h4>
           </div>
         </div>
+
+        <div class="preparation-time redirect-left">
+            <h4><%= if @recipe.preparation_time == nil
+                else
+                  "Preparation: #{@recipe.preparation_time}"
+                end
+            %></h4>
+          </div>
 
         <div class="description-recipe col-xs-12 col-lg-12 redirect-left" >
           <p><%= @recipe.description %></p>
