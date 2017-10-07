@@ -22,7 +22,7 @@
           <%= if dose.ingredient.picture.url == nil
             image_tag('https://placeholdit.co//i/150x150?')
           else
-            cl_image_tag dose.ingredient.picture.url
+            cl_image_tag(dose.ingredient.picture.url, id: "ingredient-picture")
           end
           %>
           <div class="card-ingredients-description">

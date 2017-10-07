@@ -71,7 +71,6 @@
 }
 
 
-
 .card-ingredients {
   height: 220px;
   background-size: cover !important;
@@ -82,6 +81,11 @@
 }
 .card-ingredients h2 {
   font-size: 10px;
+}
+
+#ingredient-picture {
+  height: 150px;
+  width: 150px;
 }
 
 .card-ingredients-description {
