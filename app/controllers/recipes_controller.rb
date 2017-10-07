@@ -1,6 +1,7 @@
 class RecipesController < ApplicationController
   def index
     @recipes = Recipe.all
+    @ingredients = Ingredient.all
     if params[:search]
       if params[:search] == ""
         @recipes = Recipe.all
@@ -9,7 +10,7 @@ class RecipesController < ApplicationController
         @recipes = Recipe.search(params[:search]).order("created_at DESC")
       end
     else
-      @recipes = Recipe.all.order("created_at DESC")
+      @recipes = Recipe.all
     end
   end
 

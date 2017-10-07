@@ -13,9 +13,6 @@ class Recipe < ApplicationRecord
     end
   end
 
-
-
-
   searchkick
 
 
@@ -37,6 +34,7 @@ class Recipe < ApplicationRecord
   # end
 
   # multisearchable against: [:name, :description]
+
   # pg_search_scope :global_search,
   #    against: [ :name ],
   #    associated_against: {
