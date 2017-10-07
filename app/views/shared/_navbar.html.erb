@@ -4,11 +4,10 @@
   <%= image_tag "logo.png" %>
   <% end %>
 
-
-  <div class="search-bar">
-    <%= form_tag(recipes_path, :method => "get", class: "form-inline") do %>
-      <%= text_field_tag :search, params[:search], placeholder: "enter an ingredient", class:"form-control" %>
-      <%= submit_tag "Search", :name => nil, class:"btn btn-primary"%>
+  <div class="container">
+    <%= form_tag(recipes_path(format: :js), :method => "get", class: "form-inline", remote: true) do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Search Recipes ", class:"form-control" %>
+      <%= submit_tag "Search", :name => nil, class:"btn btn-primary" %>
     <% end %>
   </div>
 
