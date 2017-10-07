@@ -40,7 +40,7 @@ namespace :db do
           ingredient_name = ingredient_name1[3]
           ingredient = Ingredient.new(name:ingredient_name.capitalize)
           ingredient.save!
-          array = element.text.strip.gsub("\\n|\s", " ").split(' ').join(' ').scan(/(^\d\/\d)|(^.*\d*)\s(g\s|l\s|kg|tablespoons|tablespoon|teaspoon|teaspoons|a bunch|a pinch|sprigs|cloves)|(^\d+)/).flatten
+          array = element.text.strip.gsub("\\n|\s", " ").split(' ').join(' ').scan(/(^\d\/\d)|(^.*\d*)\s(g\s|l\s|kg|ml|cl|mg|cm|tablespoons|tablespoon|teaspoon|teaspoons|a bunch|a pinch|sprigs|cloves)|(^\d+)/).flatten
           sleep 0.1
 
           if !(array[1].to_i.is_a?(Fixnum)) && array[2]
