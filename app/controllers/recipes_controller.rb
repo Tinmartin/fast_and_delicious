@@ -23,6 +23,8 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
+    @dose = Dose.new
+    @ingredients = Ingredient.all
   end
 end
 
