@@ -13,7 +13,7 @@
 
       <div class="row">
 
-        <div class="recipe-title col-xs-12 col-lg-12">
+        <div class="recipe-title col-xs-12 col-lg-12 redirect-left">
           <h3><%= @recipe.name %></h3>
         </div>
 
@@ -32,11 +32,11 @@
         <% end %>
 
         <div class="infos col-xs-6 col-lg-12">
-          <div class="number-person-eat">
+          <div class="number-person-eat redirect-left">
             <h4> For 1 person </h4>
           </div>
 
-          <div class="preparation-time">
+          <div class="preparation-time redirect-left">
             <h4><%= if @recipe.preparation_time == nil
             else
               "Preparation: #{@recipe.preparation_time}"
@@ -44,12 +44,12 @@
             %></h4>
           </div>
 
-          <div class="cooking-time">
+          <div class="cooking-time redirect-left">
             <h4> Cooking : <%= @recipe.cooking_time %></h4>
           </div>
         </div>
 
-        <div class="description-recipe col-xs-12 col-lg-12">
+        <div class="description-recipe col-xs-12 col-lg-12 redirect-left" >
           <p><%= @recipe.description %></p>
         </div>
       </div>
