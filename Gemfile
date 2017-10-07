@@ -28,6 +28,8 @@ gem 'omniauth-facebook'
 
 gem 'pg_search'
 
+gem 'record_tag_helper', '~> 1.0'
+
 
 
 

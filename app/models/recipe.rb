@@ -12,13 +12,35 @@ class Recipe < ApplicationRecord
 
   def self.search(search)
    where("name LIKE ?", "%#{search}%")
-  end
+ end
 
   # multisearchable against: [:name, :description]
   pg_search_scope :global_search,
-     against: [ :name ],
-     associated_against: {
-       ingredients: [ :name]
-     }
+  against: [ :name ],
+  associated_against: {
+   ingredients: [ :name]
+ }
+
+ def favorited?
+    favorited_at = false
+  end
+
+  def favorite
+    self.favorited_at = true
+  end
+
+  def favorite!
+    favorite
+    save!
+  end
+
+  def unfavorite
+    self.favorited_at = false
+  end
+
+  def unfavorite!
+    unfavorite
+    save!
+  end
 end
 
