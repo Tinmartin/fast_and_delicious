@@ -7,7 +7,7 @@
           <% avatar_url = @profile.picture.url || "http://placehold.it/150x150" %>
           <%= image_tag avatar_url, class: "avatar-large" %>
           <h2><%= "#{@profile.first_name} #{@profile.last_name}"%></h2>
-          <p><%= @profile.email %></p>
+          <p><%= current_user.email %></p>
 
           <%= simple_form_for(@profile) do |f| %>
             <%= f.input :picture_cache, as: :hidden %>
@@ -48,10 +48,10 @@
    <div class="grid-profile-mobile text-center hidden-md hidden-lg">
       <div class="card-profile main-section-mobile">
         <div class="card-content-">
-          <% avatar_url = @profile.picture.url || "http://placehold.it/30x30" %>
+          <% avatar_url = @profile.picture.url || "http://placehold.it/150x150" %>
           <%= image_tag avatar_url, class: "avatar-large" %>
           <h2><%= "#{@profile.first_name} #{@profile.last_name}"%></h2>
-          <p><%= @profile.email %></p>
+          <p><%= current_user.email %></p>
           <%= simple_form_for(@profile) do |f| %>
             <%= f.input :picture_cache, as: :hidden %>
             <%= f.input :picture %>
