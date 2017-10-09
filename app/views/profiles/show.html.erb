@@ -1,14 +1,19 @@
-<div class="container"></div>
+<div class="container">
 
 <!-- Right Navigation -->
   <div class="grid-profile text-center hidden-xs hidden-sm">
       <div class="card-profile main-section">
         <div class="card-content">
-          <% avatar_url = @profile.picture || "http://placehold.it/30x30" %>
-          <%= image_tag avatar_url, class: "img-circle" %>
+          <% avatar_url = @profile.picture.url || "http://placehold.it/150x150" %>
+          <%= image_tag avatar_url, class: "avatar-large" %>
           <h2><%= "#{@profile.first_name} #{@profile.last_name}"%></h2>
           <p><%= @profile.email %></p>
-          <a href="#" class="btn btn-primary btn-lg">Get in touch</a>
+
+          <%= simple_form_for(@profile) do |f| %>
+            <%= f.input :picture_cache, as: :hidden %>
+            <%= f.input :picture %>
+            <%= f.submit "Update Picture"%>
+          <% end %>
         </div>
       </div>
       <div class="card-profile stats-section">
@@ -43,11 +48,15 @@
    <div class="grid-profile-mobile text-center hidden-md hidden-lg">
       <div class="card-profile main-section-mobile">
         <div class="card-content-">
-          <% avatar_url = @profile.picture || "http://placehold.it/30x30" %>
-          <%= image_tag avatar_url, class: "img-circle" %>
+          <% avatar_url = @profile.picture.url || "http://placehold.it/30x30" %>
+          <%= image_tag avatar_url, class: "avatar-large" %>
           <h2><%= "#{@profile.first_name} #{@profile.last_name}"%></h2>
           <p><%= @profile.email %></p>
-          <a href="#" class="btn btn-primary btn-lg">Get in touch</a>
+          <%= simple_form_for(@profile) do |f| %>
+            <%= f.input :picture_cache, as: :hidden %>
+            <%= f.input :picture %>
+            <%= f.submit "Update Picture"%>
+          <% end %>
         </div>
       </div>
       <div class="card-profile stats-section-mobile">
@@ -76,5 +85,23 @@
       </div>
   </div>
 
+
+  <div class='favorite-hero'></div>
+<h1 class='favorite_head'><%= current_user.profile.user_name %>'s favorites recipes</h1>
+<div class='favorites'>
+  <% if current_user and @favorites.length > 0 %>
+    <% i = 1 %>
+    <% @favorites.each do |favorite| %>
+    <% recipe = Recipe.find(favorite.recipe_id) %>
+    <%= render 'shared/card', recipe: recipe %>
+    <% end %>
+  <% else %>
+    <h2>You don't have any favorite recipes? Go back and pick some! </h2>
+  <% end %>
+  <%= link_to 'Go Back', root_path, class: 'back_link' %>
 </div>
+
+</div>
+
+
 
