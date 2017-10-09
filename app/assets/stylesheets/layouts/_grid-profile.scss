@@ -19,3 +19,29 @@
   grid-row: 2 / span 1;
   grid-column: 2 / span 3;
 }
+
+
+
+// <!-- Mobile only -->
+
+.grid-profile-mobile {
+  height: 600px;
+  display: grid;
+  grid-template-column: 1fr 1fr 1fr;
+  grid-template-rows: 40% 30% 30%;
+}
+
+.main-section-mobile{
+  grid-row: 1 / span 1;
+  grid-column: 1 / span 3;
+}
+
+.stats-section-mobile{
+  grid-row: 2 / span 1;
+  grid-column: 1;
+}
+
+.description-section-mobile{
+  grid-row: 3 / span 1;
+  grid-column: 1 / span 3;
+}
