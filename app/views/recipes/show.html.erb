@@ -19,6 +19,7 @@
         </div>
 
         <% @recipe.doses.each do |dose| %>
+<<<<<<< HEAD
           <div class="card-ingredients col-xs-6 col-lg-3">
             <%= if dose.ingredient.picture.url == nil
               image_tag('https://placeholdit.co//i/150x150?')
@@ -29,6 +30,17 @@
             <div class="card-ingredients-description">
               <h2><%= dose.ingredient.name %>: <%= dose.quantity %><%= dose.unit %></h2>
             </div>
+=======
+        <div class="card-ingredients col-xs-6 col-lg-3">
+          <%= if dose.ingredient.picture.url == nil
+            image_tag('https://placeholdit.co//i/150x150?')
+          else
+            cl_image_tag(dose.ingredient.picture.url, id: "ingredient-picture")
+          end
+          %>
+          <div class="card-ingredients-description">
+            <h2><%= dose.ingredient.name %>: <%= dose.quantity %><%= dose.unit %></h2>
+>>>>>>> 02ad3d829a32fec0156750db0552e9bfca8fb1a6
           </div>
         <% end %>
 
@@ -54,10 +66,10 @@
         </div>
         <div class="doses-modification col-xs-12 col-lg-8 " >
           <% @recipe.doses.each do |dose| %>
-          <%= simple_form_for [@recipe, @dose] do |f| %>
+          <%= simple_form_for dose do |f| %>
           <%= f.input :quantity, :placeholder => "nouvelle valeur", label: "#{dose.quantity}" %>
           <%= f.input :unit, :placeholder => "nouvelle valeur", label: "#{dose.unit}"%>
-          <%= f.input :ingredient_id, :placeholder => "nouvelle valeur", label: "#{dose.ingredient.name}"  %>
+          <%= f.association :ingredient, :placeholder => "nouvelle valeur", label: "#{dose.ingredient.name}"  %>
           <%= f.submit "modify a dose", class: "btn btn-primary"%>
           <% end %>
           <% end %>

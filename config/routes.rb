@@ -9,12 +9,17 @@ Rails.application.routes.draw do
     controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
   resources :recipes, only: [ :index, :show ] do
+<<<<<<< HEAD
     resources :doses, only: [ :new, :create ]
     collection do
       get 'search'
     end
 
   end
+=======
+   resources :doses, only: [ :new, :create ]
+end
+>>>>>>> 02ad3d829a32fec0156750db0552e9bfca8fb1a6
 
 
 

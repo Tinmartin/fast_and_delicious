@@ -1,14 +1,19 @@
 /* Main navbar */
 .navbar-wagon {
-  background: #f2d64e;
+  background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://images.pexels.com/photos/5938/food-salad-healthy-lunch.jpg?w=940&h=650&auto=compress&cs=tinysrgb');
   transition: all 0.3s ease;
-  height: 105px !important;
+  height: 500px !important;
   padding: 0px 30px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   top: 0px;
   font-family: $headers-font;
+  background-size: cover !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
 }
 
 /* Logo */
@@ -44,8 +49,8 @@
 
 /* Navbar link */
 .navbar-wagon-link {
-  color: #616668;
-  font-size: 14px;
+  color: #E9E9E5;
+  font-size: 18px;
 }
 .navbar-wagon-link:hover {
   color: #da552f;
@@ -61,14 +66,15 @@
 .navbar-wagon-dropdown-menu li > a {
   transition: color 0.4s ease;
   font-weight: lighter !important;
-  color: #999999 !important;
+  color: #000 !important;
   font-size: 15px !important;
   line-height: 22px !important;
   padding: 10px 20px;
 }
 .navbar-wagon-dropdown-menu li > a:hover {
   background: #f2d64e !important;
-  color: black !important;
+  color: white !important;
+  transition-duration: 0.4s;
 }
 .navbar-wagon-dropdown-menu:before {
   content: ' ';
@@ -83,10 +89,34 @@
   border-top: 1px solid #E6E6E6;
 }
 
-.custom-search-form{
-    margin-top:5px;
-}
 
+
+.btn-medium {
+  color: #999999;
+  border: 1px solid #999999;
+  padding: 10px 15px;
+  border-radius: 50px;
+  font-weight: lighter;
+  opacity: 0.9;
+}
+.btn-medium:hover {
+  opacity: 1;
+  text-decoration: none;
+  color: #999999;
+}
+// .custom-search-form{
+//     margin-top:5px;
+// }
+
+
+#search.form-control {
+  height: 59px;
+  width:300px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
 .navbar-minimalist {
   height: 70px;
   background: white;
