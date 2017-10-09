@@ -1,5 +1,5 @@
 .grid-profile {
-  height: 600px;
+  height: auto;
   display: grid;
   grid-template-column: 2fr, 1fr, 1fr, 1fr;
   grid-template-rows: 50% 50%;
@@ -25,7 +25,7 @@
 // <!-- Mobile only -->
 
 .grid-profile-mobile {
-  height: 600px;
+  height: auto;
   display: grid;
   grid-template-column: 1fr 1fr 1fr;
   grid-template-rows: 40% 30% 30%;
