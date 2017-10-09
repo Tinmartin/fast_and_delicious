@@ -8,3 +8,4 @@
 
 //= require social-share-button
 
+//= require algolia/v3/algoliasearch.min

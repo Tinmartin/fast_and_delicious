@@ -26,9 +26,7 @@ gem 'omniauth-facebook'
 
 gem 'pg_search'
 
-gem 'elasticsearch'
-gem 'elasticsearch-model'
-gem 'elasticsearch-rails'
+gem 'algoliasearch-rails'
 
 gem 'social-share-button'
 
