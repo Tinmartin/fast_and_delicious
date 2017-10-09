@@ -41,14 +41,7 @@ class Recipe < ApplicationRecord
   validates :name, presence: true
   mount_uploader :picture, PhotoUploader
 
-  algoliasearch do
-    attribute :doses do
-      doses.each do |dose|
-        {ingredient: dose.ingredient}
-      end
-    end
-  end
 end
 
-Recipe.reindex
+
 

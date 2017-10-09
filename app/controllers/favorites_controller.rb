@@ -1,2 +1,20 @@
 class FavoritesController < ApplicationController
+  def create
+    if current_user
+      @favorite = Favorite.new(
+        user_id: current_user.id,
+        recipe_id: params[:recipe_id]
+        )
+      @favorite.save
+    end
+    redirect_to root_path
+  end
+
+  def destroy
+    if current_user
+      Favorite.where(recipe_id: params[:id], user_id: current_user.id).delete_all
+    end
+    redirect_to root_path
+  end
+
 end
