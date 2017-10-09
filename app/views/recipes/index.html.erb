@@ -18,6 +18,11 @@
           cl_image_path recipe.picture.url
         end
         %>')">
+      </div>
+      <%end%>
+      <div class="link-box">
+        <%= link_to recipe_path(recipe) do %>
+        <%=recipe.name.capitalize%>
         <% if current_user %>
           <% if Favorite.where(recipe_id: recipe.id, user_id: current_user.id).count > 0 %>
             <%= link_to favorite_path(recipe), :method => :delete, class: "favorite" do %>
@@ -29,14 +34,12 @@
             <% end %>
           <% end %>
         <% end %>
-      </div>
-      <%end%>
-      <div class="link-box">
-        <%= link_to recipe_path(recipe) do %>
-        <%=recipe.name.capitalize%>
         <%end%>
       </div>
     </div>
     <%end%>
   </div>
 </div>
+
+
+
