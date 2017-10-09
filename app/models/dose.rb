@@ -5,3 +5,7 @@ class Dose < ApplicationRecord
   validates :ingredient, uniqueness: {scope: :recipe}
   validates :recipe, :ingredient, presence: true
 end
+
+
+
+

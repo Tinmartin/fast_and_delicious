@@ -1,31 +1,45 @@
   <%= render "recipes/banner" %>
 
-<h4 class="text-center">ALL OUR RECIPES:</h4>
+  <h4 class="text-center">ALL OUR RECIPES:</h4>
 
-<div class="container">
+  <div class="container">
 
 
-  <div class="row" id="recipes">
-    <% if @recipes.blank? %>
+    <div class="row" id="recipes">
+      <% if @recipes.blank? %>
       <h4>There are no recipes containing the term <%= params[:search] %>.</h4>
-    <% end %>
-    <% @recipes.each do |recipe| %>
-    <div class="col-xs-12 col-sm-6 col-md-4">
-      <%= link_to recipe_path(recipe) do %>
+      <% end %>
+      <% @recipes.each do |recipe| %>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <%= link_to recipe_path(recipe) do %>
         <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('<%= if recipe.picture.url == nil
           image_path('https://placeholdit.co//i/500x500?')
         else
           cl_image_path recipe.picture.url
         end
         %>')">
-        </div>
+      </div>
       <%end%>
       <div class="link-box">
         <%= link_to recipe_path(recipe) do %>
-          <%=recipe.name.capitalize%>
+        <%=recipe.name.capitalize%>
+        <% if current_user %>
+          <% if Favorite.where(recipe_id: recipe.id, user_id: current_user.id).count > 0 %>
+            <%= link_to favorite_path(recipe), :method => :delete, class: "favorite" do %>
+              <span class="fa fa-heart info"></span>
+            <% end %>
+          <% else %>
+            <%= link_to favorites_path(recipe_id: recipe.id), :method => :post, class: "favorite" do %>
+              <span class="fa fa-heart-o"></span>
+            <% end %>
+          <% end %>
+        <% end %>
         <%end%>
       </div>
+    </div>
+    <%end%>
   </div>
-  <%end%>
 </div>
-</div>
+
+
+

@@ -8,6 +8,9 @@
         cl_image_tag @recipe.picture.url
       end
       %>
+      <p class="share"><strong>SHARE THIS RECIPE </strong></p>
+      <%= social_share_button_tag(@recipe.name, 'data-twitter-title' => "Yum-yum, this recipe seems delicious !! #{@recipe.name}", 'data-facebook-title' => "Yum-yum, this recipe seems delicious !! #{@recipe.name}" )%>
+
     </div>
 
     <div class="col-xs-12 col-lg-8">
@@ -37,21 +40,36 @@
 
         <div class="infos col-xs-6 col-lg-12">
           <div class="number-person-eat redirect-left">
-            <h4><i class="fa fa-user" aria-hidden="true"></i> : 1 person </h4>
+              <form class="form-inline">
+                <div class="form-group">
+                  <label class="col-sm-2 control-label"> <i class="fa fa-user" aria-hidden="true"> </i></label>
+                    <select class="form-control">
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                      <option>6</option>
+                      <option>7</option>
+                      <option>8</option>
+                    </select>
+                </div>
+              </form>
           </div>
 
           <div class="cooking-time redirect-left">
             <h4><i class="fa fa-clock-o" aria-hidden="true"></i> Cooking : <%= @recipe.cooking_time %></h4>
           </div>
+
+          <div class="preparation-time redirect-left">
+            <h4><%= if @recipe.preparation_time == nil
+            else
+              "Preparation: #{@recipe.preparation_time}"
+            end
+            %></h4>
+          </div>
         </div>
 
-        <div class="preparation-time redirect-left">
-          <h4><%= if @recipe.preparation_time == nil
-          else
-            "Preparation: #{@recipe.preparation_time}"
-          end
-          %></h4>
-        </div>
         <div class="description-recipe col-xs-12 col-lg-12 redirect-left" >
           <p><%= @recipe.description %></p>
         </div>
