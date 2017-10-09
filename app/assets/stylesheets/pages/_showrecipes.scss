@@ -16,6 +16,49 @@ margin-top: 50px;
 margin-bottom: 100px;
 }
 
+.center {
+  display:center;
+}
+
+.review-title{
+    font-family: "Work Sans", sans-serif;
+    font-weight: 500;
+    line-height: 1.1;
+    color: black;
+}
+
+.review-description{
+    font-family: "Work Sans", sans-serif;
+    font-weight: 100;
+    line-height: 1.1;
+    color: black;
+
+}
+
+
+.containerreview{
+
+  background-color:red;
+  border-style: solid;
+      border-color: green;
+}
+
+.cardreview {
+  height: 300px;
+  background-size: cover !important;
+  background-position: center;
+  color: white;
+  position: relative;
+  border-radius: 3px;
+  &:hover{
+    opacity: 0.8;
+    text-decoration: none;
+  }
+}
+
+.description-recipe{
+
+  margin-bottom :30px;
 .share {
   font-size: 12px;
   margin-top: 10px;

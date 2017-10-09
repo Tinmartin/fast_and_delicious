@@ -1,2 +1,12 @@
-<h1>Profiles#edit</h1>
-<p>Find me in app/views/profiles/edit.html.erb</p>
+<
+          <%= simple_form_for(@profile) do |f| %>
+            <%= f.input :picture_cache, as: :hidden %>
+            <%= f.input :picture %>
+             <%= f.input :first_name %>
+             <%= f.input :last_name %>
+             <%= f.input :user_name %>
+            <%= f.input :age %>
+
+            <%= f.submit "Update your profile"%>
+
+          <% end %>

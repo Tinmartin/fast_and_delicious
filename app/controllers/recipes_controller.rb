@@ -59,8 +59,10 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
+    @review=Review.new
     @dose = Dose.new
     @ingredients = Ingredient.all
+    @html = "<div><p style='color: black'>test</p></div>"
   end
 
   def search(item)
