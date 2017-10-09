@@ -8,6 +8,9 @@
         cl_image_tag @recipe.picture.url
       end
       %>
+      <p class="share"><strong>SHARE THIS RECIPE </strong></p>
+      <%= social_share_button_tag(@recipe.name, 'data-twitter-title' => "Yum-yum, this recipe seems delicious !! #{@recipe.name}", 'data-facebook-title' => "Yum-yum, this recipe seems delicious !! #{@recipe.name}" )%>
+
     </div>
 
     <div class="col-xs-12 col-lg-8">
