@@ -4,9 +4,20 @@ class ProfilesController < ApplicationController
     @profile = current_user.profile
   end
 
+  def edit
+    @profile = current_user.profile
+  end
+
+  def update
+    @profile = current_user.profile
+    @profile.update(profile_params)
+    # no need for app/views/restaurants/update.html.erb
+    redirect_to profile_path(@profile)
+  end
+
   private
 
-  def find_profile
+  def get_profile
     @profile = Profile.find(params[:id])
   end
 

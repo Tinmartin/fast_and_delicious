@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   root to: 'recipes#index'
   resource :profile, :only => :show, :as => :current_profile
-  resource :profile, only: [ :edit, :destroy ]
+  resource :profile, only: [ :edit, :destroy, :update ]
 
 
   devise_for :users,
