@@ -19,11 +19,15 @@
         end
         %>')">
         <% if current_user %>
-        <% if Favorite.where(recipe_id: recipe.id, user_id: current_user.id).count > 0 %>
-        <%= button_to 'Unfavorite', favorite_path(recipe), :method => :delete, class: 'btn btn-danger' %>
-        <% else %>
-        <%= button_to 'Favorite', favorites_path(recipe_id: recipe.id), method: :post, class: 'btn btn-primary' %>
-        <% end %>
+          <% if Favorite.where(recipe_id: recipe.id, user_id: current_user.id).count > 0 %>
+            <%= link_to favorite_path(recipe), :method => :delete, class: "favorite" do %>
+              <span class="fa fa-heart info"></span>
+            <% end %>
+          <% else %>
+            <%= link_to favorites_path(recipe_id: recipe.id), :method => :post, class: "favorite" do %>
+              <span class="fa fa-heart-o"></span>
+            <% end %>
+          <% end %>
         <% end %>
       </div>
       <%end%>
@@ -36,5 +40,3 @@
     <%end%>
   </div>
 </div>
-
-
