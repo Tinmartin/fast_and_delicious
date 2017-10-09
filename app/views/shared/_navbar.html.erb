@@ -2,7 +2,7 @@
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
  <%= image_tag "logo.png" %>
- -->  <% end %>
+ <% end %>
 
   <div class="container">
     <%= form_tag(recipes_path, :method => "get", class: "form-inline", remote: (controller_name == 'recipes' && action_name == 'index')) do %>
