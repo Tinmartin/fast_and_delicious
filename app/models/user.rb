@@ -39,7 +39,6 @@ class User < ApplicationRecord
 
   def initialize_profile
     self.build_profile(
-      email: email,
       first_name: first_name,
       last_name: last_name,
       remote_picture_url: facebook_picture_url

@@ -67,15 +67,16 @@
 
 
         <% @recipe.reviews.each do |review| %>
+        <h2> <%= review.user.profile.user_name %> </h2>
           <h2><%= review.rating %></h2>
-          <%= review.user.username %>
+          <%= review.user.profile.user_name %>
           <p><%= review.content %></p>
           <%= if review.picture.url == nil
               image_tag('https://placeholdit.co//i/500x500?')
             else
               cl_image_tag review.picture.url
             end %>
-            <%= link_to "Delete", recipe_review(review), class: "btn-special", method: :delete, data: { confirm: "Are you sure?" }%>
+            <%= link_to "Delete", review_path(review), class: "btn-special", method: :delete, data: { confirm: "Are you sure?" }%>
 
         <% end %>
         <%= link_to "back", recipes_path %>

@@ -24,11 +24,10 @@ class ReviewsController < ApplicationController
   end
 
    def destroy
-     @recipe = Recipe.find(params[:recipe_id])
-      @review.recipe = @recipe
-     @review = Review.find(params[:review_id])
-     @review.destroy
-     redirect_to recipe_path(@recipe)
+    @review = Review.find(params[:id])
+    @recipe = @review.recipe
+    @review.destroy
+    redirect_to recipe_path(@recipe)
    end
 
   private
