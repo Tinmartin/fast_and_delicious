@@ -56,34 +56,52 @@
           <p><%= @recipe.description %></p>
         </div>
 
+
+         <div class="col-xs-12 col-lg-12 redirect-left" >
+          <p> Add your review !</p>
+
+
         <%= simple_form_for [@recipe, @review] do |f| %>
-        <%= f.input :content %>
-        <%= f.input :rating %>
-        <%= f.input :picture %>
+        <%= f.input :content, placeholder: 'write your review',label: "Add your review!" %>
+        <%= f.input :rating ,placeholder: 'rate this recipe.',label: false %>
+        <%= f.input :picture ,label: false %>
         <%= f.input :picture_cache, as: :hidden %>
 
         <%= f.submit "add a review", class: "btn btn-primary" %>
         <% end %>
+        </div>
+
+
+       <div class="col-xs-12 col-lg-12" >
+          <h3><b> Reviews </b></h3>
+          <br>
+          <br>
+      </div>
 
 
         <% @recipe.reviews.each do |review| %>
-        <h2> <%= review.user.profile.user_name %> </h2>
-          <h2><%= review.rating %></h2>
-          <%= review.user.profile.user_name %>
-          <p><%= review.content %></p>
-          <%= if review.picture.url == nil
-              image_tag('https://placeholdit.co//i/500x500?')
-            else
-              cl_image_tag review.picture.url
-            end %>
-            <%= link_to "Delete", review_path(review), class: "btn-special", method: :delete, data: { confirm: "Are you sure?" }%>
-
-        <% end %>
-        <%= link_to "back", recipes_path %>
-
+          <div class="cardreview col-xs-12 col-lg-4" id="reviews" style="width: 25rem, ;">
+            <div class="card-block">
+              <ul class = "list-inline">
+                <% avatar_url = review.user.profile.picture.url || "http://placehold.it/30x30" %>
+                <li> <%= image_tag avatar_url, class: "avatar" %></li>
+                <li><h4 class="review-title"> <%= review.user.profile.user_name %> : <%= review.rating %> / 5</h4> </li>
+              </ul>
+              <div class ="card-img-top">
+                <%= if review.picture.url == nil
+                else
+                  cl_image_tag review.picture.url
+                  end %>
+                </div>
+                <p class="review-description"> <%= review.content %></p>
+              </div>
+              <%= link_to "Delete", review_path(review), method: :delete, data: { confirm: "Are you sure?" }%>
+              <%= link_to "back", recipes_path %>
+            </div>
+           <% end %>
+           </div>
+        </div>
       </div>
     </div>
   </div>
-
-</div>
 

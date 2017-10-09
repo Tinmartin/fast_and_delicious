@@ -16,12 +16,12 @@ class ReviewsController < ApplicationController
     @review.user = current_user
 
     if @review.save
-      redirect_to recipe_path(@recipe)
+       redirect_to recipe_path(@recipe)
     else
-      fail
-      render :new
+       render @recipe_path
     end
   end
+
 
    def destroy
     @review = Review.find(params[:id])
