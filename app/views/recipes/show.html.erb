@@ -56,6 +56,30 @@
           <p><%= @recipe.description %></p>
         </div>
 
+        <%= simple_form_for [@recipe, @review] do |f| %>
+        <%= f.input :content %>
+        <%= f.input :rating %>
+        <%= f.input :picture %>
+        <%= f.input :picture_cache, as: :hidden %>
+
+        <%= f.submit "add a review", class: "btn btn-primary" %>
+        <% end %>
+
+
+        <% @recipe.reviews.each do |review| %>
+          <h2><%= review.rating %></h2>
+          <%= review.user.username %>
+          <p><%= review.content %></p>
+          <%= if review.picture.url == nil
+              image_tag('https://placeholdit.co//i/500x500?')
+            else
+              cl_image_tag review.picture.url
+            end %>
+            <%= link_to "Delete", recipe_review(review), class: "btn-special", method: :delete, data: { confirm: "Are you sure?" }%>
+
+        <% end %>
+        <%= link_to "back", recipes_path %>
+
       </div>
     </div>
   </div>
