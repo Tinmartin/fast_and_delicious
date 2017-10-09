@@ -8,24 +8,13 @@ Rails.application.routes.draw do
   devise_for :users,
     controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
-  resources :recipes, only: [ :index, :show ] do
-<<<<<<< HEAD
-    resources :doses, only: [ :new, :create ]
+  resources :recipes, only: [ :index, :show, :new, :create ] do
     collection do
       get 'search'
     end
-
   end
-=======
-   resources :doses, only: [ :new, :create ]
-end
->>>>>>> 02ad3d829a32fec0156750db0552e9bfca8fb1a6
 
-
-
-      resources :doses, only: [ :destroy, :edit, :update]
-
-
+  resources :doses, only: [ :new, :create, :destroy, :edit, :update ]
 
   resources :ingredients
 
