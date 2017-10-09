@@ -29,6 +29,7 @@
           %>
           <div class="card-ingredients-description">
             <h2><%= dose.ingredient.name %>: <%= dose.quantity %><%= dose.unit %></h2>
+            <%= link_to "Edit", edit_dose_path(dose)%>
           </div>
 
         </div>
@@ -54,17 +55,9 @@
         <div class="description-recipe col-xs-12 col-lg-12 redirect-left" >
           <p><%= @recipe.description %></p>
         </div>
-        <div class="doses-modification col-xs-12 col-lg-8 " >
-          <% @recipe.doses.each do |dose| %>
-          <%= simple_form_for dose do |f| %>
-          <%= f.input :quantity, :placeholder => "nouvelle valeur", label: "#{dose.quantity}" %>
-          <%= f.input :unit, :placeholder => "nouvelle valeur", label: "#{dose.unit}"%>
-          <%= f.association :ingredient, :placeholder => "nouvelle valeur", label: "#{dose.ingredient.name}"  %>
-          <%= f.submit "modify a dose", class: "btn btn-primary"%>
-          <% end %>
-          <% end %>
-        </div>
+
       </div>
     </div>
   </div>
+
 </div>

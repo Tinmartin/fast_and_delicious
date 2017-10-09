@@ -1,0 +1,13 @@
+
+<div>
+  <div class="doses-modification col-xs-12 col-lg-8 " >
+
+    <%= simple_form_for @dose do |f| %>
+    <%= f.input :quantity, :placeholder => "nouvelle valeur", label: "#{@dose.quantity}" %>
+    <%= f.input :unit, :placeholder => "nouvelle valeur", label: "#{@dose.unit}"%>
+    <%= f.association :ingredient, :placeholder => "nouvelle valeur", label: "#{@dose.ingredient.name}"  %>
+    <%= f.submit "modify a dose", class: "btn btn-primary"%>
+    <% end %>
+
+  </div>
+</div>
