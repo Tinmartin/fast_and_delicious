@@ -2,6 +2,7 @@ class ProfilesController < ApplicationController
 
   def show
     @profile = current_user.profile
+    @favorites = current_user.favorites
   end
 
   def edit

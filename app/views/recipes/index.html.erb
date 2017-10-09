@@ -25,7 +25,16 @@
           <%=recipe.name.capitalize%>
         <%end%>
       </div>
+      <% if current_user %>
+  <% if Favorite.where(recipe_id: recipe.id, user_id: current_user.id).count > 0 %>
+    <%= button_to 'Unfavorite', favorite_path(recipe), :method => :delete, :style=> "margin-left: 20px" %>
+  <% else %>
+    <%= button_to 'Favorite', favorites_path(recipe_id: recipe.id), method: :post, style: "margin-left: 20px" %>
+   <% end %>
+<% end %>
   </div>
   <%end%>
 </div>
 </div>
+
+
