@@ -1,3 +1,4 @@
+
 require 'algoliasearch-rails'
 require 'algoliasearch'
 require 'rubygems'

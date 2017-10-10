@@ -1,0 +1,14 @@
+const newReviewForm = document.getElementById('newreview');
+  console.log('test');
+
+const send = document.getElementById('send');
+send.addEventListener("click", (event) => {
+<% if @review.errors.any? %>
+  newReviewForm.innerHTML = "<%= j render 'reviews/new', recipe: @recipe, review: @review %>";
+<% else %>
+  const reviews = document.getElementById('reviews');
+  reviews.insertAdjacentHTML("beforeend", "<%= j render 'reviews/show', review: @review %>");
+  newReviewForm.innerHTML = "<%= j render 'reviews/form', recipe: @recipe, review: Review.new %>";
+<% end %>
+});
+

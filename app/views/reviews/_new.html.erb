@@ -1,0 +1,9 @@
+<%= simple_form_for [@recipe, @review] do |f| %>
+        <%= f.input :content %>
+        <%= f.input :rating %>
+        <%= f.input :picture %>
+        <%= f.input :picture_cache, as: :hidden %>
+
+        <%= f.submit "add a review", class: "btn btn-primary" %>
+        <% end %>
+

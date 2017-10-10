@@ -12,6 +12,7 @@
 # working on Algolia
 
 class Ingredient < ApplicationRecord
+  # include PgSearch
   include AlgoliaSearch
 
   has_many :doses

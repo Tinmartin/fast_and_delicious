@@ -6,14 +6,11 @@
         <div class="card-content">
           <% avatar_url = @profile.picture.url || "http://placehold.it/150x150" %>
           <%= image_tag avatar_url, class: "avatar-large" %>
+          <h2><%= "#{@profile.user_name}"%></h2>
           <h2><%= "#{@profile.first_name} #{@profile.last_name}"%></h2>
           <p><%= current_user.email %></p>
+          <%= link_to "edit your profile", edit_profile_path(@profile), class: "btn btn-success"%>
 
-          <%= simple_form_for(@profile) do |f| %>
-            <%= f.input :picture_cache, as: :hidden %>
-            <%= f.input :picture %>
-            <%= f.submit "Update Picture"%>
-          <% end %>
         </div>
       </div>
       <div class="card-profile stats-section">
@@ -102,6 +99,4 @@
 </div>
 
 </div>
-
-
 
