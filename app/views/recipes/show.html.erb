@@ -96,7 +96,7 @@
         <% arr << review.rating %>
         <% end %>
         <% average = arr.inject{ |sum, el| sum + el }.to_f / arr.size %>
-          Average rating on this recipe: <%= average.round(1)  / 5</b></h3>
+          Average rating on this recipe: <%= average.round(1) %> / 5</b></h3>
           <br>
           <br>
       </div>
@@ -107,7 +107,7 @@
               <ul class = "list-inline">
                 <% avatar_url = review.user.profile.picture.url || "http://placehold.it/30x30" %>
                 <li> <%= image_tag avatar_url, class: "avatar" %></li>
-                <li><h4 class="review-title"> <%= review.user.profile.user_name %> : <%= review.rating %> / 5</h4> </li>
+                <li><h4 class="review-title"> <%= review.user.profile.user_name %> : <%= review.rating  %> / 5</h4> </li>
               </ul>
               <div class ="card-img-top">
                 <%= if review.picture.url == nil
