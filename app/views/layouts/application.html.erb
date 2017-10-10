@@ -9,38 +9,16 @@
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= favicon_link_tag 'logo.png' %>
 </head>
+
 <body>
   <%= render "shared/navbar" %>
   <%= yield %>
   <%= render "shared/footer" %>
   <%= javascript_include_tag 'application' %>
+  <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
   <%= yield(:after_js) %>
 </body>
-<script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
-<script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
-
-<script>
-var client = algoliasearch("AMLNOKWPBJ", "5b8cb611c7a8bc80b876e4f7abbb1517");
-var index = client.initIndex('Ingredient_development');
-//initialize autocomplete on search input (ID selector must match)
-autocomplete('#aa-search-input',
-{ hint: false }, {
-    source: autocomplete.sources.hits(index, {hitsPerPage: 5}),
-    //value to be displayed in input control after user's suggestion selection
-    displayKey: 'name',
-    //hash of templates used when rendering dataset
-    templates: {
-        //'suggestion' templating function used to render a single suggestion
-        suggestion: function(suggestion) {
-          // console.log(suggestion);
-          return '<span>' +
-            // console.log(suggestion)
-            suggestion._highlightResult.name.value+ '</span>';
-        }
-    }
-});
-</script>
-
 </html>
 
 
