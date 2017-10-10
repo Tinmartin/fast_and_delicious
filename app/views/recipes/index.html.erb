@@ -11,17 +11,6 @@
       <% end %>
       <% @recipes.each do |recipe| %>
       <div class="col-xs-12 col-sm-6 col-md-4">
-        <% if current_user %>
-          <% if Favorite.where(recipe_id: recipe.id, user_id: current_user.id).count > 0 %>
-            <%= link_to favorite_path(recipe), :method => :delete, class: "favorite" do %>
-              <span class="fa fa-heart info"></span>
-            <% end %>
-          <% else %>
-            <%= link_to favorites_path(recipe_id: recipe.id), :method => :post, class: "favorite" do %>
-              <span class="fa fa-heart-o"></span>
-            <% end %>
-          <% end %>
-        <% end %>
         <%= link_to recipe_path(recipe) do %>
         <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('<%= if recipe.picture.url == nil
           image_path('https://placeholdit.co//i/500x500?')
@@ -30,7 +19,7 @@
         end
         %>')">
       </div>
-      <%end%>
+      <% end %>
       <div class="card-description">
         <% arr = [] %>
         <% recipe.reviews.each do |review| %>
@@ -44,13 +33,24 @@
         <%= link_to recipe_path(recipe) do %>
         <%=recipe.name.capitalize%>
 
-        <%end%>
+        <% if current_user %>
+          <% if Favorite.where(recipe_id: recipe.id, user_id: current_user.id).count > 0 %>
+            <%= link_to favorite_path(recipe), :method => :delete, remote: true, class: "favorite" do %>
+              <span class="fa fa-heart info"></span>
+            <% end %>
+          <% else %>
+            <%= link_to favorites_path(recipe_id: recipe.id), :method => :post, remote: true, class: "favorite" do %>
+              <span class="fa fa-heart-o"></span>
+            <% end %>
+          <% end %>
+        <% end %>
+
+        <% end %>
       </div>
     </div>
-    <%end%>
+    <% end %>
   </div>
 </div>
-
 
 
 
