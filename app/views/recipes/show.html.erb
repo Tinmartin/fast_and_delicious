@@ -113,19 +113,21 @@
                 <% avatar_url = review.user.profile.picture.url || "http://placehold.it/30x30" %>
                 <%= image_tag avatar_url, class: "avatar" %>
                 <p class="date"> <strong><%= review.user.profile.user_name %> </strong> <br> <%= review.rating  %> / 5  </p>
+
                 <li class="message">
                   <%=h truncate(review.content, :length => 200) %> </li>
-                  <br>
-                  <p class="accepted"> <strong><%= link_to "Delete", review_path(review), method: :delete, data: { confirm: "Are you sure?" }%> </strong><br> </p>
-                </div>
-              </ul>
-
-              <div class ="avatar">
+                  <div class ="card-reviews">
                 <%= if review.picture.url == nil
                 else
-                  cl_image_tag review.picture.url, class: "card-ingredients"
+                  cl_image_tag review.picture.url, class: "card-reviews"
                   end %>
                 </div>
+                  <br>
+                </div>
+              </ul>
+              <p class="accepted"> <strong><%= link_to "Delete", review_path(review), method: :delete, data: { confirm: "Are you sure?" }%> </strong><br> </p>
+
+
                 <% end %>
               </div>
             </div>

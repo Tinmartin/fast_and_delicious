@@ -64,3 +64,18 @@ display: flex;
 }
 
 
+.message.crop{
+    width: 200px;
+    height: 150px;
+    overflow: hidden;
+}
+
+
+.card-reviews {
+  width: 100px;
+  background-size: cover !important;
+  background-position: center;
+  color: black;
+  position: relative;
+  border-radius: 3px;
+}
