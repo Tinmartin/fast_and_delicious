@@ -79,21 +79,22 @@
           if (!searchbar.value == "") {
             const displayed_recipes = [];
             content.hits.forEach((hit) => {
-
-              if (!displayed_recipes.includes(hit["ingredient_recipes"][0]["id"])) {
-                displayed_recipes.push(hit["ingredient_recipes"][0]["id"])
-                recipes.insertAdjacentHTML("beforeend", `
-                  <div class="col-xs-12 col-sm-6 col-md-4">
-                    <a href="/recipes/${hit["ingredient_recipes"][0]["id"]}">
-                      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('${hit["ingredient_recipes"][0]["picture"]["url"]}')">
+              hit['ingredient_recipes'].forEach((recipe, i) => {
+                if (!displayed_recipes.includes(hit["ingredient_recipes"][i]["id"])) {
+                  displayed_recipes.push(hit["ingredient_recipes"][i]["id"])
+                  recipes.insertAdjacentHTML("beforeend", `
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+                      <a href="/recipes/${hit["ingredient_recipes"][i]["id"]}">
+                        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('${hit["ingredient_recipes"][i]["picture"]["url"]}')">
+                        </div>
+                      </a>
+                      <div class="link-box">
+                        <a href="/recipes/${hit["ingredient_recipes"][i]["id"]}">${hit["ingredient_recipes"][i]["name"]}</a>
                       </div>
-                    </a>
-                    <div class="link-box">
-                      <a href="/recipes/${hit["ingredient_recipes"][0]["id"]}">${hit["ingredient_recipes"][0]["name"]}</a>
                     </div>
-                  </div>
-                `)
-              }
+                  `)
+                }
+              })
             })
           } else {
             recipes.insertAdjacentHTML("beforeend", `${html}`);
@@ -105,7 +106,6 @@
     searchbar.addEventListener("keyup", search);
 
     //initialize Algolia autocomplete on search input (ID selector must match)
-
 
     autocomplete('#aa-search-input',
     { hint: false,
