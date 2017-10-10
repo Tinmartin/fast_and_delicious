@@ -10,6 +10,7 @@
       <% end %>
       <% @recipes.each do |recipe| %>
       <div class="col-xs-12 col-sm-6 col-md-4">
+          <div class="card-container">
         <%= link_to recipe_path(recipe) do %>
         <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('<%= if recipe.picture.url == nil
           image_path('https://placeholdit.co//i/500x500?')
@@ -32,7 +33,7 @@
 
       <div class="link-box">
         <%= link_to recipe_path(recipe) do %>
-        <%=recipe.name.capitalize%>
+        <%=recipe.name.capitalize %> &nbsp &nbsp
 
         <% if current_user %>
           <% if Favorite.where(recipe_id: recipe.id, user_id: current_user.id).count > 0 %>
@@ -48,6 +49,7 @@
 
         <% end %>
       </div>
+    </div>
     </div>
     <% end %>
   </div>
