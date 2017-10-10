@@ -32,27 +32,37 @@ margin-bottom: 100px;
     font-weight: 100;
     line-height: 1.1;
     color: black;
+    word-wrap: break-word;
+    width: 200px;
+    text-justify:center;
+      margin: auto;
+
 
 }
 
 
 .containerreview{
+width: 250px;
 
-  background-color:red;
-  border-style: solid;
-      border-color: green;
+}
+
+.card-block{
+  width: 250px;
 }
 
 .cardreview {
-  height: 300px;
+  height: 400px;
+  width: 250px;
   background-size: cover !important;
   background-position: center;
   color: white;
-  position: relative;
-  border-radius: 3px;
+  margin:3px;
   &:hover{
     opacity: 0.8;
     text-decoration: none;
+    text-align: center;
+    text-justify:center;
+
   }
 }
 
