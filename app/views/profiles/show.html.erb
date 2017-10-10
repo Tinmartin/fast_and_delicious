@@ -1,102 +1,30 @@
-<div class="container">
-
-<!-- Right Navigation -->
-  <div class="grid-profile text-center hidden-xs hidden-sm">
-      <div class="card-profile main-section">
-        <div class="card-content">
-          <% avatar_url = @profile.picture.url || "http://placehold.it/150x150" %>
-          <%= image_tag avatar_url, class: "avatar-large" %>
-          <h2><%= "#{@profile.user_name}"%></h2>
-          <h2><%= "#{@profile.first_name} #{@profile.last_name}"%></h2>
-          <p><%= current_user.email %></p>
-          <%= link_to "edit your profile", edit_profile_path(@profile), class: "btn btn-success"%>
-
-        </div>
+<div class="container-profile show text-center">
+  <div class="row">
+    <div class="card-profile stick main-section col-xs-12 col-lg-3">
+      <div class="card-content">
+        <% avatar_url = @profile.picture.url || "http://placehold.it/150x150" %>
+        <%= image_tag avatar_url, class: "avatar-large" %>
+        <h2><%= "#{@profile.user_name}"%></h2>
+        <h2><%= "#{@profile.first_name} #{@profile.last_name}"%></h2>
+        <p><%= current_user.email %></p>
+        <%= link_to "edit your profile", edit_profile_path(@profile), class: "btn btn-success"%>
       </div>
-      <div class="card-profile stats-section">
-        <div class="card-content">
-          <h3>3,536</h3>
-          <p>contributions</p>
-        </div>
+    </div>
+    <div class="card-profile favorite-section col-xs-12 col-lg-8">
+      <div class='favorite-hero'></div>
+      <h1 class='favorite_head'> Your favorites recipes</h1>
+      <div class='favorites'>
+        <% if current_user and @favorites.length > 0 %>
+        <% i = 1 %>
+        <% @favorites.each do |favorite| %>
+        <% recipe = Recipe.find(favorite.recipe_id) %>
+        <%= render 'shared/card', recipe: recipe %>
+        <% end %>
+        <% else %>
+        <h4><b>You don't have any favorite recipes? Go back and pick some!<b> </h4>
+        <%= link_to 'Go Back', root_path, class: 'back_link' %>
+        <% end %>
       </div>
-      <div class="card-profile">
-        <div class="card-content">
-          <h3>758</h3>
-          <p>followers</p>
-        </div>
-      </div>
-      <div class="card-profile">
-        <div class="card-content">
-          <h3>119</h3>
-          <p>repositories</p>
-        </div>
-      </div>
-      <div class="card-profile description-section">
-        <div class="card-content">
-          <h3>More about <%= @profile.first_name %></h3>
-          <p class="text-justify"></p>
-        </div>
-      </div>
+    </div>
   </div>
-
-
-  <!-- Mobile only -->
-
-   <div class="grid-profile-mobile text-center hidden-md hidden-lg">
-      <div class="card-profile main-section-mobile">
-        <div class="card-content-">
-          <% avatar_url = @profile.picture.url || "http://placehold.it/150x150" %>
-          <%= image_tag avatar_url, class: "avatar-large" %>
-          <h2><%= "#{@profile.first_name} #{@profile.last_name}"%></h2>
-          <p><%= current_user.email %></p>
-          <%= simple_form_for(@profile) do |f| %>
-            <%= f.input :picture_cache, as: :hidden %>
-            <%= f.input :picture %>
-            <%= f.submit "Update Picture"%>
-          <% end %>
-        </div>
-      </div>
-      <div class="card-profile stats-section-mobile">
-        <div class="card-content">
-          <h3>3,536</h3>
-          <p>contributions</p>
-        </div>
-      </div>
-      <div class="card-profile">
-        <div class="card-content">
-          <h3>758</h3>
-          <p>followers</p>
-        </div>
-      </div>
-      <div class="card-profile">
-        <div class="card-content">
-          <h3>119</h3>
-          <p>repositories</p>
-        </div>
-      </div>
-      <div class="card-profile description-section-mobile">
-        <div class="card-content">
-          <h3>More about <%= @profile.first_name %></h3>
-          <p class="text-justify"></p>
-        </div>
-      </div>
-  </div>
-
-
-  <div class='favorite-hero'></div>
-<h1 class='favorite_head'><%= current_user.profile.user_name %>'s favorites recipes</h1>
-<div class='favorites'>
-  <% if current_user and @favorites.length > 0 %>
-    <% i = 1 %>
-    <% @favorites.each do |favorite| %>
-    <% recipe = Recipe.find(favorite.recipe_id) %>
-    <%= render 'shared/card', recipe: recipe %>
-    <% end %>
-  <% else %>
-    <h2>You don't have any favorite recipes? Go back and pick some! </h2>
-  <% end %>
-  <%= link_to 'Go Back', root_path, class: 'back_link' %>
 </div>
-
-</div>
-
