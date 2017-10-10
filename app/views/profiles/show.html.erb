@@ -7,6 +7,7 @@
         <h2><%= "#{@profile.user_name}"%></h2>
         <h2><%= "#{@profile.first_name} #{@profile.last_name}"%></h2>
         <p><%= current_user.email %></p>
+        <br>
         <%= link_to "edit your profile", edit_profile_path(@profile), class: "btn btn-success"%>
       </div>
     </div>
