@@ -51,67 +51,68 @@
 
 
 <%= content_for :after_js do %>
+
   <script>
     var client = algoliasearch("AMLNOKWPBJ", "5b8cb611c7a8bc80b876e4f7abbb1517");
     var index = client.initIndex('Ingredient_development');
-    index.setSettings({
-      searchableAttributes: [
-        'name',
-      ]
-    });
-    var names = [];
-    var pictures = [];
-    var ratings = [];
-    var ids = [];
-    const refresh = (event) => {
-      ids = [];
-      names = [];
-      pictures = [];
-      ratings = [];
-    };
-    const searchbar = document.getElementById("aa-input-container");
-    searchbar.addEventListener("keyup", refresh);
+
+    const searchbar = document.getElementById("aa-search-input");
+    const recipes = document.getElementById('recipes');
+
+    const search = (event) => {
+      index.search(
+        {
+          query: searchbar.value,
+          hitsPerPage: 10,
+        },
+        function searchDone(err, content) {
+          if (err) {
+            console.error(err);
+            return;
+          }
+          recipes.innerHTML = "";
+          console.log("DONE");
+          const displayed_recipes = [];
+          content.hits.forEach((hit) => {
+            console.log(hit);
+            if (!displayed_recipes.includes(hit["ingredient_recipes"][0]["id"])) {
+              displayed_recipes.push(hit["ingredient_recipes"][0]["id"])
+              recipes.insertAdjacentHTML("beforeend", `
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                  <a href="/recipes/${hit["ingredient_recipes"][0]["id"]}">
+                    <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('${hit["ingredient_recipes"][0]["picture"]["url"]}')">
+                    </div>
+                  </a>
+                  <div class="link-box">
+                    <a href="/recipes/${hit["ingredient_recipes"][0]["id"]}">${hit["ingredient_recipes"][0]["name"]}</a>
+                  </div>
+                </div>
+              `)
+            }
+          })
+        }
+      );
+    }
+
+    searchbar.addEventListener("keyup", search);
 
     //initialize Algolia autocomplete on search input (ID selector must match)
-    const recipes = document.getElementById('recipes');
+
     autocomplete('#aa-search-input',
     { hint: false }, {
-        source: autocomplete.sources.hits(index, {hitsPerPage: 25}),
+        source: autocomplete.sources.hits(index, {hitsPerPage: 5}),
         //value to be displayed in input control after user's suggestion selection
         displayKey: 'name',
         //hash of templates used when rendering dataset
         templates: {
-            //'suggestion' templating function used to render a single suggestion
-            suggestion: function(suggestion) {
-              const recipes_suggestions = suggestion['ingredient_recipes'][0];
-              recipes.innerHTML = "";
-              console.log(recipes_suggestions)
-              if (typeof recipes_suggestions != 'undefined') {
-                ids.push(recipes_suggestions["id"]);
-                names.push(recipes_suggestions["name"]);
-                pictures.push(recipes_suggestions["picture"]);
-                ratings.push(recipes_suggestions["rating"]);
-                names.forEach(function(name, i) {
-                  recipes.insertAdjacentHTML("beforeend", `
-                    <div class="col-xs-12 col-sm-6 col-md-4">
-                      <a href="/recipes/${ids[i]}">
-                        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('${pictures[i]["url"]}')">
-                        </div>
-                      </a>
-                      <div class="link-box">
-                        <a href="/recipes/${ids[i]}">${name}</a>
-                      </div>
-                    </div>
-                  `);
-                })
-              }
-               return '<span>' +
-              suggestion._highlightResult.name.value+ '</span>';
-            }
+          //'suggestion' templating function used to render a single suggestion
+          suggestion: function(suggestion) {
+             return '<span>' +
+            suggestion._highlightResult.name.value+ '</span>';
+          }
         }
     });
   </script>
-
 <% end %>
 
 
