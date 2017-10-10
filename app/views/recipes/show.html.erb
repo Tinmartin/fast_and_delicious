@@ -31,7 +31,7 @@
           end
           %>
           <div class="card-ingredients-description">
-            <h2><%= dose.ingredient.name %>: <span class='qty'><%= dose.quantity %></span><%= ' ' + dose.unit %></h2>
+            <h2><%= dose.ingredient.name %>: <span class='qty'><%= dose.quantity %></span><%= ' ' + dose.unit if dose.unit %></h2>
             <div class="initial-qty" style='display: none;'><%= dose.quantity %></div>
             <%= link_to "Edit", edit_dose_path(dose)%>
           </div>
