@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  ActiveAdmin.routes(self)
   root to: 'recipes#index'
   resource :profile, :only => :show, :as => :current_profile
   resource :profile, only: [ :edit, :destroy, :update ]
