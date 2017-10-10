@@ -3,7 +3,4 @@ class Profile < ApplicationRecord
 
   mount_uploader :picture, PhotoUploader
 
-  # def to_param
-  #   name
-  # end
 end
