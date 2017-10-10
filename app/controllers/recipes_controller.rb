@@ -39,9 +39,8 @@ class RecipesController < ApplicationController
       if params[:search] == ""
         @recipes = Recipe.all
         respond_to do |format|
-        format.html { redirect_to recipes_path}
-        format.js
-
+          format.html { redirect_to recipes_path}
+          format.js
         end
       else
         @ingredient = params[:search]
@@ -52,7 +51,6 @@ class RecipesController < ApplicationController
         end
       end
     else
-
       @recipes = Recipe.all
     end
   end
@@ -65,8 +63,5 @@ class RecipesController < ApplicationController
     @html = "<div><p style='color: black'>test</p></div>"
   end
 
-  def search(item)
-    format.js
-  end
 
 end

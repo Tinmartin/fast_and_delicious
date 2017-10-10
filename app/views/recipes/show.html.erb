@@ -10,11 +10,9 @@
       %>
       <p class="share"><strong>SHARE THIS RECIPE </strong></p>
       <%= social_share_button_tag(@recipe.name, 'data-twitter-title' => "Yum-yum, this recipe seems delicious !! #{@recipe.name}", 'data-facebook-title' => "Yum-yum, this recipe seems delicious !! #{@recipe.name}" )%>
-
     </div>
 
     <div class="col-xs-12 col-lg-8">
-
       <div class="row">
 
         <div class="recipe-title col-xs-12 col-lg-12 redirect-left">
@@ -22,7 +20,6 @@
         </div>
 
         <% @recipe.doses.each do |dose| %>
-
         <div class="card-ingredients col-xs-6 col-lg-3">
           <%= if dose.ingredient.picture.url == nil
             image_tag('https://placeholdit.co//i/150x150?')
@@ -35,7 +32,6 @@
             <div class="initial-qty" style='display: none;'><%= dose.quantity %></div>
             <%= link_to "Edit", edit_dose_path(dose)%>
           </div>
-
         </div>
         <%end%>
 
@@ -78,7 +74,6 @@
 
          <div class="col-xs-12 col-lg-12 redirect-left" >
 
-
         <%= simple_form_for [@recipe, @review] do |f| %>
         <%= f.input :content, placeholder: 'write your review',label:"Add your review!"%>
         <%= f.input :rating ,placeholder: 'rate this recipe.',label:"Rate this recipe between 0 and 5!" %>
@@ -101,6 +96,7 @@
           <br>
       </div>
 
+
         <% @recipe.reviews.each do |review| %>
           <div class="cardreview col-xs-12 col-lg-4" id="reviews" style="width: 30rem, ;">
             <div class="card-block">
@@ -119,20 +115,20 @@
                  <%= link_to "Delete", review_path(review), method: :delete, data: { confirm: "Are you sure?" }%>
               <%= link_to "back", recipes_path %>
               </div>
-
             </div>
-           <% end %>
-           </div>
-        </div>
+            <%= link_to "Delete", review_path(review), method: :delete, data: { confirm: "Are you sure?" }%>
+            <%= link_to "back", recipes_path %>
+          </div>
+        <% end %>
+
       </div>
     </div>
   </div>
-
 </div>
+
 
 <%= content_for :after_js do %>
   <script>
-
     $(document).ready(function() {
       $('.select-nbr').change(function() {
         var multiplier = parseInt($('#count').val());
