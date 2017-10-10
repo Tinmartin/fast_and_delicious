@@ -18,34 +18,38 @@
         end
         %>')">
       </div>
-      <%end%>
+      <% end %>
       <div class="card-description">
         <% arr = [] %>
+      <%if recipe.reviews.size != 0 %>
         <% recipe.reviews.each do |review| %>
         <% arr << review.rating %>
         <% end %>
         <% average = arr.inject{ |sum, el| sum + el }.to_f / arr.size %>
         <p> rating : <%= average.round(1) if average %> / 5</p>
+      <%end%>
       </div>
 
       <div class="link-box">
         <%= link_to recipe_path(recipe) do %>
         <%=recipe.name.capitalize%>
+
         <% if current_user %>
           <% if Favorite.where(recipe_id: recipe.id, user_id: current_user.id).count > 0 %>
-            <%= link_to favorite_path(recipe), :method => :delete, class: "favorite" do %>
+            <%= link_to favorite_path(recipe), :method => :delete, remote: true, class: "favorite" do %>
               <span class="fa fa-heart info"></span>
             <% end %>
           <% else %>
-            <%= link_to favorites_path(recipe_id: recipe.id), :method => :post, class: "favorite" do %>
+            <%= link_to favorites_path(recipe_id: recipe.id), :method => :post, remote: true, class: "favorite" do %>
               <span class="fa fa-heart-o"></span>
             <% end %>
           <% end %>
         <% end %>
-        <%end%>
+
+        <% end %>
       </div>
     </div>
-    <%end%>
+    <% end %>
   </div>
 </div>
 
@@ -130,7 +134,6 @@
     document.querySelectorAll(".confirmable").forEach(bindConfirm);
   </script>
 <% end %>
-
 
 
 
