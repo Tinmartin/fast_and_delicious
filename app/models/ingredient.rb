@@ -18,6 +18,8 @@ class Ingredient < ApplicationRecord
   has_many :doses
   has_many :recipes, through: :doses
 
+  validates :name, uniqueness: true
+
 
   mount_uploader :picture, PhotoUploader
 
@@ -29,7 +31,7 @@ class Ingredient < ApplicationRecord
   end
 
  def ingredient_recipes
-    self.doses.map { |d| d.recipe }
+    self.doses.map { |d| d.recipe }.uniq
   end
 
 end
