@@ -8,16 +8,17 @@ class DosesController < ApplicationController
     redirect_to recipe_path(@dose.recipe)
   end
 
-  def dose_params
-    params.require(:dose).permit(:unit, :quantity)
-  end
-
   def get_dose
     @dose = Dose.find(params[:id])
   end
 
-
   def edit
     get_dose
+  end
+
+  private
+
+  def dose_params
+    params.require(:dose).permit(:unit, :quantity)
   end
 end
