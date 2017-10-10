@@ -20,6 +20,15 @@
         %>')">
       </div>
       <%end%>
+      <div class="card-description">
+        <% arr = [] %>
+        <% recipe.reviews.each do |review| %>
+        <% arr << review.rating %>
+        <% end %>
+        <% average = arr.inject{ |sum, el| sum + el }.to_f / arr.size %>
+        <p> rating : <%= average.round(1) %> / 5</p>
+      </div>
+
       <div class="link-box">
         <%= link_to recipe_path(recipe) do %>
         <%=recipe.name.capitalize%>
@@ -40,6 +49,9 @@
     <%end%>
   </div>
 </div>
+
+
+
 
 
 
