@@ -10,7 +10,7 @@
   top: 0px;
   justify-content: space-between;
   text-align: center;
-  position: sticky !important; /* !important to override Gmaps inline CSS */
+  position: sticky !important;
   z-index: 1;
 }
 
@@ -81,12 +81,6 @@
   border-top: 1px solid #E6E6E6;
 }
 
-
-
-/* Search Bar */
-.search-bar {
-  margin-top: 20px;
-}
 
 
 .btn-medium {
