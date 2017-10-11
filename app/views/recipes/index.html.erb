@@ -74,13 +74,15 @@
 
     const searchbar = document.getElementById("aa-search-input");
     const recipes = document.getElementById('recipes');
-    var html = recipes.innerHTML;
+    const banner = document.getElementById("banner");
+    var recipe_html = recipes.innerHTML;
+    var banner_class = banner.classList;
+    var banner_html = banner.innerHTML;
 
     const search = (event) => {
       index.search(
         {
           query: searchbar.value,
-          // searchableAttributes: ["name"],
           hitsPerPage: 10,
         },
         function searchDone(err, content) {
@@ -89,6 +91,9 @@
             return;
           }
           recipes.innerHTML = "";
+          document.getElementById("catch-phrase").innerHTML = "<br><br><br><br>";
+          banner.classList.remove("banner");
+          banner.classList.add("banner-search");
           if (!searchbar.value == "") {
             const displayed_recipes = [];
             content.hits.forEach((hit) => {
@@ -112,7 +117,11 @@
               })
             })
           } else {
-            recipes.insertAdjacentHTML("beforeend", `${html}`);
+            recipes.insertAdjacentHTML("beforeend", `${recipe_html}`);
+            banner.classList.remove('banner-search');
+            banner.classList.add("banner");
+            banner.insertAdjacentHTML("beforeend", `${banner_html}`);
+
           }
         }
       );
