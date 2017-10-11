@@ -16,9 +16,9 @@ class ReviewsController < ApplicationController
     @review.user = current_user
 
     if @review.save
-       redirect_to recipe_path(@recipe)
+      redirect_to "/recipes/#{@recipe.id}/#content"
     else
-       render @recipe_path
+      redirect_to "/recipes/#{@recipe.id}/#content"
     end
   end
 

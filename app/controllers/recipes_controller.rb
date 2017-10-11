@@ -27,7 +27,6 @@ class RecipesController < ApplicationController
     @review=Review.new
     @dose = Dose.new
     @ingredients = Ingredient.all
-    @html = "<div><p style='color: black'>test</p></div>"
   end
 
 
