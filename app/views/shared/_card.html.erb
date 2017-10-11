@@ -8,19 +8,20 @@
         %>')">
       </div>
       <%end%>
-      <div class="card-description">
+
+      <div class="link-box">
+        <%= link_to recipe_path(recipe) do %>
+        <%=recipe.name.capitalize%>
+        <% if recipe.reviews.size != 0 %>
         <% arr = [] %>
         <% recipe.reviews.each do |review| %>
         <% arr << review.rating %>
         <% end %>
         <% average = arr.inject{ |sum, el| sum + el }.to_f / arr.size %>
         <p> rating : <%= average.round(1) if average %> / 5</p>
-      </div>
-
-      <div class="link-box">
-        <%= link_to recipe_path(recipe) do %>
-        <%=recipe.name.capitalize%>
-
+        <% else %>
+        <p> waiting for a rating !</p>
+        <%end%>
         <%end%>
       </div>
     </div>
