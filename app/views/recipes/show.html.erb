@@ -1,186 +1,187 @@
-<div class="container show text-center">
-  <div class="row">
+<div class="main-container text-center">
 
-    <div class="picture-recipe stick col-xs-12 col-lg-4">
+  <div class="recipe-main-content">
+    <div class="recipe-title ">
+          <h3><%= @recipe.name %></h3>
+    </div>
+    <div class="picture-recipe">
       <%= if @recipe.picture.url == nil
-        image_tag('https://placeholdit.co//i/500x500?')
+        image_tag('https://placeholdit.co//i/500x500?', class: "picture-recipe")
       else
         cl_image_tag @recipe.picture.url
       end
       %>
-      <p class="share"><strong>SHARE THIS RECIPE </strong></p>
+    </div>
+    <div>
+      <p class="share-recipe"><strong>SHARE THIS RECIPE </strong></p>
       <%= social_share_button_tag(@recipe.name, 'data-twitter-title' => "Yum-yum, this recipe seems delicious !! #{@recipe.name}", 'data-facebook-title' => "Yum-yum, this recipe seems delicious !! #{@recipe.name}" )%>
     </div>
+  </div>
 
-    <div class="col-xs-12 col-lg-8">
+  <div class="recipe-info-content">
 
-      <div class="row">
-
-        <div class="recipe-title col-xs-12 col-lg-12 redirect-left">
-          <h3><%= @recipe.name %></h3>
-        </div>
+    <div class="ingredient-container">
+      <div class='row'>
 
         <% @recipe.doses.each do |dose| %>
-          <div class="card-ingredients col-xs-6 col-lg-3">
-            <%= if dose.ingredient.picture.url == nil
-              image_tag('https://placeholdit.co//i/185x185?')
-            else
-              cl_image_tag(dose.ingredient.picture.url, id: "ingredient-picture")
-            end
-            %>
-            <div class="card-ingredients-description">
-              <p><%= dose.ingredient.name %>: <span class='qty'><%= dose.quantity %></span><%= ' ' + dose.unit if dose.unit %></p>
-              <div class="initial-qty" style='display: none;'><%= dose.quantity %></div>
+          <div class="card-ingredients col-xs-6 col-md-4 col-lg-2">
+            <div class="ingredient-picture-container">
+              <%= if dose.ingredient.picture.url == nil
+                image_tag('https://placeholdit.co//i/185x185?', class: "ingredient-picture")
+              else
+                cl_image_tag(dose.ingredient.picture.url, id: "ingredient-picture")
+              end
+              %>
+            </div>
+            <div class="dose-container">
+              <div class="ingredient-name">
+                <h4><%= dose.ingredient.name %></h4>
+              </div>
+              <div class="dose-description">
+                <span class='qty'>
+                  <%= dose.quantity %>
+                </span>
+                <%= ' ' + dose.unit if dose.unit %>
+              </div>
+              <div class="initial-qty" style='display: none;'>
+                <%= dose.quantity %>
+              </div>
             </div>
           </div>
         <%end%>
+      </div>
+    </div>
 
-        <div class="infos col-xs-6 col-lg-12">
-          <div class="number-person-eat redirect-left">
-            <form class="form-inline select-nbr">
-              <div class="form-group">
-                <label class="col-sm-2 control-label"> <i class="fa fa-user" aria-hidden="true"> </i></label>
-                <select class="form-control" id='count'>
-                  <option value='1'>1</option>
-                  <option value='2'>2</option>
-                  <option value='3'>3</option>
-                  <option value='4'>4</option>
-                  <option value='5'>5</option>
-                  <option value='6'>6</option>
-                  <option value='7'>7</option>
-                  <option value='8'>8</option>
-                </select>
-              </div>
-            </form>
+    <div class="infos col-xs-6 col-lg-12">
+      <div class="number-person-eat">
+        <form class="form-inline select-nbr">
+          <div class="form-group">
+            <label class="col-sm-2 control-label"> <i class="fa fa-user" aria-hidden="true"> </i></label>
+            <select class="form-control" id='count'>
+              <option value='1'>1</option>
+              <option value='2'>2</option>
+              <option value='3'>3</option>
+              <option value='4'>4</option>
+              <option value='5'>5</option>
+              <option value='6'>6</option>
+              <option value='7'>7</option>
+              <option value='8'>8</option>
+            </select>
           </div>
-          <div class="cooking-time redirect-left">
-            <h4><i class="fa fa-clock-o" aria-hidden="true"></i> Cooking : <%= @recipe.cooking_time %></h4>
-          </div>
-          <div class="preparation-time redirect-left">
-            <h4><%= if @recipe.preparation_time == nil
-            else
-              "Preparation: #{@recipe.preparation_time}"
-            end
-            %></h4>
-          </div>
-        </div>
+        </form>
+      </div>
+      <div class="cooking-time">
+        <h4><i class="fa fa-clock-o" aria-hidden="true"></i> Cooking : <%= @recipe.cooking_time %></h4>
+      </div>
+      <div class="preparation-time">
+        <h4><%= if @recipe.preparation_time == nil
+        else
+          "Preparation: #{@recipe.preparation_time}"
+        end
+        %></h4>
+      </div>
+    </div>
 
 
 
-        <div class="description-recipe col-xs-12 col-lg-12 redirect-left" >
-          <p><%= @recipe.description %></p>
-        </div>
-<% if current_user %>
-        <div class="col-xs-12 col-lg-12 redirect-left" >
-          <%= simple_form_for [@recipe, @review] do |f| %>
-          <%= f.input :content, placeholder: 'write your review',label:"Add your review!"%>
-          <%= f.input :rating ,placeholder: 'rate this recipe.',label:"Rate this recipe between 0 and 5!" %>
-          <%= f.input :picture ,label: false %>
-          <%= f.input :picture_cache, as: :hidden %>
+    <div class="col-xs-12 col-lg-12" >
+      <p><%= @recipe.description %></p>
+    </div>
+  </div>
 
-          <%= f.submit "add a review", class: "btn btn-primary" %>
-          <% end %>
-        </div>
+  <div class="col-xs-12 col-lg-12" >
+    <%= simple_form_for [@recipe, @review] do |f| %>
+    <%= f.input :content, placeholder: 'write your review',label:"Add your review!"%>
+    <%= f.input :rating ,placeholder: 'rate this recipe.',label:"Rate this recipe between 0 and 5!" %>
+    <%= f.input :picture ,label: false %>
+    <%= f.input :picture_cache, as: :hidden %>
+
+    <%= f.submit "add a review", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+
+
+
+  <div class="col-xs-12 col-lg-12" >
+    <h3><b>  <% arr = [] %>
+      <%if @recipe.reviews.size != 0 %>
+      <% @recipe.reviews.each do |review| %>
+      <% arr << review.rating %>
+      <% end %>
+      <% average = arr.inject{ |sum, el| sum + el }.to_f / arr.size %>
+      Average rating on this recipe: <%= average.round(1) %> / 5</b></h3>
       <%end%>
 
-        <div class="col-xs-12 col-lg-12" >
-          <h3><b>  <% arr = [] %>
-            <%if @recipe.reviews.size != 0 %>
-            <% @recipe.reviews.each do |review| %>
-            <% arr << review.rating %>
-            <% end %>
-            <% average = arr.inject{ |sum, el| sum + el }.to_f / arr.size %>
-            Average rating on this recipe: <%= average.round(1) %> / 5</b></h3>
-            <%end%>
+      <br>
+      <br>
+  </div>
 
-            <br>
-            <br>
-        </div>
-
-
-
-
-        <div class="row">
-          <div class="col-xs-12 col-lg-12">
-           <div class ="row">
-            <% @recipe.reviews.reverse.each do |review| %>
-
-
-
-
-
-            <% if review.picture.url == nil%>
-              <ul class="message-box" id="content">
-                 <div class ="col-xs-2">
-                  <div class ="user-box">
-                  <% avatar_url = review.user.profile.picture.url || "http://placehold.it/30x30" %>
-                  <%= image_tag avatar_url, class: "avatar" %>
-                  <p class="user-info"> <strong><%= review.user.profile.user_name %> </strong> <br> <%= review.rating  %> / 5  </p>
-                  </div>
-                </div>
-
-                <div class ="col-xs-9">
-                    <p class="patate"> <%=review.content %> </p>
-              </div>
-                  <br>
-              </ul>
-              <p class="accepted"> <strong><%= link_to "Delete", review_path(review), method: :delete, data: { confirm: "Are you sure?" }%> </strong><br> </p>
-
-              <%else%>
-
-
-              <ul class="message-box" id="content">
-                 <div class ="col-xs-2">
-                  <div class ="user-box">
-                  <% avatar_url = review.user.profile.picture.url || "http://placehold.it/30x30" %>
-                  <%= image_tag avatar_url, class: "avatar" %>
-                  <p class="user-info">
-                  <strong><%= review.user.profile.user_name %> </strong> <br> <%= review.rating  %> / 5  </p>
-                  </div>
-                </div>
-
-                <div class ="col-xs-4">
-                    <p class="patate"> <%=review.content %> </p>
-              </div>
-                <div class ="col-xs-4">
-                 <div class= "">
-                   <%= cl_image_tag(review.picture.url,  :width => 100, :height => 100, :crop => :crop, class: "img-responsive img thumbnail") %>
-                    </div>
-                </div>
-                  <br>
-              </ul>
-              <p class="accepted"> <strong><%= link_to "Delete", review_path(review), method: :delete, data: { confirm: "Are you sure?" }%> </strong><br> </p>
-            <% end %>
-          <% end %>
-           </div>
+  <div class="row">
+    <div class="col-xs-12 col-lg-12">
+     <div class ="row">
+      <% @recipe.reviews.reverse.each do |review| %>
+      <% if review.picture.url == nil%>
+        <ul class="message-box" id="content">
+           <div class ="col-xs-2">
+            <div class ="user-box">
+            <% avatar_url = review.user.profile.picture.url || "http://placehold.it/30x30" %>
+            <%= image_tag avatar_url, class: "avatar" %>
+            <p class="user-info"> <strong><%= review.user.profile.user_name %> </strong> <br> <%= review.rating  %> / 5  </p>
+            </div>
           </div>
+
+          <div class ="col-xs-9">
+              <p class="patate"> <%=review.content %> </p>
         </div>
+            <br>
+        </ul>
+        <p class="accepted"> <strong><%= link_to "Delete", review_path(review), method: :delete, data: { confirm: "Are you sure?" }%> </strong><br> </p>
+
+        <%else%>
 
 
+        <ul class="message-box" id="content">
+           <div class ="col-xs-2">
+            <div class ="user-box">
+            <% avatar_url = review.user.profile.picture.url || "http://placehold.it/30x30" %>
+            <%= image_tag avatar_url, class: "avatar" %>
+            <p class="user-info">
+            <strong><%= review.user.profile.user_name %> </strong> <br> <%= review.rating  %> / 5  </p>
+            </div>
+          </div>
 
-
-
-
-      </div>
+          <div class ="col-xs-4">
+              <p class="patate"> <%=review.content %> </p>
+        </div>
+          <div class ="col-xs-4">
+           <div class= "">
+             <%= cl_image_tag(review.picture.url,  :width => 100, :height => 100, :crop => :crop, class: "img-responsive img thumbnail") %>
+              </div>
+          </div>
+            <br>
+        </ul>
+        <p class="accepted"> <strong><%= link_to "Delete", review_path(review), method: :delete, data: { confirm: "Are you sure?" }%> </strong><br> </p>
+      <% end %>
+    <% end %>
+     </div>
     </div>
   </div>
 </div>
 
 
+<%= content_for :after_js do %>
+<script>
 
-  <%= content_for :after_js do %>
-  <script>
-
-    $(document).ready(function() {
-      $('.select-nbr').change(function() {
-        var multiplier = parseInt($('#count').val());
-        $('.qty').each(function() {
-          var qty = parseInt($(this).parent().siblings('.initial-qty').text());
-          $(this).html( qty * multiplier);
-        });
+  $(document).ready(function() {
+    $('.select-nbr').change(function() {
+      var multiplier = parseInt($('#count').val());
+      $('.qty').each(function() {
+        var qty = parseInt($(this).parent().siblings('.initial-qty').text());
+        $(this).html( qty * multiplier);
       });
     });
-  </script>
-  <% end %>
+  });
+</script>
+<% end %>
 
 
