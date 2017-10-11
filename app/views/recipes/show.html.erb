@@ -134,7 +134,8 @@
                   <div class ="user-box">
                   <% avatar_url = review.user.profile.picture.url || "http://placehold.it/30x30" %>
                   <%= image_tag avatar_url, class: "avatar" %>
-                  <p class="user-info"> <strong><%= review.user.profile.user_name %> </strong> <br> <%= review.rating  %> / 5  </p>
+                  <p class="user-info">
+                  <strong><%= review.user.profile.user_name %> </strong> <br> <%= review.rating  %> / 5  </p>
                   </div>
                 </div>
 
