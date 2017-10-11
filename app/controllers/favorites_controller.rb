@@ -5,7 +5,10 @@ class FavoritesController < ApplicationController
         user_id: current_user.id,
         recipe_id: params[:recipe_id]
         )
-      @favorite.save
+      if @favorite.save
+        respond_to do |format|
+        format.js
+      end
     end
     redirect_to root_path
   end
@@ -16,6 +19,8 @@ class FavoritesController < ApplicationController
     end
     redirect_to root_path
   end
+
+
 
   private
 
