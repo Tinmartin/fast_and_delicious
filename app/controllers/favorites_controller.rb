@@ -7,7 +7,8 @@ class FavoritesController < ApplicationController
         )
       if @favorite.save
         respond_to do |format|
-        format.js
+          format.js
+        end
       end
     end
     redirect_to root_path
@@ -18,7 +19,7 @@ end
     if current_user
       Favorite.where(recipe_id: params[:id], user_id: current_user.id).delete_all
     end
-    redirect_to root_path
+      redirect_to root_path
   end
 
 

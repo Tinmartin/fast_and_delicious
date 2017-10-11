@@ -6,7 +6,6 @@
 }
 
 
-
 .btn-medium {
   color: #999999;
   border: 1px solid #999999;
@@ -35,7 +34,6 @@
 }
 
 .navbar-wagon .form-inline {
-
   margin-top: 50px;
 }
 
@@ -43,20 +41,21 @@
   box-shadow: 0 1px 5px rgba(0,0,0,0.1) !important;
   background: #5ca5a1;
   transition: all 0.3s ease;
-  height: 105px !important;
+  height: 90px !important;
   padding: 0px 30px;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid #e4e4e4 !important;
+  border-bottom: 3px solid black !important;
   top: 0px;
-  justify-content: center;
+  justify-content: space-between;
   text-align: center;
-
+  position: sticky !important; /* !important to override Gmaps inline CSS */
 }
 
 /* Logo */
 .navbar-wagon-brand img {
-  height: 100px;
+  margin-top: 100px;
+  height: 150px;
 }
 
 /* User Avatar */
