@@ -101,33 +101,41 @@
 
         <div class="row">
           <div class="col-xs-12 col-lg-12">
+           <div class ="row">
             <% @recipe.reviews.each do |review| %>
-              <ul class="inbox" id="content">
+              <ul class="inbox " id="content">
                 <div class ="message-box">
+                  <div class ="col-xs-3 user-box">
                   <% avatar_url = review.user.profile.picture.url || "http://placehold.it/30x30" %>
                   <%= image_tag avatar_url, class: "avatar" %>
-                  <p class="date"> <strong><%= review.user.profile.user_name %> </strong> <br> <%= review.rating  %> / 5  </p>
+                  <p class="user-info"> <strong><%= review.user.profile.user_name %> </strong> <br> <%= review.rating  %> / 5  </p>
+                  </div>
 
-                  <li class="message">
-                    <%=h truncate(review.content, :length => 200) %> 
-                  </li>
+                  <div class ="col-xs-3 message">
+                    <%=h truncate(review.content, :length => 200) %>
+                </div>
                   <div class ="card-reviews">
                     <%= if review.picture.url == nil
                     else
-                    cl_image_tag review.picture.url, class: "card-reviews"
+                    cl_image_tag review.picture.url, class: "card-reviews col-xs-3"
                     end %>
                   </div>
                   <br>
                 </div>
               </ul>
-              <p class="accepted"> <strong><%= link_to "Delete", review_path(review), method: :delete, data: { confirm: "Are you sure?" }%> </strong><br> </p>
-            <% end %>
+              <!-- <p class="accepted"> <strong><%= link_to "Delete", review_path(review), method: :delete, data: { confirm: "Are you sure?" }%> </strong><br> </p>
+            <% end %> -->
+           </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+
+render 'shared/review.html.erb'
+
 
 
 
