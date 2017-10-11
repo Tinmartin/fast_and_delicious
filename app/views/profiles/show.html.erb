@@ -20,37 +20,38 @@
         <% @favorites.each do |favorite| %>
         <% recipe = Recipe.find(favorite.recipe_id) %>
         <div class="col-xs-12 col-sm-6 col-md-4">
-      <div class="card-container">
-        <%= link_to recipe_path(recipe) do %>
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('<%= if recipe.picture.url == nil
-          image_path('https://placeholdit.co//i/500x500?')
-        else
-          cl_image_path recipe.picture.url
-        end
-        %>')">
-      </div>
-      <%end%>
+          <div class="card-container">
+            <%= link_to recipe_path(recipe) do %>
+            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('<%= if recipe.picture.url == nil
+              image_path('https://placeholdit.co//i/500x500?')
+            else
+              cl_image_path recipe.picture.url
+            end
+            %>')">
+          </div>
+          <%end%>
 
-      <div class="link-box-profile">
-        <%= link_to recipe_path(recipe) do %>
-        <%=recipe.name.capitalize%>
-        <% if recipe.reviews.size != 0 %>
-        <% arr = [] %>
-        <% recipe.reviews.each do |review| %>
-        <% arr << review.rating %>
-        <% end %>
-        <% average = arr.inject{ |sum, el| sum + el }.to_f / arr.size %>
-        <p> rating : <%= average.round(1) if average %> / 5</p>
-        <% else %>
-        <p> waiting for a rating !</p>
-        <%end%>
-        <%end%>
+          <div class="link-box-profile">
+            <%= link_to recipe_path(recipe) do %>
+            <%=recipe.name.capitalize%>
+            <% if recipe.reviews.size != 0 %>
+            <% arr = [] %>
+            <% recipe.reviews.each do |review| %>
+            <% arr << review.rating %>
+            <% end %>
+            <% average = arr.inject{ |sum, el| sum + el }.to_f / arr.size %>
+            <p> rating : <%= average.round(1) if average %> / 5</p>
+            <% else %>
+            <p> waiting for a rating !</p>
+            <%end%>
+            <%end%>
+          </div>
+
+        </div>
       </div>
-    </div>
-  </div>
-        <% end %>
-        <% else %>
-        <h4><b>You don't have any favorite recipes? Go back and pick some!<b> </h4>
+      <% end %>
+      <% else %>
+      <h4><b>You don't have any favorite recipes? Go back and pick some!<b> </h4>
         <%= link_to 'Go Back', root_path, class: 'back_link' %>
         <% end %>
       </div>

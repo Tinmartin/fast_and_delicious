@@ -12,8 +12,8 @@
 }
 
 .container {
-margin-top: 50px;
-margin-bottom: 100px;
+  margin-top: 50px;
+  margin-bottom: 100px;
 }
 
 .center {
@@ -21,28 +21,26 @@ margin-bottom: 100px;
 }
 
 .review-title{
-    font-family: "Work Sans", sans-serif;
-    font-weight: 500;
-    line-height: 1.1;
-    color: black;
+  font-family: "Work Sans", sans-serif;
+  font-weight: 500;
+  line-height: 1.1;
+  color: black;
 }
 
 .review-description{
-    font-family: "Work Sans", sans-serif;
-    font-weight: 100;
-    line-height: 1.1;
-    color: black;
-    word-wrap: break-word;
-    width: 200px;
-    text-justify:center;
-      margin: auto;
-
-
+  font-family: "Work Sans", sans-serif;
+  font-weight: 100;
+  line-height: 1.1;
+  color: black;
+  word-wrap: break-word;
+  width: 200px;
+  text-justify:center;
+  margin: auto;
 }
 
 
 .containerreview{
-width: 250px;
+  width: 250px;
 
 }
 
@@ -74,4 +72,18 @@ width: 250px;
 .share {
   font-size: 12px;
   margin-top: 10px;
+}
+
+.stick {
+position: sticky !important; /* !important to override Gmaps inline CSS */
+top: 0 !important;
+height: 90vh;
+}
+
+.recipe-title h3 {
+  font-size: 23px;
+}
+
+.infos {
+  margin-top: 1cm;
 }

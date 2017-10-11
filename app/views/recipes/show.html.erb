@@ -1,7 +1,7 @@
 <div class="container show text-center">
   <div class="row">
 
-    <div class="picture-recipe col-xs-12 col-lg-4">
+    <div class="picture-recipe stick col-xs-12 col-lg-4">
       <%= if @recipe.picture.url == nil
         image_tag('https://placeholdit.co//i/500x500?')
       else
@@ -10,7 +10,6 @@
       %>
       <p class="share"><strong>SHARE THIS RECIPE </strong></p>
       <%= social_share_button_tag(@recipe.name, 'data-twitter-title' => "Yum-yum, this recipe seems delicious !! #{@recipe.name}", 'data-facebook-title' => "Yum-yum, this recipe seems delicious !! #{@recipe.name}" )%>
-
     </div>
 
     <div class="col-xs-12 col-lg-8">
@@ -24,17 +23,15 @@
         <% @recipe.doses.each do |dose| %>
           <div class="card-ingredients col-xs-6 col-lg-3">
             <%= if dose.ingredient.picture.url == nil
-              image_tag('https://placeholdit.co//i/150x150?')
+              image_tag('https://placeholdit.co//i/185x185?')
             else
               cl_image_tag(dose.ingredient.picture.url, id: "ingredient-picture")
             end
             %>
             <div class="card-ingredients-description">
-              <h2><%= dose.ingredient.name %>: <span class='qty'><%= dose.quantity %></span><%= ' ' + dose.unit if dose.unit %></h2>
+              <p><%= dose.ingredient.name %>: <span class='qty'><%= dose.quantity %></span><%= ' ' + dose.unit if dose.unit %></p>
               <div class="initial-qty" style='display: none;'><%= dose.quantity %></div>
-              <%= link_to "Edit", edit_dose_path(dose)%>
             </div>
-
           </div>
         <%end%>
 
@@ -56,11 +53,9 @@
               </div>
             </form>
           </div>
-
           <div class="cooking-time redirect-left">
             <h4><i class="fa fa-clock-o" aria-hidden="true"></i> Cooking : <%= @recipe.cooking_time %></h4>
           </div>
-
           <div class="preparation-time redirect-left">
             <h4><%= if @recipe.preparation_time == nil
             else
@@ -69,6 +64,8 @@
             %></h4>
           </div>
         </div>
+
+
 
         <div class="description-recipe col-xs-12 col-lg-12 redirect-left" >
           <p><%= @recipe.description %></p>
@@ -109,7 +106,7 @@
                   <p class="date"> <strong><%= review.user.profile.user_name %> </strong> <br> <%= review.rating  %> / 5  </p>
 
                   <li class="message">
-                    <%=h truncate(review.content, :length => 200) %> 
+                    <%=h truncate(review.content, :length => 200) %>
                   </li>
                   <div class ="card-reviews">
                     <%= if review.picture.url == nil
@@ -145,4 +142,5 @@
     });
   </script>
   <% end %>
+
 
