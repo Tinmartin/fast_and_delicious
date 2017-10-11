@@ -22,21 +22,20 @@
         </div>
 
         <% @recipe.doses.each do |dose| %>
+          <div class="card-ingredients col-xs-6 col-lg-3">
+            <%= if dose.ingredient.picture.url == nil
+              image_tag('https://placeholdit.co//i/150x150?')
+            else
+              cl_image_tag(dose.ingredient.picture.url, id: "ingredient-picture")
+            end
+            %>
+            <div class="card-ingredients-description">
+              <h2><%= dose.ingredient.name %>: <span class='qty'><%= dose.quantity %></span><%= ' ' + dose.unit if dose.unit %></h2>
+              <div class="initial-qty" style='display: none;'><%= dose.quantity %></div>
+              <%= link_to "Edit", edit_dose_path(dose)%>
+            </div>
 
-        <div class="card-ingredients col-xs-6 col-lg-3">
-          <%= if dose.ingredient.picture.url == nil
-            image_tag('https://placeholdit.co//i/150x150?')
-          else
-            cl_image_tag(dose.ingredient.picture.url, id: "ingredient-picture")
-          end
-          %>
-          <div class="card-ingredients-description">
-            <h2><%= dose.ingredient.name %>: <span class='qty'><%= dose.quantity %></span><%= ' ' + dose.unit if dose.unit %></h2>
-            <div class="initial-qty" style='display: none;'><%= dose.quantity %></div>
-            <%= link_to "Edit", edit_dose_path(dose)%>
           </div>
-
-        </div>
         <%end%>
 
         <div class="infos col-xs-6 col-lg-12">
@@ -75,10 +74,7 @@
           <p><%= @recipe.description %></p>
         </div>
 
-
         <div class="col-xs-12 col-lg-12 redirect-left" >
-
-
           <%= simple_form_for [@recipe, @review] do |f| %>
           <%= f.input :content, placeholder: 'write your review',label:"Add your review!"%>
           <%= f.input :rating ,placeholder: 'rate this recipe.',label:"Rate this recipe between 0 and 5!" %>
@@ -88,7 +84,6 @@
           <%= f.submit "add a review", class: "btn btn-primary" %>
           <% end %>
         </div>
-
 
         <div class="col-xs-12 col-lg-12" >
           <h3><b>  <% arr = [] %>
@@ -102,41 +97,39 @@
 
             <br>
             <br>
-          </div>
+        </div>
 
-            </div>
         <div class="row">
           <div class="col-xs-12 col-lg-12">
             <% @recipe.reviews.each do |review| %>
-            <ul class="inbox" id="content">
-              <div class ="message-box">
-                <% avatar_url = review.user.profile.picture.url || "http://placehold.it/30x30" %>
-                <%= image_tag avatar_url, class: "avatar" %>
-                <p class="date"> <strong><%= review.user.profile.user_name %> </strong> <br> <%= review.rating  %> / 5  </p>
+              <ul class="inbox" id="content">
+                <div class ="message-box">
+                  <% avatar_url = review.user.profile.picture.url || "http://placehold.it/30x30" %>
+                  <%= image_tag avatar_url, class: "avatar" %>
+                  <p class="date"> <strong><%= review.user.profile.user_name %> </strong> <br> <%= review.rating  %> / 5  </p>
 
-                <li class="message">
-                  <%=h truncate(review.content, :length => 200) %> </li>
+                  <li class="message">
+                    <%=h truncate(review.content, :length => 200) %> 
+                  </li>
                   <div class ="card-reviews">
-                <%= if review.picture.url == nil
-                else
-                  cl_image_tag review.picture.url, class: "card-reviews"
-                  end %>
-                </div>
+                    <%= if review.picture.url == nil
+                    else
+                    cl_image_tag review.picture.url, class: "card-reviews"
+                    end %>
+                  </div>
                   <br>
                 </div>
               </ul>
               <p class="accepted"> <strong><%= link_to "Delete", review_path(review), method: :delete, data: { confirm: "Are you sure?" }%> </strong><br> </p>
-
-
-                <% end %>
-              </div>
-            </div>
+            <% end %>
           </div>
         </div>
       </div>
     </div>
-
   </div>
+</div>
+
+
 
   <%= content_for :after_js do %>
   <script>
