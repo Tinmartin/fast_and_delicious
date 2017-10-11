@@ -91,7 +91,7 @@
             return;
           }
           recipes.innerHTML = "";
-          document.getElementById("catch-phrase").innerHTML = "<br><br><br><br>";
+          // document.getElementById("catch-phrase").innerHTML = "<br><br><br><br>";
           banner.classList.remove("banner");
           banner.classList.add("banner-search");
           if (!searchbar.value == "") {
@@ -120,8 +120,8 @@
             recipes.insertAdjacentHTML("beforeend", `${recipe_html}`);
             banner.classList.remove('banner-search');
             banner.classList.add("banner");
-            banner.insertAdjacentHTML("beforeend", `${banner_html}`);
-
+            // banner.innerHTML = "";
+            // banner.innerHTML("afterbegin", `${banner_html}`);
           }
         }
       );
