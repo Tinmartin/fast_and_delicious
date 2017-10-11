@@ -11,10 +11,12 @@ class Ingredient < ApplicationRecord
   mount_uploader :picture, PhotoUploader
 
 
-  algoliasearch per_environment: true do
+  algoliasearch do
     attribute :name
     add_attribute :ingredient_recipes
+    searchableAttributes  ["name"]
   end
+
 
  def ingredient_recipes
     self.doses.map { |d| d.recipe }.uniq
