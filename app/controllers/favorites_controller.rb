@@ -13,7 +13,6 @@ class FavoritesController < ApplicationController
     end
     redirect_to root_path
   end
-end
 
   def destroy
     if current_user
@@ -29,5 +28,6 @@ end
   def favorite_params
     params.require(:favorite).permit(:user_id, :recipe_id)
   end
-
 end
+
+
