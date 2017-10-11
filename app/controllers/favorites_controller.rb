@@ -6,22 +6,17 @@ class FavoritesController < ApplicationController
         recipe_id: params[:recipe_id]
         )
       if @favorite.save
-        respond_to do |format|
-          format.js
-        end
+        redirect_to root_path
       end
     end
-    redirect_to root_path
   end
 
   def destroy
     if current_user
       Favorite.where(recipe_id: params[:id], user_id: current_user.id).delete_all
     end
-      redirect_to root_path
+    redirect_to root_path
   end
-
-
 
   private
 
