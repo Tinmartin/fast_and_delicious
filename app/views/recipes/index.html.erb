@@ -72,6 +72,12 @@
     var client = algoliasearch("AMLNOKWPBJ", "5b8cb611c7a8bc80b876e4f7abbb1517");
     var index = client.initIndex('Ingredient_production');
 
+    index.setSettings({
+      searchableAttributes: [
+          'name'
+        ]
+    });
+
     const searchbar = document.getElementById("aa-search-input");
     const recipes = document.getElementById('recipes');
     var html = recipes.innerHTML;
@@ -80,6 +86,7 @@
       index.search(
         {
           query: searchbar.value,
+
           hitsPerPage: 10,
         },
         function searchDone(err, content) {
@@ -90,6 +97,7 @@
           recipes.innerHTML = "";
           if (!searchbar.value == "") {
             const displayed_recipes = [];
+            console.log(content.hits),
             content.hits.forEach((hit) => {
               hit['ingredient_recipes'].forEach((recipe, i) => {
                 if (!displayed_recipes.includes(hit["ingredient_recipes"][i]["id"])) {
@@ -129,6 +137,7 @@
         templates: {
           //'suggestion' templating function used to render a single suggestion
           suggestion: function(suggestion) {
+            // console.log(suggestion)
              return '<span>' +
             suggestion._highlightResult.name.value+ '</span>';
           }
