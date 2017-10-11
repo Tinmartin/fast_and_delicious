@@ -34,7 +34,15 @@ margin-top: 20px;
   text-align:center;
   transform:translateY(-50%); /* doesn't work in IE9 and older I'm affraid */
   margin:0;
+
 }
+
+
+
+.link-box-profile p, a{
+      font-weight:lighter;
+}
+
 
 .card-description
 {
@@ -76,6 +84,7 @@ margin-top: 20px;
   text-align:center;
   transform:translateY(-50%); /* doesn't work in IE9 and older I'm affraid */
   margin:0;
+
 }
 
 
@@ -320,6 +329,15 @@ margin-top: 20px;
     vertical-align: middle;
 }
 
+
+
+.title {
+    margin-bottom: 4px;
+    font-size: 25px;
+    line-height: 1;
+    color: #262626;
+    vertical-align: middle;
+}
 .kard.hoverkard .infoe .desc {
     overflow: hidden;
     font-size: 20px;
@@ -333,7 +351,7 @@ margin-top: 20px;
     margin-bottom: 17px;
 }
 
-.btn{ border-radius: 50%; width:32px; height:32px; line-height:18px;  }
+.btn-round{ border-radius: 50%; width:32px; height:32px; line-height:18px;  }
 
 
 .btin{ border-radius: 5px; width:32px; height:32px; line-height:18px;  }

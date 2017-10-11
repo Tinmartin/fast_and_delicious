@@ -11,7 +11,9 @@ display: flex;
   box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.2);
   text-align: left;
   align-items: center;
-  width: 100%;
+  width: auto;
+  flex-grow: 0;
+
 }
 
 .message{
@@ -21,20 +23,29 @@ display: flex;
   flex-grow: 1;
 }
 
+.user-box{
+  margin-top:10px;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  padding-left:10px;
+}
+
+
 .thumbnail {
-    width: 100px;
-    display: table;
+    width: cover;
     margin-right:0px;
     padding-bottom:15px;
     padding-top:15px;
+    margin-bottom:12px;
+
 }
 
-.img.thumbnail  {
-    height: 100%;
-    width: 100%;
-    display: table-cell;
-    vertical-align: middle;
-    margin:0;
+.img .thumbnail{
+
+  margin:0;
+      padding-right:20px;
+
 }
 
 .user-info{
@@ -101,7 +112,19 @@ display: flex;
 
 
 .patate {
-  word-wrap: break-word;;
+  word-wrap: break-word;
+  padding-left:23px;
+  text-align:left;
+}
+.kard .card  {
+
+-webkit-filter: opacity(100%);
+}
+
+
+.link-box-profile {
+
+-webkit-filter: opacity(100%);
 }
 
 
