@@ -59,3 +59,15 @@ margin-top: 20px;
 
 }
 
+
+.link-box-profile {
+  margin-bottom: 30px;
+  text-align: center;
+  position:absolute;
+  bottom:-13px;
+  left:0;
+  width:100%;
+  text-align:center;
+  transform:translateY(-50%); /* doesn't work in IE9 and older I'm affraid */
+  margin:0;
+}
