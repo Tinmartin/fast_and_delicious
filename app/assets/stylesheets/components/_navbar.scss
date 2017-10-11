@@ -2,11 +2,11 @@
   box-shadow: 0 1px 5px rgba(0,0,0,0.1) !important;
   background: #5ca5a1;
   transition: all 0.3s ease;
-  height: 90px !important;
+  height: 65px !important;
   padding: 0px 30px;
   display: flex;
   align-items: center;
-  border-bottom: 3px solid black !important;
+  border-bottom: 2px solid black !important;
   top: 0px;
   justify-content: space-between;
   text-align: center;
@@ -16,8 +16,8 @@
 
 /* Logo */
 .navbar-wagon-brand img {
-  margin-top: 100px;
-  height: 150px;
+  margin-top: 50px;
+  height: 70px;
 }
 
 /* User Avatar */
