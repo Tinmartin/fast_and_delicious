@@ -21,6 +21,8 @@ class FavoritesController < ApplicationController
       redirect_to root_path
   end
 
+
+
   private
 
   def favorite_params
