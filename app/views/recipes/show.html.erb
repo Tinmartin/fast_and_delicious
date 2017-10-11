@@ -52,12 +52,6 @@
       </div>
     </div>
 
-
-
-
-
-
-
     <div class="infos col-xs-6 col-lg-12">
       <div class="number-person-eat">
         <form class="form-inline select-nbr">
@@ -93,61 +87,86 @@
     <div class="col-xs-12 col-lg-12" >
       <p><%= @recipe.description %></p>
     </div>
+  </div>
 
-    <div class="col-xs-12 col-lg-12" >
-      <%= simple_form_for [@recipe, @review] do |f| %>
-      <%= f.input :content, placeholder: 'write your review',label:"Add your review!"%>
-      <%= f.input :rating ,placeholder: 'rate this recipe.',label:"Rate this recipe between 0 and 5!" %>
-      <%= f.input :picture ,label: false %>
-      <%= f.input :picture_cache, as: :hidden %>
+  <div class="col-xs-12 col-lg-12" >
+    <%= simple_form_for [@recipe, @review] do |f| %>
+    <%= f.input :content, placeholder: 'write your review',label:"Add your review!"%>
+    <%= f.input :rating ,placeholder: 'rate this recipe.',label:"Rate this recipe between 0 and 5!" %>
+    <%= f.input :picture ,label: false %>
+    <%= f.input :picture_cache, as: :hidden %>
 
-      <%= f.submit "add a review", class: "btn btn-primary" %>
+    <%= f.submit "add a review", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+
+
+
+  <div class="col-xs-12 col-lg-12" >
+    <h3><b>  <% arr = [] %>
+      <%if @recipe.reviews.size != 0 %>
+      <% @recipe.reviews.each do |review| %>
+      <% arr << review.rating %>
       <% end %>
-    </div>
+      <% average = arr.inject{ |sum, el| sum + el }.to_f / arr.size %>
+      Average rating on this recipe: <%= average.round(1) %> / 5</b></h3>
+      <%end%>
 
-    <div class="col-xs-12 col-lg-12" >
-      <h3><b>  <% arr = [] %>
-        <%if @recipe.reviews.size != 0 %>
-        <% @recipe.reviews.each do |review| %>
-        <% arr << review.rating %>
-        <% end %>
-        <% average = arr.inject{ |sum, el| sum + el }.to_f / arr.size %>
-        Average rating on this recipe: <%= average.round(1) %> / 5</b></h3>
-        <%end%>
+      <br>
+      <br>
+  </div>
 
-        <br>
-        <br>
-    </div>
-
-    <div class="row">
-      <div class="col-xs-12 col-lg-12">
-        <% @recipe.reviews.each do |review| %>
-          <ul class="inbox" id="content">
-            <div class ="message-box">
-              <% avatar_url = review.user.profile.picture.url || "http://placehold.it/30x30" %>
-              <%= image_tag avatar_url, class: "avatar" %>
-              <p class="date"> <strong><%= review.user.profile.user_name %> </strong> <br> <%= review.rating  %> / 5  </p>
-
-              <li class="message">
-                <%=h truncate(review.content, :length => 200) %>
-              </li>
-              <div class ="card-reviews">
-                <%= if review.picture.url == nil
-                else
-                cl_image_tag review.picture.url, class: "card-reviews"
-                end %>
-              </div>
-              <br>
+  <div class="row">
+    <div class="col-xs-12 col-lg-12">
+     <div class ="row">
+      <% @recipe.reviews.reverse.each do |review| %>
+      <% if review.picture.url == nil%>
+        <ul class="message-box" id="content">
+           <div class ="col-xs-2">
+            <div class ="user-box">
+            <% avatar_url = review.user.profile.picture.url || "http://placehold.it/30x30" %>
+            <%= image_tag avatar_url, class: "avatar" %>
+            <p class="user-info"> <strong><%= review.user.profile.user_name %> </strong> <br> <%= review.rating  %> / 5  </p>
             </div>
-          </ul>
-          <p class="accepted"> <strong><%= link_to "Delete", review_path(review), method: :delete, data: { confirm: "Are you sure?" }%> </strong><br> </p>
-        <% end %>
-      </div>
-    </div>
+          </div>
 
+          <div class ="col-xs-9">
+              <p class="patate"> <%=review.content %> </p>
+        </div>
+            <br>
+        </ul>
+        <p class="accepted"> <strong><%= link_to "Delete", review_path(review), method: :delete, data: { confirm: "Are you sure?" }%> </strong><br> </p>
+
+        <%else%>
+
+
+        <ul class="message-box" id="content">
+           <div class ="col-xs-2">
+            <div class ="user-box">
+            <% avatar_url = review.user.profile.picture.url || "http://placehold.it/30x30" %>
+            <%= image_tag avatar_url, class: "avatar" %>
+            <p class="user-info">
+            <strong><%= review.user.profile.user_name %> </strong> <br> <%= review.rating  %> / 5  </p>
+            </div>
+          </div>
+
+          <div class ="col-xs-4">
+              <p class="patate"> <%=review.content %> </p>
+        </div>
+          <div class ="col-xs-4">
+           <div class= "">
+             <%= cl_image_tag(review.picture.url,  :width => 100, :height => 100, :crop => :crop, class: "img-responsive img thumbnail") %>
+              </div>
+          </div>
+            <br>
+        </ul>
+        <p class="accepted"> <strong><%= link_to "Delete", review_path(review), method: :delete, data: { confirm: "Are you sure?" }%> </strong><br> </p>
+      <% end %>
+    <% end %>
+     </div>
+    </div>
   </div>
 </div>
-
 
 
 <%= content_for :after_js do %>

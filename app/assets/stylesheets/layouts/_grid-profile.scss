@@ -63,6 +63,7 @@ margin-top: 20px;
   background: white;
   box-shadow: 0 0 10px rgba(0,0,0,0.3);
   padding-bottom:20px;
+  padding-top:40px;
 }
 
 .link-box {
@@ -76,3 +77,264 @@ margin-top: 20px;
   transform:translateY(-50%); /* doesn't work in IE9 and older I'm affraid */
   margin:0;
 }
+
+
+// ---
+
+
+
+.kard {
+    padding-top: 20px;
+    padding-right:0px;
+    padding-left:0px;
+    margin: 10px 0 20px 0;
+    background-color: white;
+    border-top-width: 0;
+    border-bottom-width: 2px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    margin-right: 10px;
+}
+.kard .kard-heading{
+    padding: 0 20px;
+    margin: 0;
+}
+
+.kard .kard-heading.simple {
+    font-size: 20px;
+    font-weight: 300;
+    color: #777;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.kard .kard-heading.image img {
+    display: inline-block;
+    width: 46px;
+    height: 46px;
+    margin-right: 15px;
+    vertical-align: top;
+    border: 0;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+}
+
+.kard .kard-heading.image .kard-heading-header {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.kard .kard-heading.image .kard-heading-header h3 {
+    margin: 0;
+    font-size: 14px;
+    line-height: 16pxkard;
+    color: #262626;
+}
+
+.kard .kard-heading.image .kard-heading-header span {
+    font-size: 12px;
+    color: #999999;
+}
+
+.kard .kard-body {
+    padding: 0 20px;
+    margin-top: 20px;
+}
+
+.kard .kard-media {
+    padding: 0 20px;
+    margin: 0 -14px;
+}
+
+.kard .kard-media img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.kard .kard-actions {
+    min-height: 30px;
+    padding: 0 20px 20px 20px;
+    margin: 20px 0 0 0;
+}
+
+.kard .kard-comments {
+    padding: 20px;
+    margin: 0;
+    background-color: #f8f8f8;
+}
+
+.kard .kard-komments .comments-collapse-toggle {
+    padding: 0;
+    margin: 0 20px 12px 20px;
+}
+
+.kard .kard-comments .comments-collapse-toggle a,
+.kard .kard-comments .comments-collapse-toggle span {
+    padding-right: 5px;
+    overflow: hidden;
+    font-size: 12px;
+    color: #999;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.kard-comments .media-heading {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.kard.people {
+    position: relative;
+    display: inline-block;
+    width: 170px;
+    height: 300px;
+    padding-top: 0;
+    margin-left: 20px;
+    overflow: hidden;
+    vertical-align: top;
+}
+
+.card.people:first-child {
+    margin-left: 0;
+}
+
+.kard.people .card-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    width: 170px;
+    height: 150px;
+    background-color: #ffffff;
+}
+
+.kard.people .kard-top.green {
+    background-color: #53a93f;
+}
+
+.kard.people .kard-top.blue {
+    background-color: #427fed;
+}
+
+.kard.people .kard-infoe {
+    position: absolute;
+    top: 150px;
+    display: inline-block;
+    width: 100%;
+    height: 101px;
+    overflow: hidden;
+    background: #ffffff;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.kard.people .kard-infoe .title {
+    display: block;
+    margin: 8px 14px 0 14px;
+    overflow: hidden;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 18px;
+    color: #404040;
+}
+
+.kard.people .kard-infoe .desc {
+    display: block;
+    margin: 8px 14px 0 14px;
+    overflow: hidden;
+    font-size: 12px;
+    line-height: 16px;
+    color: #737373;
+    text-overflow: ellipsis;
+}
+
+.kard.people .kard-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: inline-block;
+    width: 100%;
+    padding: 10px 20px;
+    line-height: 29px;
+    text-align: center;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.kard.hoverkard {
+    position: relative;
+    padding-top: 0;
+    overflow: hidden;
+    text-align: center;
+    background-color: white;
+}
+
+.kard.hoverkard .kardheader{
+    background: #e96443; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #e96443, #904e95); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #e96443, #904e95); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-size: cover;
+    height: 135px;
+}
+
+
+
+.kard.hoverkard .avatare {
+    position: relative;
+    top: 50px;
+    margin-bottom: -50px;
+}
+
+.kard.hoverkard .avatare {
+    width: 150px;
+    height: 150px;
+    max-width: 150;
+    max-height: 150px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    border: 5px solid rgba(255,255,255,0.5);
+}
+
+.kard.hoverkard .infoe {
+    padding: 4px 8px 10px;
+    margin-top:100px;
+}
+
+.kard.hoverkard .infoe .title {
+    margin-bottom: 4px;
+    font-size: 30px;
+    line-height: 1;
+    color: #262626;
+    vertical-align: middle;
+}
+
+.kard.hoverkard .infoe .desc {
+    overflow: hidden;
+    font-size: 20px;
+    line-height: 50px;
+    color: #737373;
+    text-overflow: ellipsis;
+}
+
+.kard.hoverkard .bottom {
+    padding: 0 20px;
+    margin-bottom: 17px;
+}
+
+.btn{ border-radius: 50%; width:32px; height:32px; line-height:18px;  }
+
+
+.btin{ border-radius: 5px; width:32px; height:32px; line-height:18px;  }
+
