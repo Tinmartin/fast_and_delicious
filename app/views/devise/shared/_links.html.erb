@@ -6,9 +6,15 @@
   <%= link_to "Sign up", new_registration_path(resource_name) %><br />
 <% end -%>
 
+
+<div class="col-xs-12 col-sm-3">
+<p class="omb_forgotPwd">
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
   <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
 <% end -%>
+</p>
+</div>
+
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
   <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %><br />
@@ -18,8 +24,16 @@
   <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %><br />
 <% end -%>
 
+
+<div class="col-xs-4 col-sm-2 btn btn-lg btn-block omb_btn-facebook">
+  <i class="fa fa-facebook visible-xs"></i>
 <%- if devise_mapping.omniauthable? %>
   <%- resource_class.omniauth_providers.each do |provider| %>
     <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider) %><br />
   <% end -%>
 <% end -%>
+</div>
+
+
+
+
