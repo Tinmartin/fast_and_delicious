@@ -2,7 +2,7 @@
   <button onclick="topFunction()" id="topbtn" title="Go to top">Top</button>
 
 
-<h2 class="text-center">ALL OUR RECIPES:</h2>
+<!-- <h2 class="text-center">ALL OUR RECIPES:</h2> -->
 
 <div class="container">
 
@@ -76,9 +76,11 @@
     const searchbar = document.getElementById("aa-search-input");
     const recipes = document.getElementById('recipes');
     const banner = document.getElementById("banner");
+    const marketing_promise = document.getElementById("marketing-promise");
     var recipe_html = recipes.innerHTML;
     var banner_class = banner.classList;
     var banner_html = banner.innerHTML;
+    var marketing_promise_html = marketing_promise.innerHTML;
 
     const search = (event) => {
       index.search(
@@ -92,7 +94,7 @@
             return;
           }
           recipes.innerHTML = "";
-          document.getElementById("catch-phrase").innerHTML = "<br><br><br><br>";
+          marketing_promise.innerHTML = "<br><br><br><br>";
           banner.classList.remove("banner");
           banner.classList.add("banner-search");
           if (!searchbar.value == "") {
@@ -121,8 +123,7 @@
             recipes.insertAdjacentHTML("beforeend", `${recipe_html}`);
             banner.classList.remove('banner-search');
             banner.classList.add("banner");
-            banner.insertAdjacentHTML("beforeend", `${banner_html}`);
-
+            marketing_promise.innerHTML = marketing_promise_html;
           }
         }
       );
