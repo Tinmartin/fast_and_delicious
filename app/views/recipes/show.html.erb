@@ -20,6 +20,22 @@
 
   <div class="recipe-info-and-review-container">
 
+    <div class="number-person-eat col-xs-12 ">
+          <form class="form-inline select-nbr">
+              <label class="col-sm-2 control-label"> </label>
+              <%= "I want to make this recipe for  " %><select class="form-control" id='count'>
+                <option value='1'>1</option>
+                <option value='2'>2</option>
+                <option value='3'>3</option>
+                <option value='4'>4</option>
+                <option value='5'>5</option>
+                <option value='6'>6</option>
+                <option value='7'>7</option>
+                <option value='8'>8</option>
+              </select><%="    "%> <i class="fa fa-user" aria-hidden="true"> </i>
+          </form>
+        </div>
+
     <div class="recipe-info-content">
 
       <div class="ingredient-container">
@@ -38,7 +54,7 @@
 
               <div class="dose-container">
                 <div class="ingredient-name">
-                  <h4><%= dose.ingredient.name %></h4>
+                  <p><%= dose.ingredient.name %></p>
                 </div>
                 <div class="dose-description">
                   <span class='qty'>
@@ -57,23 +73,7 @@
 
 
       <div class="infos col-xs-6 col-lg-12">
-        <div class="number-person-eat">
-          <form class="form-inline select-nbr">
-            <div class="form-group">
-              <label class="col-sm-2 control-label"> <i class="fa fa-user" aria-hidden="true"> </i></label>
-              <select class="form-control" id='count'>
-                <option value='1'>1</option>
-                <option value='2'>2</option>
-                <option value='3'>3</option>
-                <option value='4'>4</option>
-                <option value='5'>5</option>
-                <option value='6'>6</option>
-                <option value='7'>7</option>
-                <option value='8'>8</option>
-              </select>
-            </div>
-          </form>
-        </div>
+
         <div class="cooking-time">
           <h4><i class="fa fa-clock-o" aria-hidden="true"></i> Cooking : <%= @recipe.cooking_time %></h4>
         </div>
@@ -87,7 +87,7 @@
       </div>
 
 
-      <div class="col-xs-12 col-lg-12 text-justify" >
+      <div class="recipe-description col-xs-12 col-lg-12 text-justify" >
         <p><%= @recipe.description %></p>
       </div>
 
