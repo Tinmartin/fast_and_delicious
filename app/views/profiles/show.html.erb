@@ -5,13 +5,21 @@
         <% avatar_url = @profile.picture.url || "http://placehold.it/150x150" %>
         <%= image_tag avatar_url, class: "avatare" %>
       <div class="infoe">
-        <div class="title"> Bienvenue, <%="#{@profile.user_name}"%>  !</div>
+        <%if @profile.first_name%>
+        <div class="title"> Bienvenue, <%="#{@profile.first_name}"%>  !</div>
+        <%end%>
+        <%if @profile.age%>
         <div class="desc"><%= "#{@profile.age} ans"%></div>
+        <%end%>
+      <%if @profile.first_name && @profile.last_name%>
         <div class="desc"><%= "#{@profile.first_name} #{@profile.last_name}"%></div>
+      <%end%>
+        <%if @profile.quote%>
         <div class="desc"> Your favorite ingredient is the <%=@profile.quote%></div>
+        <%end%>
         <div class="desc"> email : <%=current_user.email %></div>
         <br>
-        <%= link_to "edit your profile", edit_profile_path(@profile), class: "btin"%>
+        <%= link_to "customize your profile !", edit_profile_path(@profile), class: "btin"%>
        </div>
        <div class="bottom">
        <a class="btn btn-primary btn-twitter btn-sm" href="https://twitter.com/webmaniac">
