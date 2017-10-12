@@ -1,19 +1,21 @@
 <div class="main-container text-center">
 
   <div class="recipe-main-content">
+
     <div class="recipe-title ">
-          <h3><%= @recipe.name %></h3>
+      <h3><%= @recipe.name %></h3>
     </div>
     <div class="picture-recipe" style="background-size: cover; background-repeat: no-repeat; background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('<%= if @recipe.picture.url == nil
         image_path('https://placeholdit.co//i/500x500?', class: "picture-recipe")
       else
         cl_image_path @recipe.picture.url
       end
-      %>');">
+      %>')">
     </div>
-
     <div>
-      <p class="share-recipe"><strong>SHARE THIS RECIPE </strong></p>
+      <p class="share-recipe">
+        <strong>SHARE THIS RECIPE </strong>
+      </p>
       <%= social_share_button_tag(@recipe.name, 'data-twitter-title' => "Yum-yum, this recipe seems delicious !! #{@recipe.name}", 'data-facebook-title' => "Yum-yum, this recipe seems delicious !! #{@recipe.name}" )%>
     </div>
   </div>
@@ -21,20 +23,20 @@
   <div class="recipe-info-and-review-container">
 
     <div class="number-person-eat col-xs-12 ">
-          <form class="form-inline select-nbr">
-              <label class="col-sm-2 control-label"> </label>
-              <%= "I want to make this recipe for  " %><select class="form-control" id='count'>
-                <option value='1'>1</option>
-                <option value='2'>2</option>
-                <option value='3'>3</option>
-                <option value='4'>4</option>
-                <option value='5'>5</option>
-                <option value='6'>6</option>
-                <option value='7'>7</option>
-                <option value='8'>8</option>
-              </select><%="    "%> <i class="fa fa-user" aria-hidden="true"> </i>
-          </form>
-        </div>
+      <form class="form-inline select-nbr">
+          <label class="col-sm-2 control-label"> </label>
+          <%= "I want to make this recipe for  " %><select class="form-control" id='count'>
+            <option value='1'>1</option>
+            <option value='2'>2</option>
+            <option value='3'>3</option>
+            <option value='4'>4</option>
+            <option value='5'>5</option>
+            <option value='6'>6</option>
+            <option value='7'>7</option>
+            <option value='8'>8</option>
+          </select><%="    "%> <i class="fa fa-user" aria-hidden="true"> </i>
+      </form>
+    </div>
 
     <div class="recipe-info-content">
 
@@ -71,9 +73,7 @@
         </div>
       </div>
 
-
       <div class="infos col-xs-6 col-lg-12">
-
         <div class="cooking-time">
           <h4><i class="fa fa-clock-o" aria-hidden="true"></i> Cooking : <%= @recipe.cooking_time %></h4>
         </div>
@@ -102,11 +102,10 @@
           <%= f.input :rating ,placeholder: 'rate this recipe.',label:"Rate this recipe between 0 and 5!" %>
           <%= f.input :picture ,label: false %>
           <%= f.input :picture_cache, as: :hidden %>
-
-
           <%= f.submit "add a review", class: "btn btn-primary" %>
         <% end %>
       </div>
+
       <div class="col-xs-12 col-lg-12" >
         <h3>
           <b>  <% arr = [] %>
@@ -124,11 +123,12 @@
       </div>
 
       <div class="row">
-
-        <div class="col-xs-10 col-lg-6 col-lg-offset-3  ">
+        <div class="col-xs-10 col-lg-6 col-lg-offset-3 ">
           <div class ="row">
+
             <% @recipe.reviews.reverse.each do |review| %>
               <% if review.picture.url == nil%>
+
                 <ul class="message-box" id="content">
                   <div class ="col-xs-3 col-lg-4">
                     <div class ="user-box">
@@ -177,17 +177,16 @@
                   </strong>
                   <br>
                 </p>
+
               <% end %>
             <% end %>
+
           </div>
         </div>
       </div>
 
     </div>
-
-
   </div>
-
 </div>
 
 
