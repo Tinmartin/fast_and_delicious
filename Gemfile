@@ -27,6 +27,7 @@ gem 'omniauth-facebook'
 gem 'pg_search'
 
 gem 'algoliasearch-rails'
+gem 'magic_suggest'
 
 
 gem 'social-share-button'
