@@ -25,14 +25,6 @@
   padding: 3px;
 }
 
-.ingredient-picture-container{
-  display: flex;
-}
-
-.ingredient-picture{
-  flex: 1 1 185px;
-}
-
 .card-ingredients h2 {
   font-size: 10px;
 }
@@ -105,8 +97,13 @@
     text-decoration: none;
     text-align: center;
     text-justify:center;
-
   }
+}
+
+.picture-ingredient{
+  height: 100px;
+  width: 100px;
+  margin: auto;
 }
 /*
 .description-recipe{
