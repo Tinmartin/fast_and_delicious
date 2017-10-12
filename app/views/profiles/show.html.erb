@@ -5,23 +5,31 @@
         <% avatar_url = @profile.picture.url || "http://placehold.it/150x150" %>
         <%= image_tag avatar_url, class: "avatare" %>
       <div class="infoe">
-        <div class="title"> Bienvenue, <%="#{@profile.user_name}"%>  !</div>
+        <%if @profile.first_name%>
+        <div class="title"> Bienvenue, <%="#{@profile.first_name}"%>  !</div>
+        <%end%>
+        <%if @profile.age%>
         <div class="desc"><%= "#{@profile.age} ans"%></div>
+        <%end%>
+      <%if @profile.first_name && @profile.last_name%>
         <div class="desc"><%= "#{@profile.first_name} #{@profile.last_name}"%></div>
+      <%end%>
+        <%if @profile.quote%>
         <div class="desc"> Your favorite ingredient is the <%=@profile.quote%></div>
+        <%end%>
         <div class="desc"> email : <%=current_user.email %></div>
         <br>
-        <%= link_to "edit your profile", edit_profile_path(@profile), class: "btin"%>
+        <b><%= link_to "customize your profile !", edit_profile_path(@profile), class: "btn-danger btn-goback"%></b>
        </div>
        <div class="bottom">
-       <a class="btn btn-primary btn-twitter btn-sm" href="https://twitter.com/webmaniac">
+       <a class="btn btn-round btn-primary btn-twitter btn-sm" href="https://twitter.com/webmaniac">
                         <i class="fa fa-twitter"></i>
                     </a>
-                    <a class="btn btn-danger btn-sm" rel="publisher"
+                    <a class="btn btn-round btn-danger btn-sm" rel="publisher"
                        href="https://plus.google.com/+ahmshahnuralam">
                         <i class="fa fa-google-plus"></i>
                     </a>
-                    <a class="btn btn-primary btn-sm" rel="publisher"
+                    <a class="btn btn-round btn-primary btn-sm" rel="publisher"
                        href="https://plus.google.com/shahnuralam">
                         <i class="fa fa-facebook"></i>
                     </a>
@@ -69,10 +77,13 @@
       </div>
       <% end %>
       <% else %>
-      <h4><b>You don't have any favorite recipes? Go back and pick some!<b> </h4>
-        <%= link_to 'Go Back', root_path, class: 'back_link' %>
+      <h4><b>You don't have any favorite recipes?  <%= link_to 'Go Back', root_path, class: 'btn-danger btn-goback' %> and pick some as shown below !<b> </h4>
+
+        <%= image_tag("http://res.cloudinary.com/dgmpokhth/image/upload/v1507809331/GIFF_h3ubwd.gif", :class => "card-gif") %>
+
         <% end %>
       </div>
     </div>
   </div>
 </div>
+
