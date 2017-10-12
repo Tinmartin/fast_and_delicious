@@ -11,7 +11,7 @@ class Ingredient < ApplicationRecord
   mount_uploader :picture, PhotoUploader
 
 
-  algoliasearch do
+  algoliasearch per_environment: true do
     attribute :name
     add_attribute :ingredient_recipes
     searchableAttributes  ["name"]
