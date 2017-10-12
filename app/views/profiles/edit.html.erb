@@ -1,6 +1,15 @@
-<
+          <div class="container">
+            <div class="row omb_row-sm-offset-3">
+            <div class="col-xs-12 col-sm-6">
+             <h3>update your profile</h3>
+
+
           <%= simple_form_for(@profile) do |f| %>
-            <%= f.input :picture_cache, as: :hidden %>
+          <div class="input-group">
+      <span class="input-group-addon"><i class="fa fa-user"></i></span>
+            <%= f.input :picture_cache, as: :hidden, class: "form-control" %> %>
+      </div>
+
             <%= f.input :picture %>
              <%= f.input :first_name %>
              <%= f.input :last_name %>
@@ -11,3 +20,33 @@
             <%= f.submit "Update your profile"%>
 
           <% end %>
+
+
+
+
+
+
+
+
+        <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-user"></i></span>
+
+          <%= f.input :email, required: false, placeholder: 'Email',label: false, autofocus: true, class: "form-control" %>
+        </div>
+        <span class="help-block"></span>
+
+        <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+
+          <%= f.input :password, required: false, placeholder: 'Password',label: false, class: 'form-control' %>
+
+        </div>
+
+        <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+        <%= f.button :submit, "Log in", class: 'btn btn-lg btn-primary btn-block' %>
+      <% end %>
+
+    </div>
+  </div>
+    <%= render "devise/shared/links" %>
+</div>

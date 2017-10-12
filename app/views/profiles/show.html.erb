@@ -1,47 +1,44 @@
 
-<div class="container-profile">
-<div class= "card-profile">
+<div class="containerr">
   <div class="row">
     <div class="col-xs-12 col-lg-3">
-      <div class="stick">
-        <div class="kard hoverkard main-section stick">
-          <div class="kardheader">
-            <% avatar_url = @profile.picture.url || "http://placehold.it/150x150" %>
-            <%= image_tag avatar_url, class: "avatare" %>
-          </div>
+      <div class="kard hoverkard">
+        <div class="kardheader">
+          <% avatar_url = @profile.picture.url || "http://placehold.it/150x150" %>
+          <%= image_tag avatar_url, class: "avatare" %>
+        </div>
 
-          <div class="infoe">
-            <%if @profile.first_name%>
-            <div class="title"> Bienvenue, <%="#{@profile.first_name}"%>  !</div>
-            <%end%>
-            <%if @profile.age%>
-            <div class="desc"><%= "#{@profile.age} ans"%></div>
-            <%end%>
-            <%if @profile.first_name && @profile.last_name%>
-            <div class="desc"><%= "#{@profile.first_name} #{@profile.last_name}"%></div>
-            <%end%>
-            <%if @profile.quote%>
-            <div class="desc"> Your favorite ingredient is the <%=@profile.quote%></div>
-            <%end%>
-            <div class="desc"> email : <%=current_user.email %></div>
-            <br>
-            <b><%= link_to "customize your profile !", edit_profile_path(@profile), class: "btn-danger btn-goback"%></b>
-          </div>
-          <div class="bottom">
-            <a class="btn btn-round btn-primary btn-twitter btn-sm" href="https://twitter.com/webmaniac">
-              <i class="fa fa-twitter"></i>
-            </a>
-            <a class="btn btn-round btn-danger btn-sm" rel="publisher"
-            href="https://plus.google.com/+ahmshahnuralam">
-            <i class="fa fa-google-plus"></i>
+        <div class="infoe">
+          <%if @profile.first_name%>
+          <div class="title"> Bienvenue, <%="#{@profile.first_name}"%>  !</div>
+          <%end%>
+          <%if @profile.age%>
+          <div class="desc"><%= "#{@profile.age} ans"%></div>
+          <%end%>
+          <%if @profile.first_name && @profile.last_name%>
+          <div class="desc"><%= "#{@profile.first_name} #{@profile.last_name}"%></div>
+          <%end%>
+          <%if @profile.quote%>
+          <div class="desc"> Your favorite ingredient is the <%=@profile.quote%></div>
+          <%end%>
+          <div class="desc"> email : <%=current_user.email %></div>
+          <br>
+          <b><%= link_to "customize your profile !", edit_profile_path(@profile), class: "btn-danger btn-goback"%></b>
+        </div>
+        <div class="bottom">
+          <a class="btn btn-round btn-primary btn-twitter btn-sm" href="https://twitter.com/webmaniac">
+            <i class="fa fa-twitter"></i>
           </a>
-          <a class="btn btn-round btn-primary btn-sm" rel="publisher"
-          href="https://plus.google.com/shahnuralam">
-          <i class="fa fa-facebook"></i>
+          <a class="btn btn-round btn-danger btn-sm" rel="publisher"
+          href="https://plus.google.com/+ahmshahnuralam">
+          <i class="fa fa-google-plus"></i>
         </a>
-      </div>
-
+        <a class="btn btn-round btn-primary btn-sm" rel="publisher"
+        href="https://plus.google.com/shahnuralam">
+        <i class="fa fa-facebook"></i>
+      </a>
     </div>
+
   </div>
 </div>
 <div class="col-xs-12 col-lg-9">
@@ -92,8 +89,6 @@
 
     <% end %>
   </div>
-</div>
-</div>
 </div>
 </div>
 </div>
