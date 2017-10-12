@@ -1,11 +1,22 @@
 .recipe-main-content{
   height: 80vh;
-  flex: 0 0 450px;
+  flex: 0 0 500px;
   position: sticky !important;
   top: 70px !important;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.picture-recipe {
+  height: 100%;
+  width: 100%;
+  margin: auto;
+}
+
+.recipe-info-and-review-container{
+  width: 90%;
+  margin: auto;
 }
 
 .recipe-info-content{
@@ -15,10 +26,11 @@
 
 
 .ingredient-container{
+  width : 90%;
   margin: auto;
 }
 .card-ingredients {
-  height: auto;
+  height: 200px;
   background-color: #C2FFB5;
   border-radius: 3px;
   margin: 3px;
@@ -30,33 +42,14 @@
 }
 
 
-.dose-container{
-
+.picture-ingredient{
+  height: 100px;
+  width: 100px;
+  margin: auto;
 }
 
-/*
-.show {
-  padding-top: 10px;
-  margin-bottom: 100px;
-}
- *//*
-.redirect-left {
-  text-align: left;
-} */
 
-.picture-recipe {
-  background-size: cover !important;
-}
-/*
-.container {
-  margin-top: 50px;
-  margin-bottom: 100px;
-} */
 
-/* .center {
-  display:center;
-}
- */
 .review-title{
   font-family: "Work Sans", sans-serif;
   font-weight: 500;
@@ -100,17 +93,7 @@
   }
 }
 
-.picture-ingredient{
-  height: 100px;
-  width: 100px;
-  margin: auto;
-}
-/*
-.description-recipe{
 
-  margin-bottom :30px;
-
-} */
 .share-recipe {
   bottom: 0px;
   font-size: 12px;
