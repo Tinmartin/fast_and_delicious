@@ -24,15 +24,16 @@
       <div class='row'>
 
         <% @recipe.doses.each do |dose| %>
+
           <div class="card-ingredients col-xs-6 col-md-4 col-lg-2">
-            <div class="ingredient-picture-container">
-              <%= if dose.ingredient.picture.url == nil
-                image_tag('https://placeholdit.co//i/185x185?', class: "ingredient-picture")
+            <div class="picture-ingredient" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('<%= if dose.ingredient.picture.url == nil
+                image_path('https://placeholdit.co//i/185x185?')
               else
-                cl_image_tag(dose.ingredient.picture.url, id: "ingredient-picture")
+                cl_image_path(dose.ingredient.picture.url)
               end
-              %>
+              %>')">
             </div>
+
             <div class="dose-container">
               <div class="ingredient-name">
                 <h4><%= dose.ingredient.name %></h4>
@@ -51,6 +52,7 @@
         <%end%>
       </div>
     </div>
+
 
     <div class="infos col-xs-6 col-lg-12">
       <div class="number-person-eat">
@@ -82,41 +84,42 @@
       </div>
     </div>
 
-
-
     <div class="col-xs-12 col-lg-12" >
       <p><%= @recipe.description %></p>
     </div>
   </div>
 
-  <div class="col-xs-12 col-lg-12" >
-    <%= simple_form_for [@recipe, @review] do |f| %>
-    <%= f.input :content, placeholder: 'write your review',label:"Add your review!"%>
-    <%= f.input :rating ,placeholder: 'rate this recipe.',label:"Rate this recipe between 0 and 5!" %>
-    <%= f.input :picture ,label: false %>
-    <%= f.input :picture_cache, as: :hidden %>
-
-    <%= f.submit "add a review", class: "btn btn-primary" %>
-    <% end %>
-  </div>
+  <div class="reviews-container">
 
 
+    <div class="col-xs-12 col-lg-12" >
+      <%= simple_form_for [@recipe, @review] do |f| %>
+      <%= f.input :content, placeholder: 'write your review',label:"Add your review!"%>
+      <%= f.input :rating ,placeholder: 'rate this recipe.',label:"Rate this recipe between 0 and 5!" %>
+      <%= f.input :picture ,label: false %>
+      <%= f.input :picture_cache, as: :hidden %>
 
-  <div class="col-xs-12 col-lg-12" >
-    <h3><b>  <% arr = [] %>
-      <%if @recipe.reviews.size != 0 %>
-      <% @recipe.reviews.each do |review| %>
-      <% arr << review.rating %>
+      <%= f.submit "add a review", class: "btn btn-primary" %>
       <% end %>
-      <% average = arr.inject{ |sum, el| sum + el }.to_f / arr.size %>
-      Average rating on this recipe: <%= average.round(1) %> / 5</b></h3>
-      <%end%>
+    </div>
 
-      <br>
-      <br>
-  </div>
 
-  <div class="row">
+
+    <div class="col-xs-12 col-lg-12" >
+      <h3><b>  <% arr = [] %>
+        <%if @recipe.reviews.size != 0 %>
+        <% @recipe.reviews.each do |review| %>
+        <% arr << review.rating %>
+        <% end %>
+        <% average = arr.inject{ |sum, el| sum + el }.to_f / arr.size %>
+        Average rating on this recipe: <%= average.round(1) %> / 5</b></h3>
+        <%end%>
+
+        <br>
+        <br>
+    </div>
+
+
     <div class="col-xs-12 col-lg-12">
      <div class ="row">
       <% @recipe.reviews.reverse.each do |review| %>
