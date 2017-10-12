@@ -3,7 +3,7 @@
   <div class="recipe-main-content">
 
     <div class="recipe-title ">
-      <h3><%= @recipe.name %></h3>
+      <h3><%= @recipe.name.capitalize %></h3>
     </div>
     <div class="picture-recipe" style="background-size: cover; background-repeat: no-repeat; background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('<%= if @recipe.picture.url == nil
         image_path('https://placeholdit.co//i/500x500?', class: "picture-recipe")
