@@ -1,6 +1,6 @@
 class Ingredient < ApplicationRecord
 
-  include AlgoliaSearch
+  # include AlgoliaSearch
 
   has_many :doses
   has_many :recipes, through: :doses
@@ -11,11 +11,11 @@ class Ingredient < ApplicationRecord
   mount_uploader :picture, PhotoUploader
 
 
-  algoliasearch do
-    attribute :name
-    add_attribute :ingredient_recipes
-    searchableAttributes  ["name"]
-  end
+  # algoliasearch do
+  #   attribute :name
+  #   add_attribute :ingredient_recipes
+  #   searchableAttributes  ["name"]
+  # end
 
 
  def ingredient_recipes

@@ -1,8 +1,10 @@
 
 
 .containerr  {
-margin:auto;
-width:100%;
+margin-left: auto;
+margin-right: auto;
+padding-left: 15px;
+padding-right: 15px;
 
 }
 
@@ -15,25 +17,6 @@ width:100%;
 
 
 
-}
-.stick {
-    height: 80vh;
-    -webkit-box-flex: 0;
-    -ms-flex: 0 0 500px;
-    flex: 0 0 500px;
-    position: -webkit-sticky !important;
-    position: sticky !important;
-    top: 145px !important;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
 }
 
 
@@ -169,11 +152,12 @@ width:100%;
 }
 
 .kard.hoverkard {
-    position: relative;
+    // position: relative;
     padding-top: 0;
     overflow: hidden;
     text-align: center;
     background-color: white;
+    height: 60vh;
 }
 
 .kard.hoverkard .kardheader{
@@ -205,7 +189,7 @@ width:100%;
 
 .kard.hoverkard .infoe {
     padding: 4px 8px 10px;
-    margin-top:130px;
+    margin-top:80px;
 }
 
 .kard.hoverkard .infoe .title {
@@ -245,4 +229,24 @@ width:100%;
   margin-bottom: 50px;
   margin-top: 30px;
   border-radius: 3px;
+}
+
+
+.stick {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 500px;
+    flex: 0 0 500px;
+    position: -webkit-sticky !important;
+    position: sticky !important;
+    top: 150px !important;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
 }
