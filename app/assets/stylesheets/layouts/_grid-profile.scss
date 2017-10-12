@@ -1,27 +1,21 @@
 
 
-.main-section{
-margin-right: 30px;
-margin-left: 0px;
-
-}
-
-
-.container-profile  {
-width:90%;
+.containerr  {
 margin:auto;
-display:center;
-display:flex;
+width:100%;
+
 }
 
 
-.kard.favorite-section {
-  margin-top: 80px;
+.favorite-section {
+  margin-top: 20px;
   text-align:center;
+  display:flex;
+  flex-direction:column;
+
+
 
 }
-
-
 .stick {
     height: 80vh;
     -webkit-box-flex: 0;
@@ -42,6 +36,13 @@ display:flex;
     justify-content: space-between;
 }
 
+
+
+
+.card-gif {
+  flex: 1 1 0;
+
+}
 
 
 .btn-goback{
@@ -68,35 +69,7 @@ display:flex;
   margin:0;
 }
 
-.card-description
-{
-  position:absolute;
-  bottom:-28px;
-  left:0;
-  width:100%;
-  text-align:center;
-  transform:translateY(-50%); /* doesn't work in IE9 and older I'm affraid */
-  margin:0;
-}
 
-.favorites .card-container {
-
-  border: 1px solid #D3E0E2;
-  margin-bottom:30px;
-}
-
-.favorites .card {
-
-  margin-top:0;
-}
-
-
-.card-profile {
-  background: white;
-  box-shadow: 0 0 10px rgba(0,0,0,0.3);
-  padding-bottom:20px;
-  padding-top:40px;
-}
 
 .link-box {
   margin-bottom: 40px;
@@ -136,34 +109,8 @@ display:flex;
     box-shadow: 0 0 10px rgba(0,0,0,0.3);
     margin-right: 10px;
 }
-.kard .kard-heading{
-    padding: 0 20px;
-    margin: 0;
-}
 
-.kard .kard-heading.simple {
-    font-size: 20px;
-    font-weight: 300;
-    color: #777;
-    border-bottom: 1px solid #e5e5e5;
-}
 
-.kard .kard-heading.image img {
-    display: inline-block;
-    width: 46px;
-    height: 46px;
-    margin-right: 15px;
-    vertical-align: top;
-    border: 0;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    border-radius: 50%;
-}
-
-.kard .kard-heading.image .kard-heading-header {
-    display: inline-block;
-    vertical-align: top;
-}
 
 .kard .kard-heading.image .kard-heading-header h3 {
     margin: 0;
@@ -172,90 +119,7 @@ display:flex;
     color: #262626;
 }
 
-.kard .kard-heading.image .kard-heading-header span {
-    font-size: 12px;
-    color: #999999;
-}
 
-.kard .kard-body {
-    padding: 0 20px;
-    margin-top: 20px;
-}
-
-.kard .kard-media {
-    padding: 0 20px;
-    margin: 0 -14px;
-}
-
-.kard .kard-media img {
-    max-width: 100%;
-    max-height: 100%;
-}
-
-.kard .kard-actions {
-    min-height: 30px;
-    padding: 0 20px 20px 20px;
-    margin: 20px 0 0 0;
-}
-
-.kard .kard-comments {
-    padding: 20px;
-    margin: 0;
-    background-color: #f8f8f8;
-}
-
-.kard .kard-komments .comments-collapse-toggle {
-    padding: 0;
-    margin: 0 20px 12px 20px;
-}
-
-.kard .kard-comments .comments-collapse-toggle a,
-.kard .kard-comments .comments-collapse-toggle span {
-    padding-right: 5px;
-    overflow: hidden;
-    font-size: 12px;
-    color: #999;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-.kard-comments .media-heading {
-    font-size: 13px;
-    font-weight: bold;
-}
-
-.kard.people {
-    position: relative;
-    display: inline-block;
-    width: 170px;
-    height: 300px;
-    padding-top: 0;
-    margin-left: 20px;
-    overflow: hidden;
-    vertical-align: top;
-}
-
-.card.people:first-child {
-    margin-left: 0;
-}
-
-.kard.people .card-top {
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: inline-block;
-    width: 170px;
-    height: 150px;
-    background-color: #ffffff;
-}
-
-.kard.people .kard-top.green {
-    background-color: #53a93f;
-}
-
-.kard.people .kard-top.blue {
-    background-color: #427fed;
-}
 
 .kard.people .kard-infoe {
     position: absolute;
@@ -365,6 +229,7 @@ display:flex;
     margin-bottom: 17px;
 }
 
+ // .btn-round{ border-radius: 50%; width:32px; height:32px; line-height:18px;  }
 .btn-round{ border-radius: 50%; width:32px; height:32px; line-height:18px;  }
 
 
