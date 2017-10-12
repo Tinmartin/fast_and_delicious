@@ -19,10 +19,21 @@ margin-top: 20px;
 .stick
 {position: sticky !important; /* !important to override Gmaps inline CSS */
   top: 0 !important;
-  height: 80vh;
+  height: 87vh;
 
 }
 
+.btn-goback{
+  margin:0;
+  padding:5px;
+  font-size:15px;
+  background: #e96443; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #e96443, #904e95); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #e96443, #904e95);
+  border-radius:5px;
+  font-family: "Work Sans", sans-serif;
+
+}
 
 .link-box-profile {
   margin-bottom: 30px;
@@ -338,3 +349,14 @@ margin-top: 20px;
 
 .btin{ border-radius: 5px; width:32px; height:32px; line-height:18px;  }
 
+.card-gif {
+  height: 500px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  background-size: cover !important;
+  background-position: center;
+  color: white;
+  position: relative;
+  margin-bottom: 50px;
+  margin-top: 30px;
+  border-radius: 3px;
+}
