@@ -42,11 +42,13 @@
 
 /* Navbar link */
 .navbar-wagon-link {
-  color: #616668;
+  color: black;
   font-size: 14px;
+  font-family: $headers-font;
 }
 .navbar-wagon-link:hover {
-  color: #da552f;
+  color: white;
+  transition-duration: 0.4s;
   text-decoration: none;
 }
 
