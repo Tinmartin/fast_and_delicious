@@ -1,26 +1,36 @@
 
 
 .main-section{
-margin-right: 30px;
+
 margin-left: 0px;
 
 }
 
 
 .container-profile  {
-width:90%;
+width:99%;
 margin:auto;
-display:center;
 display:flex;
+justify-content:center;
+    align-items: center;
+    margin-left:10px;
+
 }
 
 
 .kard.favorite-section {
-  margin-top: 80px;
+  margin-top: 20px;
   text-align:center;
+  display:flex;
+  flex-direction:column;
+
+
 
 }
 
+.centered{
+  margin-left:50px;
+}
 
 .stick {
     height: 80vh;
@@ -44,6 +54,11 @@ display:flex;
 
 
 
+
+.card-gif {
+  flex: 1 1 0;
+
+}
 .btn-goback{
   margin:0;
   padding:5px;
@@ -95,7 +110,11 @@ display:flex;
   background: white;
   box-shadow: 0 0 10px rgba(0,0,0,0.3);
   padding-bottom:20px;
-  padding-top:40px;
+  padding-top:60px;
+  padding-right:10px;
+  width:100%;
+  margin:0;
+
 }
 
 .link-box {
