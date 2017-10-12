@@ -192,13 +192,15 @@
 
 <%= content_for :after_js do %>
 <script>
-
   $(document).ready(function() {
     $('.select-nbr').change(function() {
       var multiplier = parseInt($('#count').val());
       $('.qty').each(function() {
         var qty = parseInt($(this).parent().siblings('.initial-qty').text());
+        $(this).hide(300);
+        $(this).show(300);
         $(this).html( qty * multiplier);
+        $(this).css("color", "black");
       });
     });
   });
