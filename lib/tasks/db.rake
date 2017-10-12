@@ -31,12 +31,12 @@ namespace :db do
         serves = item.search('.recipe-detail-serves').text.to_i
         calories =  item.search('.nutrition-item:nth-of-type(1) .nutrition-item-top').text.to_f
         recipe = Recipe.new(name:name, description:description, cooking_time: cooking_time, calories:calories)
-        recipe.remote_picture_url = "https:#{item.search('.recipe-header-left img').first['src']}"
+        # recipe.remote_picture_url = "https:#{item.search('.recipe-header-left img').first['src']}"
         recipe.save!
 
         doc.search(".ingredient-wrapper li").each do |element|
           puts "Creating ingredient"
-       
+
           ingredient_name1 = element.text.strip.gsub("\\n|\s"," ").split(' ').join(' ').scan(/^([^ ]+)\s?(kg|cm|teaspoon|teaspoons|l|ml|cl|mg|sprigs|g|tablespoon|tablespoons|a bunch|pack)?\s(of)?([^,\n]*).*$/).flatten
           ingredient_name = ingredient_name1[3]
           ingredient = Ingredient.new(name:ingredient_name.downcase)

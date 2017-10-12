@@ -11,11 +11,11 @@ class Ingredient < ApplicationRecord
   mount_uploader :picture, PhotoUploader
 
 
-  # algoliasearch do
-  #   attribute :name
-  #   add_attribute :ingredient_recipes
-  #   searchableAttributes  ["name"]
-  # end
+  algoliasearch per_environment: true do
+    attribute :name
+    add_attribute :ingredient_recipes
+    searchableAttributes  ["name"]
+  end
 
 
  def ingredient_recipes
