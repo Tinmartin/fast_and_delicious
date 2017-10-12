@@ -9,9 +9,10 @@
 }
 
 .picture-recipe {
-  height: 100%;
-  width: 100%;
-  margin: auto;
+  height: 600px;
+  width: 400px;
+  margin-left: 60px;
+  margin-right: 60px;
 }
 
 .recipe-info-and-review-container{
@@ -21,8 +22,7 @@
 }
 
 .recipe-info-content{
-  margin-top: 60px !important;
-  margin-right: 20px;
+  margin-top: 20px !important;
 }
 
 
@@ -32,24 +32,28 @@
 }
 .card-ingredients {
   height: 200px;
-  background-color: #C2FFB5;
-  border-radius: 3px;
-  margin: 3px;
-  padding: 3px;
+  margin: 5px;
+  padding: 1px;
 }
 
 .card-ingredients h2 {
   font-size: 10px;
 }
 
+.dose-description {
+  background-color: #d9ffc3;
+}
 
 .picture-ingredient{
-  height: 50%;
+  height: 70%;
   width: 100%;
   margin: auto;
 }
 
-
+.ingredient-name p {
+  margin: 0 0 -8px;
+  background-color: #d9ffc3;
+}
 
 .review-title{
   font-family: "Work Sans", sans-serif;
@@ -69,6 +73,9 @@
   margin: auto;
 }
 
+.recipe-description {
+  margin-bottom: 300px;
+}
 
 .containerreview{
   width: 250px;
@@ -108,4 +115,14 @@
 
 .infos {
   margin-top: 1cm;
+  margin-bottom: 10px;
+  text-align: left;
+  margin-left: 19px;
+}
+
+.select-nbr {
+  text-align: left;
+  margin-top: 50px;
+  margin-left: 19px;
+  margin-bottom: 15px;
 }
