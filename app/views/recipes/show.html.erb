@@ -2,6 +2,7 @@
 
   <div class="recipe-main-content">
 
+
     <div class="recipe-title ">
       <h3><%= @recipe.name.capitalize %></h3>
     </div>
@@ -21,6 +22,10 @@
   </div>
 
   <div class="recipe-info-and-review-container">
+  <div class="row">
+
+    <a class="pinned-item btn-special colorblue" href="#content"> See the reviews ! </a>
+
 
     <div class="number-person-eat col-xs-12 ">
       <form class="form-inline select-nbr">
@@ -93,99 +98,9 @@
 
     </div>
 
+  <%= render "recipes/reviews" %>
 
-    <div class="reviews-container">
 
-      <div class="col-xs-12 col-lg-12" >
-        <%= simple_form_for [@recipe, @review] do |f| %>
-          <%= f.input :content, placeholder: 'write your review',label:"Add your review!"%>
-          <%= f.input :rating ,placeholder: 'rate this recipe.',label:"Rate this recipe between 0 and 5!" %>
-          <%= f.input :picture ,label: false %>
-          <%= f.input :picture_cache, as: :hidden %>
-          <%= f.submit "add a review", class: "btn btn-primary" %>
-        <% end %>
-      </div>
-
-      <div class="col-xs-12 col-lg-12" >
-        <h3>
-          <b>  <% arr = [] %>
-            <%if @recipe.reviews.size != 0 %>
-              <% @recipe.reviews.each do |review| %>
-              <% arr << review.rating %>
-              <% end %>
-              <% average = arr.inject{ |sum, el| sum + el }.to_f / arr.size %>
-              Average rating on this recipe: <%= average.round(1) %> / 5
-            <%end%>
-          </b>
-        </h3>
-        <br>
-        <br>
-      </div>
-
-      <div class="row">
-        <div class="col-xs-10 col-lg-6 col-lg-offset-3 ">
-          <div class ="row">
-
-            <% @recipe.reviews.reverse.each do |review| %>
-              <% if review.picture.url == nil%>
-
-                <ul class="message-box" id="content">
-                  <div class ="col-xs-3 col-lg-4">
-                    <div class ="user-box">
-                      <% avatar_url = review.user.profile.picture.url || "http://placehold.it/30x30" %>
-                      <%= image_tag avatar_url, class: "avatar" %>
-                      <p class="user-info"> <strong><%= review.user.profile.user_name %> </strong> <br> rate : <%= review.rating  %> / 5  </p>
-                    </div>
-                  </div>
-                  <div class ="col-xs-8 col-lg-9">
-                    <p class="patate"> <%=review.content %> </p>
-                  </div>
-                  <br>
-                </ul>
-                <p class="accepted">
-                  <strong>
-                    <%= link_to "Delete", review_path(review), method: :delete, data: { confirm: "Are you sure?" }%>
-                  </strong>
-                  <br>
-                </p>
-              <%else%>
-                <ul class="message-box" id="content">
-                  <div class ="col-xs-3 col-lg-4">
-                    <div class ="user-box">
-                      <% avatar_url = review.user.profile.picture.url || "http://placehold.it/30x30" %>
-                      <%= image_tag avatar_url, class: "avatar" %>
-                      <p class="user-info">
-                        <strong><%= review.user.profile.user_name %> </strong> <br> rate : <%= review.rating  %> / 5
-                      </p>
-                    </div>
-                  </div>
-
-                  <div class ="col-xs-5 col-lg-5">
-                    <p class="patate">
-                      <%=review.content %>
-                    </p>
-                  </div>
-                  <div class ="col-xs-3">
-                    <div class= "img">
-                      <%= cl_image_tag(review.picture.url, :width=>200, :height=>200, :gravity=>"south_east", :crop=>"crop", class: "thumbnail") %>
-                    </div>
-                  </div>
-                  <br>
-                </ul>
-                <p class="accepted">
-                  <strong><%= link_to "Delete", review_path(review), method: :delete, data: { confirm: "Are you sure?" }%>
-                  </strong>
-                  <br>
-                </p>
-
-              <% end %>
-            <% end %>
-
-          </div>
-        </div>
-      </div>
-
-    </div>
   </div>
 </div>
 

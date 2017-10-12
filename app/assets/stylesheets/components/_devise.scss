@@ -17,6 +17,12 @@ background: linear-gradient(to right, #0072ff, #167EFF); /* W3C, IE 10+/ Edge, F
   padding: 4px 5px;
   border:none;
       vertical-align: middle !important;
+      &:hover{
+    opacity: 0.8;
+    text-decoration: none;
+    text-align: center;
+    text-justify:center;
+  }
 
 }
 
@@ -45,7 +51,13 @@ background: linear-gradient(to right, #0072ff, #167EFF); /* W3C, IE 10+/ Edge, F
 .colorblue{
   background: #457fca;  /* fallback for old browsers */
 background: -webkit-linear-gradient(to left, #00c6ff, #05B1FF);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to left, #00c6ff, #05B1FF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+background: linear-gradient(to left, #00c6ff, #05B1FF);
+&:hover{
+    opacity: 0.8;
+    text-decoration: none;
+    text-align: center;
+    text-justify:center;
+  } /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 
   border:none; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -58,12 +70,18 @@ background: -webkit-linear-gradient(to left, #00c6ff, #05B1FF);  /* Chrome 10-25
 background: linear-gradient(to left, #00c6ff, #05B1FF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 border:none;/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+&:hover{
+    opacity: 0.8;
+    text-decoration: none;
+    text-align: center;
+    text-justify:center;
+  }
 }
 p {
   font-size: 10px;
 }
 
-.ecriture, a {
+.ecriture a {
   color: white;
     font-size: 14px;
     white-space:normal !important;
