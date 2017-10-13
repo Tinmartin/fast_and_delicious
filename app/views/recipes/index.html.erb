@@ -70,77 +70,79 @@
 
   <script>
 
-    const btns = document.querySelectorAll('.favorite');
-    btns.forEach((btn) => {
-      btn.addEventListener('click', (event) => {
-          const span = btn.querySelector('span');
-          span.classList.toggle('fa-heart');
-          span.classList.toggle('fa-heart-o');
-      });
+  const btns = document.querySelectorAll('.favorite');
+  btns.forEach((btn) => {
+    btn.addEventListener('click', (event) => {
+        const span = btn.querySelector('span');
+        span.classList.toggle('fa-heart');
+        span.classList.toggle('fa-heart-o');
     });
+  });
 
 
-    // ALGOLIA
-    var client = algoliasearch("AMLNOKWPBJ", "5b8cb611c7a8bc80b876e4f7abbb1517");
-    var index_recipe = client.initIndex('Recipe_production');
-    var index_ingredient = client.initIndex("Ingredient_production");
+  // ALGOLIA
+  var client = algoliasearch("AMLNOKWPBJ", "5b8cb611c7a8bc80b876e4f7abbb1517");
+  var index_recipe = client.initIndex('Recipe_production');
+  var index_ingredient = client.initIndex("Ingredient_production");
 
-    const searchbar = document.getElementById("aa-search-input");
-    const recipes = document.getElementById('recipes');
+  const searchbar = document.getElementById("aa-search-input");
+  const recipes = document.getElementById('recipes');
 
-    const banner = document.getElementById("banner");
-    const marketing_promise = document.getElementById("marketing-promise");
-    var recipe_html = recipes.innerHTML;
-    var banner_class = banner.classList;
-    var banner_html = banner.innerHTML;
-    var marketing_promise_html = marketing_promise.innerHTML;
+  const banner = document.getElementById("banner");
+  const marketing_promise = document.getElementById("marketing-promise");
+  var recipe_html = recipes.innerHTML;
+  var banner_class = banner.classList;
+  var banner_html = banner.innerHTML;
+  var marketing_promise_html = marketing_promise.innerHTML;
 
 
-    const search = (event) => {
-      index_recipe.search(
-        {
-          query: searchbar.value,
-          hitsPerPage: 10,
-          ignorePlurals: true,
-        },
-        function searchDone(err, content) {
-          recipes.innerHTML = "";
-          marketing_promise.innerHTML = "<br><br>";
-          banner.classList.remove("banner");
-          banner.classList.add("banner-search");
-          if (!searchbar.value == "") {
-            content.hits.forEach((hit) => {
-              recipes.insertAdjacentHTML("beforeend", `
-                <div class="col-xs-12 col-sm-3 col-md-3">
-                  <div class="card-container">
-                    <a href="/recipes/${hit.objectID}">
-                      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('${hit.picture.picture.url}')">
-                      </div>
-                    </a>
-                    <div class="link-box">
-                      <a href="/recipes/${hit.objectID}">${hit.name}</a>
+
+
+  const search = (event) => {
+    index_recipe.search(
+      {
+        query: searchbar.textContent,
+        hitsPerPage: 10,
+        ignorePlurals: true,
+      },
+      function searchDone(err, content) {
+        recipes.innerHTML = "";
+        marketing_promise.innerHTML = "<br><br>";
+        banner.classList.remove("banner");
+        banner.classList.add("banner-search");
+
+        if (!searchbar.textContent == "") {
+          content.hits.forEach((hit) => {
+            recipes.insertAdjacentHTML("beforeend", `
+              <div class="col-xs-12 col-sm-3 col-md-3">
+                <div class="card-container">
+                  <a href="/recipes/${hit.objectID}">
+                    <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('${hit.picture.picture.url}')">
                     </div>
+                  </a>
+                  <div class="link-box">
+                    <a href="/recipes/${hit.objectID}">${hit.name}</a>
                   </div>
                 </div>
-              `)
-            })
-          } else {
-            recipes.insertAdjacentHTML("beforeend", `${recipe_html}`);
-            banner.classList.remove('banner-search');
-            banner.classList.add("banner");
-            marketing_promise.innerHTML = marketing_promise_html;
-          }
+              </div>
+            `)
+          })
+        } else {
+          recipes.insertAdjacentHTML("beforeend", `${recipe_html}`);
+          banner.classList.remove('banner-search');
+          banner.classList.add("banner");
+          marketing_promise.innerHTML = marketing_promise_html;
         }
-      );
-    }
+      }
+    );
+  }
 
-    searchbar.addEventListener("keyup", search);
+  searchbar.addEventListener("keyup", search);
 
-
-    window.ingredientsStrategy = {
-      id: 'ingredients',
+  var lastQuery = '';
+  $('#aa-search-input').textcomplete([
+    {
       // #3 - Regular expression used to trigger the autocomplete dropdown
-      // match: /(^|\s)@(\w*(?:\s*\w*))$/,
       match: /(^|\s)(\w*(?:\s*\w*))$/,
       // #4 - Function called at every new keystroke
       search: function(query, callback) {
@@ -169,55 +171,20 @@
         html += '<span class="label">' + hit.name + '</span></a>';
         return html;
       },
+
+    }
+  ], {
       // #7 - Special adapter to handle HTMLContentEditable divs
+      adapter: $.fn.textcomplete.HTMLContentEditable,
+  });
 
-      // adapter: $.fn.textcomplete.HTMLContentEditable,
-      // footer: '<div style="text-align: center; display: block; font-size:12px; margin: 5px 0 0 0;">Powered by <a href="http://www.algolia.com"><img src="https://www.algolia.com/assets/algolia128x40.png" style="height: 14px;" /></a></div>'
-
-    };
-
-    var Textarea = Textcomplete.editors.Textarea;
-
-    var editor = new Textarea(document.getElementById('aa-search-input'));
-    var textcomplete = new Textcomplete(editor);
-    textcomplete.register([ingredientsStrategy]);
-
-    // var Textarea = require('textcomplete/lib/textarea');
-
-    // var editor = new Textarea(textareaElement);
-    // var textcomplete = new Textcomplete(editor);
-    // textcomplete.register([ingredientsStrategy]);
-
-
-
-
-
-    //initialize Algolia autocomplete on search input (ID selector must match)
-
-    // autocomplete('#aa-search-input',
-    // { hint: false,
-    // autoselect: true }, {
-    //     source: autocomplete.sources.hits(index_ingredient, {hitsPerPage: 3}),
-    //     //value to be displayed in input control after user's suggestion selection
-    //     displayKey: 'name',
-    //     //hash of templates used when rendering dataset
-    //     templates: {
-    //       //'suggestion' templating function used to render a single suggestion
-    //       suggestion: function(suggestion) {
-    //         // if (suggestion.name.includes(searchbar.value)) {
-    //          return '<span>' +
-    //         suggestion._highlightResult.name.value+ '</span>';
-    //       }
-    //     }
-    // });
-
-    // prevent default behaviour of the search form (i.e prevent from refreshing)
-    const bindConfirm = (element) => {
-      element.addEventListener("submit", (event) => {
-          event.preventDefault();
-      });
-    };
-    document.querySelectorAll(".confirmable").forEach(bindConfirm);
+  // prevent default behaviour of the search form (i.e prevent from refreshing)
+  const bindConfirm = (element) => {
+    element.addEventListener("submit", (event) => {
+        event.preventDefault();
+    });
+  };
+  document.querySelectorAll(".confirmable").forEach(bindConfirm)
 
   </script>
 <% end %>
