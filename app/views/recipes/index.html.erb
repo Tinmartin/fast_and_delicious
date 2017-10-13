@@ -71,7 +71,8 @@
 
   <script>
     var client = algoliasearch("AMLNOKWPBJ", "5b8cb611c7a8bc80b876e4f7abbb1517");
-    var index = client.initIndex('Ingredient_production');
+    var index_recipe = client.initIndex('Recipe_production');
+    var index_ingredient = client.initIndex("Ingredient_production");
 
     const searchbar = document.getElementById("aa-search-input");
     const recipes = document.getElementById('recipes');
@@ -88,38 +89,30 @@
         {
           query: searchbar.value,
           hitsPerPage: 10,
+          ignorePlurals: true,
         },
         function searchDone(err, content) {
           if (err) {
             console.error(err);
             return;
           }
-          // console.log(content)
           recipes.innerHTML = "";
           marketing_promise.innerHTML = "<br><br><br><br>";
           banner.classList.remove("banner");
           banner.classList.add("banner-search");
           if (!searchbar.value == "") {
-            const displayed_recipes = [];
             content.hits.forEach((hit) => {
-              hit['ingredient_recipes'].forEach((recipe, i) => {
-                // if (!displayed_recipes.includes(hit["ingredient_recipes"][i]["id"])) {
-                if (hit.name.includes(searchbar.value)) {
-                  displayed_recipes.push(hit["ingredient_recipes"][i]["id"])
-                  recipes.insertAdjacentHTML("beforeend", `
-                    <div class="col-xs-12 col-sm-6 col-md-4">
-                      <a href="/recipes/${hit["ingredient_recipes"][i]["id"]}">
-                        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('${hit["ingredient_recipes"][i]["picture"]["url"]}')">
-                        </div>
-                      </a>
-                      <div class="link-box">
-                        <a href="/recipes/${hit["ingredient_recipes"][i]["id"]}">${hit["ingredient_recipes"][i]["name"]}</a>
-                      </div>
+              recipes.insertAdjacentHTML("beforeend", `
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                  <a href="/recipes/${hit.objectID}">
+                    <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('${hit.picture.url}')">
                     </div>
-                  `)
-                }
-                // }
-              })
+                  </a>
+                  <div class="link-box">
+                    <a href="/recipes/${hit.objectID}">${hit.name}</a>
+                  </div>
+                </div>
+              `)
             })
           } else {
             recipes.insertAdjacentHTML("beforeend", `${recipe_html}`);
@@ -138,7 +131,7 @@
     autocomplete('#aa-search-input',
     { hint: false,
     autoselect: true }, {
-        source: autocomplete.sources.hits(index, {hitsPerPage: 3}),
+        source: autocomplete.sources.hits(index2, {hitsPerPage: 3}),
         //value to be displayed in input control after user's suggestion selection
         displayKey: 'name',
         //hash of templates used when rendering dataset
@@ -146,10 +139,8 @@
           //'suggestion' templating function used to render a single suggestion
           suggestion: function(suggestion) {
             // if (suggestion.name.includes(searchbar.value)) {
-            // console.log(suggestion)
              return '<span>' +
             suggestion._highlightResult.name.value+ '</span>';
-
           }
         }
     });
