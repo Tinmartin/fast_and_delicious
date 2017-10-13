@@ -85,7 +85,7 @@
 
 
     const search = (event) => {
-      index.search(
+      index_recipe.search(
         {
           query: searchbar.value,
           hitsPerPage: 10,
@@ -131,7 +131,7 @@
     autocomplete('#aa-search-input',
     { hint: false,
     autoselect: true }, {
-        source: autocomplete.sources.hits(index2, {hitsPerPage: 3}),
+        source: autocomplete.sources.hits(index_ingredient, {hitsPerPage: 3}),
         //value to be displayed in input control after user's suggestion selection
         displayKey: 'name',
         //hash of templates used when rendering dataset
