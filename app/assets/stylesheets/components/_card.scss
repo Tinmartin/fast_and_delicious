@@ -10,7 +10,9 @@
     opacity: 0.8;
     text-decoration: none;
     background-color: rgba(255, 255, 255, 0.25);
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.25), 0 0 0.5em 0 #B8B8B8   ;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.25), 0 0 0.5em 0 #B8B8B8 ;
+    transition-duration: 0.4s;
+
   }
 }
 
@@ -19,10 +21,12 @@
   font-size: 15px;
 }
 .card-description p {
-  font-size: 12px;
-  opacity: 0.8;
+  font-size: 11px;
+  opacity: 0.9;
+  color:#18587A;
   font-weight: lighter;
-  margin: 0 0 15px;
+  margin: 0 0 17px;
+  color:#FC624D;
 }
 
 .card {
@@ -35,10 +39,15 @@
   margin-bottom: 50px;
   margin-top: 30px;
   border-radius: 3px;
-  position:relative
+
+
 }
 
 
+
+.row#recipes {
+  padding:70px;
+}
 .card h1{
   position:absolute;
   top:50%;
@@ -78,14 +87,16 @@
 }
 .card-link:hover {
   opacity: 0.1;
+  transition-duration: 0.4s;
+
 }
 
 
-.link-box .fa-heart-o { color: #FF007B;
+.link-box .fa-heart-o { color: #FC624D;
   font-size: 16px;
 }
 
-.link-box .fa-heart { color: #FF007B;
+.link-box .fa-heart { color: #FC624D;
     font-size: 17px;
 }
 
@@ -119,4 +130,10 @@ p {
 .link-box a {
   font-size: 14px;
       word-wrap: break-word;
+      color:#18587A;
+  &:hover{ color: #FC624D;
+    transition-duration: 0.4s;
+
+
+  }
 }

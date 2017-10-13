@@ -20,6 +20,7 @@ class Ingredient < ApplicationRecord
     searchableAttributes  ["name"]
   end
 
+
  def ingredient_recipes
     self.doses.map { |d| d.recipe }.uniq
   end
