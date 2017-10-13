@@ -9,18 +9,64 @@
 }
 
 .picture-recipe {
-  height: 600px;
-  width: 400px;
+  height: 100vh;
+  width: 100vh;
   margin-left: 60px;
-  margin-right: 60px;
+  margin-right: 0px;
+  position:relative;
 }
 
+
+.containerrr{
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+
+.kardo.hoverkard {
+    // position: relative;
+    padding-top: 0;
+    overflow: hidden;
+    text-align: center;
+    background-color: white;
+    height: 73vh;
+}
+
+.sharetobestick{
+  position:absolute;
+  top:100%;
+  left:40%;
+}
 .recipe-info-and-review-container{
   width: 90%;
   margin: auto;
   padding: 2%;
   position:relative
 }
+
+.kardo {
+    padding-top: 20px;
+    padding-right:0px;
+    padding-left:0px;
+    background-color: white;
+    border-top-width: 0;
+    border-bottom-width: 2px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background: white;
+    margin-right: 10px;
+}
+
+
 
 .recipe-info-content{
   margin-top: 20px !important;
@@ -34,7 +80,7 @@
 .card-ingredients {
   height: 200px;
   margin: 5px;
-  padding: 1px;
+  padding: 5px;
 }
 
 .card-ingredients h2 {
@@ -46,7 +92,7 @@
 }
 
 .picture-ingredient{
-  height: 70%;
+  height: 50%;
   width: 100%;
   margin: auto;
 }
@@ -76,8 +122,14 @@
 
 .recipe-description {
   margin-bottom: 300px;
+  margin-right:20px;
+  margin-left:20px;
 }
 
+
+.container-fluid.containerdescription  {
+  padding:50px;
+}
 .recipe-description p {
   font-size: 13px;
 }
