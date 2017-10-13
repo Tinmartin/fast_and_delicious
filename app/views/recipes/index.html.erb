@@ -36,7 +36,7 @@
                 <% arr << review.rating %>
               <% end %>
               <% average = arr.inject{ |sum, el| sum + el }.to_f / arr.size %>
-              <p> rating : <%= average.round(1) if average %> / 5</p>
+              <p> <%= average.round(1) if average %> / 5</p>
             <%end%>
           </div>
 

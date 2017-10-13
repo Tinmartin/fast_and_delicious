@@ -1,15 +1,18 @@
 
 .footer {
-  background: #3B454D;
+  background: #ee5953;
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 65px;
   padding: 0px 50px;
-  color: rgba(0,0,0,0.3);
   text-align: center;
   font-family: $headers-font;
   font-size: 15px;
+    z-index: 1;
+      box-shadow: 0 1px 5px rgba(0,0,0,0.1) !important;
+
+
 }
 
 .footer-links {
@@ -17,17 +20,17 @@
   align-items: center;
 }
 .footer-links a {
-  color: #000;
-  opacity: 1;
+  color: white;
+  // opacity: 1;
   text-decoration: none;
   padding: 0px 10px;
   font-size: 18px;
 
 }
 .footer-links a:hover {
-  color: white;
+  color: #FC624D;
   transition-duration: 0.4s;
 }
 .footer-copyright {
-  color: #000;
+  color: white;
 }

@@ -19,10 +19,12 @@
   font-size: 15px;
 }
 .card-description p {
-  font-size: 12px;
-  opacity: 0.8;
+  font-size: 11px;
+  opacity: 0.9;
+  color:#18587A;
   font-weight: lighter;
-  margin: 0 0 15px;
+  margin: 0 0 17px;
+  color:#FC624D;
 }
 
 .card {
@@ -35,10 +37,15 @@
   margin-bottom: 50px;
   margin-top: 30px;
   border-radius: 3px;
-  position:relative
+
+
 }
 
 
+
+.row#recipes {
+  padding:70px;
+}
 .card h1{
   position:absolute;
   top:50%;
@@ -81,11 +88,11 @@
 }
 
 
-.link-box .fa-heart-o { color: #FF007B;
+.link-box .fa-heart-o { color: #FC624D;
   font-size: 16px;
 }
 
-.link-box .fa-heart { color: #FF007B;
+.link-box .fa-heart { color: #FC624D;
     font-size: 17px;
 }
 
@@ -119,4 +126,8 @@ p {
 .link-box a {
   font-size: 14px;
       word-wrap: break-word;
+      color:#18587A;
+  &:hover{ color: #FC624D;
+
+  }
 }
