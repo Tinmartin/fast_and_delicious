@@ -5,6 +5,7 @@ margin-left: auto;
 margin-right: auto;
 padding-left: 15px;
 padding-right: 15px;
+padding-bottom: 30px;
 
 }
 
@@ -19,7 +20,59 @@ padding-right: 15px;
 
 }
 
+.pinned-item {
+  position:absolute;
+ right: 10px;
+ top:10px;
+}
 
+
+a.pinned-item.colorblue {
+  padding:10px;
+  font-size:13px;
+  color:white;
+  &:hover{
+    opacity: 0.8;
+    text-decoration: none;
+    text-align: center;
+    text-justify:center;
+  }
+}
+
+.recipe-info-and-review-container{
+ position: relative;
+}
+
+.fa-pencil-square-o{
+  color:#222222;
+}
+.addon2 {
+
+    color: #000000;
+    text-align: center;
+    background-color: white;
+    border-radius: 20px;
+    border:none;
+}
+
+#review_content.form-control{
+
+    border: none !important;
+    height:110%;
+}
+
+#review_rating.form-control {
+  border: none !important;
+  height:110%;
+}
+
+
+.fa-star-half-o{
+  color:#FFAF00;
+}
+.photoreview {
+  margin-top: 8px;
+}
 
 
 .card-gif {
@@ -229,6 +282,23 @@ padding-right: 15px;
   margin-top: 30px;
   border-radius: 3px;
 }
+
+
+.card-containerbigger{
+  padding: 40px;
+}
+
+.cardbigger{
+    height: 500px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+    background-size: cover !important;
+    background-position: center;
+    color: white;
+    position: relative;
+    margin-top: 0px;
+    border-radius: 3px;
+     }
+
 
 
 .stick {

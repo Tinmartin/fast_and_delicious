@@ -1,6 +1,6 @@
 class Ingredient < ApplicationRecord
 
-  # include AlgoliaSearch
+  include AlgoliaSearch
 
   has_many :doses
   has_many :recipes, through: :doses

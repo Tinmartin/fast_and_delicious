@@ -1,5 +1,5 @@
 class Recipe < ApplicationRecord
-  # include AlgoliaSearch
+  include AlgoliaSearch
 
   has_many :ingredients, through: :doses
   has_many :doses, dependent: :destroy
