@@ -92,10 +92,6 @@
           ignorePlurals: true,
         },
         function searchDone(err, content) {
-          if (err) {
-            console.error(err);
-            return;
-          }
           recipes.innerHTML = "";
           marketing_promise.innerHTML = "<br><br><br><br>";
           banner.classList.remove("banner");
@@ -105,7 +101,7 @@
               recipes.insertAdjacentHTML("beforeend", `
                 <div class="col-xs-12 col-sm-6 col-md-4">
                   <a href="/recipes/${hit.objectID}">
-                    <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('${hit.picture.url}')">
+                    <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('${hit.picture.picture.url}')">
                     </div>
                   </a>
                   <div class="link-box">
