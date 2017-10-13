@@ -14,7 +14,7 @@
 
     <% @recipes.each do |recipe| %>
 
-      <div class="col-xs-12 col-sm-6 col-md-4">
+      <div class="col-xs-12 col-sm-3 col-md-3">
 
         <div class="card-container">
 
@@ -42,15 +42,15 @@
 
           <div class="link-box">
             <%= link_to recipe_path(recipe) do %>
-              <%=recipe.name.capitalize %> &nbsp &nbsp
+              <%=recipe.name.capitalize %>
               <% if current_user %>
                 <% if Favorite.where(recipe_id: recipe.id, user_id: current_user.id).count > 0 %>
                   <%= link_to favorite_path(recipe), :method => :delete, remote: true, class: "favorite" do %>
-                    <span class="fa fa-heart info"></span>
+                     &nbsp &nbsp<span class="fa fa-heart info"></span>
                   <% end %>
                 <% else %>
                   <%= link_to favorites_path(recipe_id: recipe.id), :method => :post, remote: true, class: "favorite" do %>
-                    <span class="fa fa-heart-o"></span>
+                   &nbsp &nbsp <span class="fa fa-heart-o"></span>
                   <% end %>
                 <% end %>
               <% end %>

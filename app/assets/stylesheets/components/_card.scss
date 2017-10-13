@@ -19,9 +19,10 @@
   font-size: 15px;
 }
 .card-description p {
-  font-size: 16px;
+  font-size: 12px;
   opacity: 0.8;
   font-weight: lighter;
+  margin: 0 0 15px;
 }
 
 .card {
@@ -34,7 +35,9 @@
   margin-bottom: 50px;
   margin-top: 30px;
   border-radius: 3px;
+  position:relative
 }
+
 
 .card h1{
   position:absolute;
@@ -78,13 +81,16 @@
 }
 
 
-a .fa-heart-o { color: #FF007B;
-  font-size: 20px;
+.link-box .fa-heart-o { color: #FF007B;
+  font-size: 16px;
 }
 
-a .fa-heart { color: #FF007B;
-    font-size: 20px;
+.link-box .fa-heart { color: #FF007B;
+    font-size: 17px;
 }
+
+
+
 
 h3 {
   font-size: 20px;
@@ -108,4 +114,9 @@ a {
 p {
   font-size: 16px;
   letter-spacing: 0.4px;
+}
+
+.link-box a {
+  font-size: 14px;
+      word-wrap: break-word;
 }
