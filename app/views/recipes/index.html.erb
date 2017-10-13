@@ -4,7 +4,7 @@
 
 <!-- <h2 class="text-center">ALL OUR RECIPES:</h2> -->
 
-<div class="container container-recipes">
+<div class="container container-recipes" id="container-recipes">
 
   <div class="row" id="recipes">
 
@@ -27,7 +27,6 @@
               %>')">
             </div>
           <% end %>
-
 
           <div class="card-description">
             <% arr = [] %>
@@ -75,9 +74,12 @@
     var index_ingredient = client.initIndex("Ingredient_production");
 
     const searchbar = document.getElementById("aa-search-input");
+    const container_recipes = document.getElementById('container-recipes');
     const recipes = document.getElementById('recipes');
+
     const banner = document.getElementById("banner");
     const marketing_promise = document.getElementById("marketing-promise");
+    var container_recipes_css = container_recipes.classList;
     var recipe_html = recipes.innerHTML;
     var banner_class = banner.classList;
     var banner_html = banner.innerHTML;
@@ -93,19 +95,23 @@
         },
         function searchDone(err, content) {
           recipes.innerHTML = "";
-          marketing_promise.innerHTML = "<br><br><br><br>";
+          marketing_promise.innerHTML = "<br><br>";
           banner.classList.remove("banner");
           banner.classList.add("banner-search");
+          container_recipes.classList.remove("container-recipes");
+          container_recipes.classList.toggle("container-recipes-search");
           if (!searchbar.value == "") {
             content.hits.forEach((hit) => {
               recipes.insertAdjacentHTML("beforeend", `
-                <div class="col-xs-12 col-sm-6 col-md-4">
-                  <a href="/recipes/${hit.objectID}">
-                    <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('${hit.picture.picture.url}')">
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                  <div class="card-container">
+                    <a href="/recipes/${hit.objectID}">
+                      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('${hit.picture.picture.url}')">
+                      </div>
+                    </a>
+                    <div class="link-box">
+                      <a href="/recipes/${hit.objectID}">${hit.name}</a>
                     </div>
-                  </a>
-                  <div class="link-box">
-                    <a href="/recipes/${hit.objectID}">${hit.name}</a>
                   </div>
                 </div>
               `)
@@ -114,6 +120,8 @@
             recipes.insertAdjacentHTML("beforeend", `${recipe_html}`);
             banner.classList.remove('banner-search');
             banner.classList.add("banner");
+            container_recipes.classList.remove("container-recipes-search");
+            container_recipes.classList.add("container-recipes");
             marketing_promise.innerHTML = marketing_promise_html;
           }
         }
