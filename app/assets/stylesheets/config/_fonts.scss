@@ -3,7 +3,18 @@
 
 // Define fonts for body and headers
 $body-font: "Droid Sans", sans-serif;
-$headers-font: "Work Sans", sans-serif;
+$headers-font: "Raleway", sans-serif;
+
+
+h1,h2 {
+  font-family: "Raleway", sans-serif !important;
+}
+
+
+h3,h4 {
+  font-family: 'Roboto', sans-serif;
+
+}
 
 // To use a font file (.woff) uncomment following lines
 // @font-face {
