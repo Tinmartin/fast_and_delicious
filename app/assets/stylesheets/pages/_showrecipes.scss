@@ -30,7 +30,7 @@
     padding-top: 0;
     overflow: hidden;
     text-align: center;
-    background-color: white;
+    background-color: #F4F4F4;
     height: 73vh;
 }
 
@@ -71,6 +71,19 @@
 .recipe-info-content{
   margin-top: 20px !important;
 }
+.cardoue{
+  height: 300px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  background-size: cover !important;
+  background-position: center;
+  color: white;
+  position: relative;
+  margin-bottom: 50px;
+  border-radius: 3px;
+
+
+}
+
 
 
 .ingredient-container{
@@ -95,6 +108,9 @@
 
 
 .dose-container{ padding-top:4px;
+  background-color: #EBFFFA;
+  padding-left:4px;
+  padding-right:4px;
 }
 
 .dose-container .dose-description{
@@ -102,18 +118,17 @@
   line-height:2.4;
 }
 .dose-description {
-  background-color: #d9ffc3;
 }
 
 .picture-ingredient{
   height: 50%;
   width: 100%;
   margin: auto;
+  border:solid #EBFFFA 3px;
 }
 
 .ingredient-name p {
   margin: 0 0px -5px;
-  background-color: #d9ffc3;
     font-weight:bold;
     font-size:10px;
 
@@ -138,17 +153,20 @@
 }
 
 .recipe-description {
-  margin-bottom: 300px;
-  margin-right:20px;
-  margin-left:20px;
+  margin-bottom: 60px;
+
 }
 
 
 .container-fluid.containerdescription  {
   padding:50px;
+
 }
 .recipe-description p {
   font-size: 13px;
+  line-height:2.4;
+  padding-left:36px;
+  padding-right:36px;
 }
 
 .containerreview{
@@ -183,8 +201,8 @@
 }
 
 
-.recipe-title h3 {
-  font-size: 23px;
+.recipe-title  h2{
+  color:#434343;
 }
 
 .infos {
@@ -197,6 +215,7 @@
   /* text-align: left; */
   margin-top: 50px;
   margin-bottom: 15px;
+  color:#434343;
 }
 
 
@@ -206,8 +225,16 @@
   align-items:center;
 
 
+.fa .fa-clock-o b {
+  color:#434343;
+}
 
+}
 
+.flexi2{
+display:flex;
+  align-items:center;
+  flex-direction:column;
 }
 
 
@@ -237,10 +264,12 @@ hr {
 
 }
 
-
-.recipe-title.h2{
-  margin-top:0px!important;
-  padding-bottom:30px!important;
+.infos.container5{
+   padding-left: 15px;
+  padding-right:15px;
+}
+.infos{
+  margin-top:60px!important;
 }
 
 .form-inline .form-control {
@@ -255,6 +284,11 @@ font-family: "Raleway", sans-serif !important;
 font-weight:bolder;
 }
 
+.cooking_time {
+  margin-top:70px!important;
+
+
+}
 
 .breadcrumb{
   padding:0px;
