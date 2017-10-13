@@ -325,8 +325,7 @@ a.pinned-item.colorblue {
 // form-control
 
 .kickass_field:hover{
-opacity: 0.9;
-color:#FF314D;
+color:#ee5953;
     text-decoration: none;
     text-align: center;
     text-justify:center;
@@ -359,7 +358,6 @@ body .kickass_field lable {
   top: 50px;
   text-align: left;
   color: #F65252;
-  font-weight: 700;
   font-family: "Lato", sans-serif;
   pointer-events: none;
   -webkit-transition: all .2s .3s;
@@ -370,7 +368,6 @@ body .kickass_field lable span {
   color: #9f9fb5;
   clear: left;
   opacity: 0;
-  font-weight: 400;
   line-height:3;
   margin-bottom:10px;
   display: block;
@@ -397,7 +394,6 @@ body .kickass_field lable:after {
 body .kickass_field input {
   border: none;
   color: #6E738A;
-  font-weight: 400;
   padding: 40px 0px 10px 0px;
   background: transparent;
   letter-spacing: 1px;
@@ -451,7 +447,7 @@ body fieldset:valid .button {
 }
 body fieldset:valid .button:hover {
   opacity: 1;
-  background: #CD3C3C;
+  background: #ee5953;
 }
  .button {
   width: 280px;
@@ -462,7 +458,7 @@ body fieldset:valid .button:hover {
   border: none;
   font-family: "Lato", sans-serif;
   padding: 20px;
-  background-color: #f65252;
+  background-color: #ee5953;
   color: white;
   outline: none;
   margin-top: 15px;
