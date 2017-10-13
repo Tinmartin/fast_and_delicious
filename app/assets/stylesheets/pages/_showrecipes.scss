@@ -76,6 +76,12 @@
 .ingredient-container{
   width : 90%;
   margin: auto;
+  display: flex;
+  justify-content: space-between;
+  .test-in {
+    flex: 1 1 100%;
+    max-width: 150px;
+  }
 }
 .card-ingredients {
   height: 200px;
@@ -188,8 +194,18 @@
 }
 
 .select-nbr {
-  text-align: left;
+  /* text-align: left; */
   margin-top: 50px;
-  margin-left: 19px;
   margin-bottom: 15px;
+}
+
+
+.flexi{
+  display:flex;
+  justify-content: center;
+  align-items:center;
+
+
+
+
 }

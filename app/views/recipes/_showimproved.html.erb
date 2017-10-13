@@ -28,7 +28,9 @@
 
 
   </div>
+
   <div class="col-xs-12 col-lg-9">
+
     <div class="kardo favorite-section">
 
       <div class="row">
@@ -36,33 +38,18 @@
         <a class="pinned-item btn-special colorblue" href="#seereview"> See the reviews ! </a>
 
 
-        <div class="number-person-eat col-xs-12 ">
-          <form class="form-inline select-nbr">
-            <label class="col-sm-2 control-label"> </label>
-            <%= "I want to make this recipe for  " %><select class="form-control" id='count'>
-            <option value='1'>1</option>
-            <option value='2'>2</option>
-            <option value='3'>3</option>
-            <option value='4'>4</option>
-            <option value='5'>5</option>
-            <option value='6'>6</option>
-            <option value='7'>7</option>
-            <option value='8'>8</option>
-          </select><%="    "%> <i class="fa fa-user" aria-hidden="true"> </i>
-        </form>
-      </div>
           <div class='row'>
       <div class="recipe-info-content">
 
         <div class="ingredient-container">
 
             <% @recipe.doses.each do |dose| %>
-            <div class="col-xs-12 col-lg-2">
+            <div class="test-in">
 
 
             <div class="card-ingredients">
               <div class="picture-ingredient" style="background-size: cover; background-repeat: no-repeat; background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('<%= if dose.ingredient.picture.url == nil
-                image_path('https://placeholdit.co//i/185x185?')
+                image_path('http://res.cloudinary.com/dgmpokhth/image/upload/v1507388190/nlrttkdtprmstqo5rvda.jpg')
               else
                 cl_image_path(dose.ingredient.picture.url)
               end
@@ -89,7 +76,30 @@
         </div>
           <%end%>
         </div>
+      </div>
 
+    </div>
+
+
+    <div class="row">
+
+    <div class=" col-xs-12">
+      <div class="number-person-eat">
+        <form class="form-inline select-nbr">
+          <label class="control-label"></label>
+          <%="I want to make this recipe for" %><select class="form-control" id='count'>
+          <option value='1'>1</option>
+          <option value='2'>2</option>
+          <option value='3'>3</option>
+          <option value='4'>4</option>
+          <option value='5'>5</option>
+          <option value='6'>6</option>
+          <option value='7'>7</option>
+          <option value='8'>8</option>
+        </select><%="    "%> <i class="fa fa-user hidden-xs" aria-hidden="true"> </i>
+      </form>
+    </div>
+    </div>
     </div>
 <div class="container-fluid containerdescription">
 <div class="row">
