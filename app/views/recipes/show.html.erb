@@ -48,7 +48,7 @@
       <div class="ingredient-container">
         <div class='row'>
 
-          <% @recipe.doses.each do |dose| %>
+          <% @recipe.doses.each_with_index do |dose, index| %>
 
             <div class="card-ingredients col-xs-6 col-sm-4 col-md-3 col-lg-2">
               <div class="picture-ingredient" style="background-size: cover; background-repeat: no-repeat; background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('<%= if dose.ingredient.picture.url == nil
@@ -64,7 +64,7 @@
                   <p><%= dose.ingredient.name %></p>
                 </div>
                 <div class="dose-description">
-                  <span class='qty'>
+                  <span id='qty <%=index%>'>
                     <%= dose.quantity %>
                   </span>
                   <%= ' ' + dose.unit if dose.unit %>
@@ -107,14 +107,16 @@
 
 <%= content_for :after_js do %>
 <script>
-
   $(document).ready(function() {
     $('.select-nbr').change(function() {
       var multiplier = parseInt($('#count').val());
-      $('.qty').each(function() {
-        var qty = parseInt($(this).parent().siblings('.initial-qty').text());
-        $(this).html( qty * multiplier);
-      });
+      <% @recipe.doses.each_with_index do |dose, index| %>
+        <% if dose.ingredient.can_change %>
+          var qty = <%= dose.quantity %>
+          var result = document.getElementById('qty <%=index%>')
+          result.innerHTML = qty * multiplier
+        <% end %>
+      <% end%>
     });
   });
 </script>
