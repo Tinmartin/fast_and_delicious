@@ -147,7 +147,6 @@
         lastQuery = query;
         index_ingredient.search(lastQuery, { hitsPerPage: 5 })
           .then(function searchSuccess(content) {
-            // console.log(content.hits)
             if (content.query === lastQuery) {
               callback(content.hits);
             }
@@ -159,12 +158,22 @@
       // #5 - Template used to display each result obtained by the Algolia API
       template: function (hit) {
         // Returns the highlighted version of the name attribute
-        return hit._highlightResult.name.value;
+        // if (!searchbar.value == "") {
+          return '<img src="'+ hit.picture.picture.url +'" /></div>' + hit._highlightResult.name.value + '';
+        // }
       },
       // #6 - Template used to display the selected result in the textarea
       replace: function (hit) {
-        return hit.name.trim() + ' ';
-      }
+        var html = '<a class="tag-item" href="">';
+        html += '<div class="picture-wrapper"><img src="'+ hit.picture.picture.url +'" /></div>';
+        html += '<span class="label">' + hit.name + '</span></a>';
+        return html;
+      },
+      // #7 - Special adapter to handle HTMLContentEditable divs
+
+      // adapter: $.fn.textcomplete.HTMLContentEditable,
+      // footer: '<div style="text-align: center; display: block; font-size:12px; margin: 5px 0 0 0;">Powered by <a href="http://www.algolia.com"><img src="https://www.algolia.com/assets/algolia128x40.png" style="height: 14px;" /></a></div>'
+
     };
 
     var Textarea = Textcomplete.editors.Textarea;
@@ -172,6 +181,16 @@
     var editor = new Textarea(document.getElementById('aa-search-input'));
     var textcomplete = new Textcomplete(editor);
     textcomplete.register([ingredientsStrategy]);
+
+    // var Textarea = require('textcomplete/lib/textarea');
+
+    // var editor = new Textarea(textareaElement);
+    // var textcomplete = new Textcomplete(editor);
+    // textcomplete.register([ingredientsStrategy]);
+
+
+
+
 
     //initialize Algolia autocomplete on search input (ID selector must match)
 
