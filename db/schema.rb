@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 20171013091608) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text     "quote"
+    t.string   "quote"
     t.index ["user_id"], name: "index_profiles_on_user_id", using: :btree
   end
 

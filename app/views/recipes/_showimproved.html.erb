@@ -6,7 +6,7 @@
 
         <div class="infoe">
 
-          <div class="card" style="background-size: cover; background-repeat: no-repeat; background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('<%= if @recipe.picture.url == nil
+          <div class="cardoue" style="background-size: cover; background-repeat: no-repeat; background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('<%= if @recipe.picture.url == nil
             image_path('https://placeholdit.co//i/500x500?', class: "picture-recipe")
           else
             cl_image_path @recipe.picture.url
@@ -122,12 +122,10 @@
 
 </div>
 </div>
-<div class="container-fluid containerdescription">
-  <div class="row">
-    <div class="col-xs-12 col-lg-12">
-      <div class="infos ">
+    <div class="col-xs-12 col-lg-12 ">
+      <div class="infos container5" >
         <div class="cooking-time">
-          <h4><i class="fa fa-clock-o" aria-hidden="true"></i> Cooking : <%= @recipe.cooking_time %></h4>
+          <h4><i class="fa fa-clock-o" aria-hidden="true"></i><b> Cooking : <%= @recipe.cooking_time %></b></h4>
         </div>
         <div class="preparation-time">
           <h4><%= if @recipe.preparation_time == nil
@@ -137,25 +135,22 @@
           %></h4>
         </div>
       </div>
-    </div>
 
-    <div class="col-xs-12 col-lg-12 ">
 
       <div class="recipe-description text-justify" >
         <p><%= @recipe.description %></p>
       </div>
-    </div>
-  </div>
+      </div>
 
 
 
 
-</div>
-</div>
+
+
 
 <%= render "recipes/reviews" %>
 
-
+</div>
 </div>
 </div>
 </div>

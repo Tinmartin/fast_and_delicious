@@ -22,8 +22,8 @@ padding-bottom: 30px;
 
 .pinned-item {
   position:absolute;
- right: 10px;
- top:10px;
+ right: 30px;
+ top:45px;
 }
 
 
@@ -31,6 +31,8 @@ a.pinned-item.colorblue {
   padding:10px;
   font-size:13px;
   color:white;
+  border-radius:20px;
+
   &:hover{
     opacity: 0.8;
     text-decoration: none;
@@ -315,4 +317,149 @@ a.pinned-item.colorblue {
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
     justify-content: space-between;
+}
+
+
+
+
+// form-control
+
+.kickass_field:hover{
+color:#ee5953;
+    text-decoration: none;
+    text-align: center;
+    text-justify:center;
+    transition: all 0.1s ease;
+      font-weight:bolder;
+
+
+
+
+}
+
+
+body .kickass_field {
+  margin: auto;
+  position: relative;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  height: 100px;
+  right: 0;
+  width: 280px;
+}
+body .kickass_field lable {
+  font-size: 14px;
+  position: absolute;
+  height: 100px;
+  overflow: hidden;
+  left: 0;
+  width: 100%;
+  top: 50px;
+  text-align: left;
+  color: #F65252;
+  font-family: "Lato", sans-serif;
+  pointer-events: none;
+  -webkit-transition: all .2s .3s;
+  transition: all .2s .3s;
+}
+body .kickass_field lable span {
+  font-size: 10px;
+  color: #9f9fb5;
+  clear: left;
+  opacity: 0;
+  line-height:3;
+  margin-bottom:10px;
+  display: block;
+  -webkit-transition: opacity .5s .0s;
+  transition: opacity .5s .0s;
+}
+
+.kickass_field{
+}
+body .kickass_field lable:after {
+  width: 4px;
+  content: '';
+  height: 8px;
+  border-bottom: 2px solid #f65252;
+  border-right: 2px solid #f65252;
+  -webkit-transform: translateX(-10px) rotate(45deg);
+          transform: translateX(-10px) rotate(45deg);
+  position: absolute;
+  left: 120%;
+  top: 30px;
+  -webkit-transition: all .2s;
+  transition: all .2s;
+}
+body .kickass_field input {
+  border: none;
+  color: #6E738A;
+  padding: 40px 0px 10px 0px;
+  background: transparent;
+  letter-spacing: 1px;
+  outline: none;
+  font-family: "Lato", sans-serif;
+  height: 30px;
+  width: 280px;
+  -webkit-transition-property: -webkit-transform;
+  transition-property: -webkit-transform;
+  transition-property: transform;
+  transition-property: transform, -webkit-transform;
+  font-size: 14px;
+  box-shadow: 0px 2px #f65252;
+}
+body .kickass_field input:focus + lable {
+  color: #F65252;
+  font-size: 10px;
+  top: 10px;
+  -webkit-transition: all .2s .0s;
+  transition: all .2s .0s;
+}
+body .kickass_field input:focus + lable span {
+  opacity: 1;
+  -webkit-transition: opacity .5s .3s;
+  transition: opacity .5s .3s;
+}
+body .kickass_field input:valid + lable {
+  font-size: 10px;
+  top: 10px;
+  color: #f65252;
+}
+body .kickass_field input[type="password"]:valid + lable span {
+  color: #99B62F;
+}
+body .kickass_field input:valid + lable span {
+  opacity: 1;
+  -webkit-transition: opacity .3s 0s;
+  transition: opacity .3s 0s;
+}
+body .kickass_field input:valid + lable::after {
+  display: block;
+  left: 100%;
+}
+
+
+.simple_form.edit_profile{
+  margin: 40px;
+}
+body fieldset:valid .button {
+  opacity: 1;
+}
+body fieldset:valid .button:hover {
+  opacity: 1;
+  background: #ee5953;
+}
+ .button {
+  width: 280px;
+  opacity: .5;
+  cursor: pointer;
+  -webkit-transition: all .4s;
+  transition: all .4s;
+  border: none;
+  font-family: "Lato", sans-serif;
+  padding: 20px;
+  background-color: #ee5953;
+  color: white;
+  outline: none;
+  margin-top: 15px;
 }
