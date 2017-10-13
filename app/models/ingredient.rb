@@ -1,6 +1,6 @@
 class Ingredient < ApplicationRecord
   include AlgoliaSearch
-  
+
   has_many :doses
   has_many :recipes, through: :doses
 
@@ -14,6 +14,7 @@ class Ingredient < ApplicationRecord
 
   algoliasearch per_environment: true do
     attribute :name
+    attribute :picture
     add_attribute :ingredient_recipes
     searchableAttributes  ["name"]
   end
