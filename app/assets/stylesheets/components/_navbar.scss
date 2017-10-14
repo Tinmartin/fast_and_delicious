@@ -114,3 +114,11 @@
 .navbar-wagon .form-inline {
   margin-top: 50px;
 }
+
+a .fa {
+  color: white;
+  &:hover{
+    color: black;
+    transition: all 1s ease;
+  }
+}
