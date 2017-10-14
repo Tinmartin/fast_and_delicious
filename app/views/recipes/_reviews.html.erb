@@ -1,127 +1,135 @@
 
+</br>
+
+
+<div class="col-xs-8 col-xs-offset-2 col-lg-6 col-lg-offset-3" >
+
+  <h3 class="grey">
+    <b>  <% arr = [] %>
+      <%if @recipe.reviews.size != 0 %>
+      <% @recipe.reviews.each do |review| %>
+      <% arr << review.rating %>
+      <% end %>
+      <% average = arr.inject{ |sum, el| sum + el }.to_f / arr.size %>
+      <%end%>
+
+      Average rating on this recipe :
+
+      <% average.round(0).times do %>
+      <i class="fa fa-star"></i>
+      <%end%>
+
+      <% (5-average.round(0)).times do %>
+      <i class="fa fa-star-o"></i>
+      <%end%>
+    </br>
+  </br>
+</br>
+
+</b>
+</h3>
+<br>
+</div>
 
 
 
+<div class="col-xs-8 col-xs-offset-2 col-lg-6 col-lg-offset-3 ">
+
+  <%= simple_form_for [@recipe, @review] do |f| %>
+
+  <div class="input-group", id="seereview">
+    <span class="input-group-addon addon2"><i class="fa fa-pencil-square-o"></i></span>
+    <%= f.input :content, placeholder: 'write your review',label:false, class: "form-control"  %>
+
+
+  </div>
+</br>
+<div class="input-group">
+  <span class="input-group-addon addon2"><i class="fa fa-star-half-o "></i></span>
+
+  <%= f.input :rating, collection: 1..5,placeholder: 'rate this recipe', label:false,class: "form-control select"  %>
+  <span class="input-group-addon addon2"><i class=""></i></span>
+
+</div>
+</br>
+
+<div class="row">
+
+  <div class="col-xs-8 col-xs-offset-2 col-lg-4 col-lg-offset-4">
+    <%= f.submit "add a review", class: "btn btn-lg btn-primary btn-block btn-special ecriture colorblue" %>
+  </div>
+</div>
+
+
+<% end %>
+<br>
+</div>
 
 
 
+<div class="row">
+  <div class="col-xs-8 col-xs-offset-2 col-lg-8 col-lg-offset-2 ">
+    <div class ="row">
+      <br>
 
 
-      <div class="col-xs-12 col-lg-12" >
+      <% @recipe.reviews.reverse.each do |review| %>
+      <% if review.picture.url == nil%>
 
-        <h3 class="grey">
-          <b>  <% arr = [] %>
-            <%if @recipe.reviews.size != 0 %>
-              <% @recipe.reviews.each do |review| %>
-              <% arr << review.rating %>
-              <% end %>
-              <% average = arr.inject{ |sum, el| sum + el }.to_f / arr.size %>
-              Average rating on this recipe: <%= average.round(1) %> / 5
-            <%end%>
-          </b>
-          </h3>
+      <ul class="message-box" id="content">
+        <div class ="col-xs-3 col-lg-2">
+          <div class ="user-box">
+            <% avatar_url = review.user.profile.picture.url || "http://placehold.it/30x30" %>
+            <%= image_tag avatar_url, class: "avatar" %>
+            <p class="user-info"> <strong><%= review.user.profile.user_name %> </strong> <br> rate : <%= review.rating  %> / 5  </p>
+          </div>
+        </div>
+        <div class ="col-xs-8 col-lg-7">
+          <p class="patate"> <%=review.content %> </p>
+        </div>
         <br>
-      </div>
-
-
-
-    <div class="col-xs-12 col-lg-6 col-lg-offset-3 ">
-
-        <%= simple_form_for [@recipe, @review] do |f| %>
-
-        <div class="input-group", id="seereview">
-        <span class="input-group-addon addon2"><i class="fa fa-pencil-square-o"></i></span>
-          <%= f.input :content, placeholder: 'write your review',label:false, class: "form-control"  %>
-
-
-          </div>
-          </br>
-          <div class="input-group">
-            <span class="input-group-addon addon2"><i class="fa fa-star-half-o "></i></span>
-
-          <%= f.input :rating, collection: 1..5,placeholder: 'rate this recipe', label:false,class: "form-control select"  %>
-          <span class="input-group-addon addon2"><i class=""></i></span>
-
-          </div>
-          </br>
-
-          <div class="row">
-
-          <div class="col-xs-4 col-xs-offset-4 ">
-          <%= f.submit "add a review", class: "btn btn-lg btn-primary btn-block btn-special ecriture colorblue" %>
+      </ul>
+      <p class="accepted">
+        <strong>
+        </strong>
+        <br>
+      </p>
+      <%else%>
+      <ul class="message-box" id="content">
+        <div class ="col-xs-3 col-lg-4">
+          <div class ="user-box">
+            <% avatar_url = review.user.profile.picture.url || "http://placehold.it/30x30" %>
+            <%= image_tag avatar_url, class: "avatar" %>
+            <p class="user-info">
+              <strong><%= review.user.profile.user_name %> </strong> <br> rate : <%= review.rating  %> / 5
+            </p>
           </div>
         </div>
 
-
-        <% end %>
-        <br>
-      </div>
-
-
-
-      <div class="row">
-        <div class="col-xs-10 col-lg-8 col-lg-offset-2 ">
-          <div class ="row">
-          <br>
-
-
-            <% @recipe.reviews.reverse.each do |review| %>
-              <% if review.picture.url == nil%>
-
-                <ul class="message-box" id="content">
-                  <div class ="col-xs-3 col-lg-2">
-                    <div class ="user-box">
-                      <% avatar_url = review.user.profile.picture.url || "http://placehold.it/30x30" %>
-                      <%= image_tag avatar_url, class: "avatar" %>
-                      <p class="user-info"> <strong><%= review.user.profile.user_name %> </strong> <br> rate : <%= review.rating  %> / 5  </p>
-                    </div>
-                  </div>
-                  <div class ="col-xs-8 col-lg-7">
-                    <p class="patate"> <%=review.content %> </p>
-                  </div>
-                  <br>
-                </ul>
-                <p class="accepted">
-                  <strong>
-                  </strong>
-                  <br>
-                </p>
-              <%else%>
-                <ul class="message-box" id="content">
-                  <div class ="col-xs-3 col-lg-4">
-                    <div class ="user-box">
-                      <% avatar_url = review.user.profile.picture.url || "http://placehold.it/30x30" %>
-                      <%= image_tag avatar_url, class: "avatar" %>
-                      <p class="user-info">
-                        <strong><%= review.user.profile.user_name %> </strong> <br> rate : <%= review.rating  %> / 5
-                      </p>
-                    </div>
-                  </div>
-
-                  <div class ="col-xs-5 col-lg-5">
-                    <p class="patate">
-                      <%=review.content %>
-                    </p>
-                  </div>
-                  <div class ="col-xs-3">
-                    <div class= "img">
-                      <%= cl_image_tag(review.picture.url, :width=>200, :height=>200, :gravity=>"south_east", :crop=>"crop", class: "thumbnail") %>
-                    </div>
-                  </div>
-                  <br>
-                </ul>
-                <p class="accepted">
-                  <strong><%= link_to "Delete", review_path(review), method: :delete, data: { confirm: "Are you sure?" }%>
-                  </strong>
-                  <br>
-                </p>
-
-              <% end %>
-            <% end %>
-
+        <div class ="col-xs-5 col-lg-5">
+          <p class="patate">
+            <%=review.content %>
+          </p>
+        </div>
+        <div class ="col-xs-3">
+          <div class= "img">
+            <%= cl_image_tag(review.picture.url, :width=>200, :height=>200, :gravity=>"south_east", :crop=>"crop", class: "thumbnail") %>
           </div>
         </div>
-      </div>
+        <br>
+      </ul>
+      <p class="accepted">
+        <strong><%= link_to "Delete", review_path(review), method: :delete, data: { confirm: "Are you sure?" }%>
+        </strong>
+        <br>
+      </p>
+
+      <% end %>
+      <% end %>
+
+    </div>
+  </div>
+</div>
 
 </br>
 
