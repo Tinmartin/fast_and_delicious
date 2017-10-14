@@ -57,7 +57,7 @@
 
         <div class="ingredient-container">
 
-          <% @recipe.doses.each_with_index do |dose, index| %>
+          <% @recipe.doses.each do |dose| %>
 
           <div class="test-in">
 
@@ -78,7 +78,7 @@
                 <p> <%= dose.ingredient.name.capitalize %></p>
               </div>
               <div class="dose-description">
-                <span id='qty <%=index%>'>
+                <span class='qty'>
                   <%= dose.quantity %>
                 </span>
                 <%= ' ' + dose.unit if dose.unit %>
@@ -137,11 +137,10 @@
       </div>
 
 
-  <div class="recipe-description text-justify" >
-    <p><%= @recipe.description %></p>
-  </div>
-</div>
-
+      <div class="recipe-description text-justify" >
+        <p><%= @recipe.description %></p>
+      </div>
+      </div>
 
 
 
@@ -164,19 +163,12 @@
   $(document).ready(function() {
     $('.select-nbr').change(function() {
       var multiplier = parseInt($('#count').val());
-      <% @recipe.doses.each_with_index do |dose, index| %>
-        <% if dose.ingredient.can_change %>
-         var qty = <%= dose.quantity %>
-         var result = document.getElementById('qty <%=index%>')
-         result.innerHTML = qty * multiplier
-       <% end %>
-     <% end%>
+      $('.qty').each(function() {
+        var qty = parseInt($(this).parent().siblings('.initial-qty').text());
+        $(this).html( qty * multiplier);
+      });
     });
   });
-
 </script>
 <% end %>
-
-
-
 
