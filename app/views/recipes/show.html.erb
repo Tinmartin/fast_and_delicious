@@ -1,129 +1,177 @@
-<!-- <div class="container">
-      <div class="main-container text-center">
-        <div class="recipe-main-content">
-          <div class="recipe-title ">
-            <h3><%= @recipe.name.capitalize %></h3>
-          </div>
-          <div class="picture-recipe" style="background-size: cover; background-repeat: no-repeat; background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('<%= if @recipe.picture.url == nil
-              image_path('https://placeholdit.co//i/500x500?', class: "picture-recipe")
-            else
-              cl_image_path @recipe.picture.url
-            end
-            %>')">
+<div class="containerrr">
+  <div class="row">
+    <div class="col-xs-12 col-lg-3 stick">
+      <div class="kardo hoverkard">
+
+
+        <div class="infoe">
+
+          <div class="cardoue" style="background-size: cover; background-repeat: no-repeat; background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('<%= if @recipe.picture.url == nil
+            image_path('https://placeholdit.co//i/500x500?', class: "picture-recipe")
+          else
+            cl_image_path @recipe.picture.url
+          end
+          %>')">
         </div>
-          <div>
-            <p class="share-recipe">
-              <strong>SHARE THIS RECIPE </strong>
-            </p>
-            <%= social_share_button_tag(@recipe.name, 'data-twitter-title' => "Yum-yum, this recipe seems delicious !! #{@recipe.name}", 'data-facebook-title' => "Yum-yum, this recipe seems delicious !! #{@recipe.name}" )%>
-          </div>
-      </div>
-
-
-
-
-      <div class="recipe-info-and-review-container">
-        <div class="row">
-
-          <a class="pinned-item btn-special colorblue" href="#seereview"> See the reviews ! </a>
-
-
-          <div class="number-person-eat col-xs-12 ">
-            <form class="form-inline select-nbr">
-              <label class="col-sm-2 control-label"> </label>
-              <%= "I want to make this recipe for  " %><select class="form-control" id='count'>
-              <option value='1'>1</option>
-              <option value='2'>2</option>
-              <option value='3'>3</option>
-              <option value='4'>4</option>
-              <option value='5'>5</option>
-              <option value='6'>6</option>
-              <option value='7'>7</option>
-              <option value='8'>8</option>
-            </select><%="    "%> <i class="fa fa-user" aria-hidden="true"> </i>
-          </form>
-        </div>
-
-        <div class="recipe-info-content">
-
-          <div class="ingredient-container">
-            <div class='row'>
-
-              <% @recipe.doses.each do |dose| %>
-
-              <div class="card-ingredients col-xs-6 col-sm-4 col-md-3 col-lg-2">
-                <div class="picture-ingredient" style="background-size: cover; background-repeat: no-repeat; background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('<%= if dose.ingredient.picture.url == nil
-                  image_path('https://placeholdit.co//i/185x185?')
-                else
-                  cl_image_path(dose.ingredient.picture.url)
-                end
-                %>')">
-              </div>
-
-              <div class="dose-container">
-                <div class="ingredient-name">
-                  <p><%= dose.ingredient.name %></p>
-                </div>
-                <div class="dose-description">
-                  <span class='qty'>
-                    <%= dose.quantity %>
-                  </span>
-                  <%= ' ' + dose.unit if dose.unit %>
-                </div>
-                <div class="initial-qty" style='display: none;'>
-                  <%= dose.quantity %>
-                </div>
-              </div>
-            </div>
-            <%end%>
-          </div>
-        </div>
-
-        <div class="infos col-xs-6 col-lg-12">
-          <div class="cooking-time">
-            <h4><i class="fa fa-clock-o" aria-hidden="true"></i> Cooking : <%= @recipe.cooking_time %></h4>
-          </div>
-          <div class="preparation-time">
-            <h4><%= if @recipe.preparation_time == nil
-            else
-              "Preparation: #{@recipe.preparation_time}"
-            end
-            %></h4>
-          </div>
-        </div>
-
-
-        <div class="recipe-description col-xs-12 col-lg-12 text-justify" >
-          <p><%= @recipe.description %></p>
-        </div>
-
-      </div>
-
-      <%= render "recipes/reviews" %>
-
-
+        <div>
+          <p class="share-recipe">
+            <strong>SHARE THIS RECIPE </strong>
+          </p>
+          <%= social_share_button_tag(@recipe.name, 'data-twitter-title' => "Yum-yum, this recipe seems delicious !! #{@recipe.name}", 'data-facebook-title' => "Yum-yum, this recipe seems delicious !! #{@recipe.name}" )%>
         </div>
       </div>
     </div>
+
+
+
+
   </div>
+
+  <div class="col-xs-12 col-lg-9">
+
+    <div class="kardo favorite-section">
+
+      <div class="row">
+
+        <a class="pinned-item btn-special colorblue" href="#seereview"> See the reviews ! </a>
+
+
+        <div class='row'>
+
+          <div class="recipe-info-content">
+
+            <div class="col-xs-12 col-lg-12">
+
+              <div class="recipe-title ">
+                <h2><%= @recipe.name.capitalize %></h2>
+                          </br>
+                           </br>
+
+              </div>
+            </div>
+
+        </br>
+
+
+
+
+        <div class="ingredient-container">
+
+          <% @recipe.doses.each do |dose| %>
+
+          <div class="test-in">
+
+
+            <div class="card-ingredients">
+              <div class="picture-ingredient" style="background-size: cover; background-repeat: no-repeat; background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('<%= if dose.ingredient.picture.url == nil
+                image_path('http://res.cloudinary.com/dgmpokhth/image/upload/v1507388190/nlrttkdtprmstqo5rvda.jpg')
+              else
+                cl_image_path(dose.ingredient.picture.url)
+              end
+              %>')">
+            </div>
+
+            <div class="dose-container">
+
+              <div class="ingredient-name">
+
+                <p> <%= dose.ingredient.name.capitalize %></p>
+              </div>
+              <div class="dose-description">
+                <span class='qty'>
+                  <%= dose.quantity %>
+                </span>
+                <%= ' ' + dose.unit if dose.unit %>
+              </div>
+              <div class="initial-qty" style='display: none;'>
+                <%= dose.quantity %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <%end%>
+      </div>
+    </div>
+
+  </div>
+</br>
+
+<div class="row">
+
+  <div class=" col-xs-12">
+    <hr class="hr-danger hidden-xs" />
+
+    <div class="number-person-eat">
+      <form class="form-inline select-nbr">
+        <label class="control-label"></label>
+        <%="I want to make this recipe for  :" %><select class="form-control" id='count'>
+        <option value='1'>1</option>
+        <option value='2'>2</option>
+        <option value='3'>3</option>
+        <option value='4'>4</option>
+        <option value='5'>5</option>
+        <option value='6'>6</option>
+        <option value='7'>7</option>
+        <option value='8'>8</option>
+      </select><%="    "%> <btn  class="btn btn-danger btn-user hidden-xs"><i class="fa fa-user hidden-xs" > </i></btn>
+    </form>
+  </div>
+  <hr class="hr-danger hidden-xs" />
+
+</br>
+
+</div>
+</div>
+    <div class="col-xs-12 col-lg-12 ">
+      <div class="infos container5" >
+        <div class="cooking-time">
+          <h4><i class="fa fa-clock-o" aria-hidden="true"></i><b> Cooking : <%= @recipe.cooking_time %></b></h4>
+        </div>
+        <div class="preparation-time">
+          <h4><%= if @recipe.preparation_time == nil
+          else
+            "Preparation: #{@recipe.preparation_time}"
+          end
+          %></h4>
+        </div>
+      </div>
+
+
+      <div class="recipe-description text-justify" >
+        <p><%= @recipe.description %></p>
+      </div>
+      </div>
+
+
+
+
+
+
+
+<%= render "recipes/reviews" %>
+
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 
 <%= content_for :after_js do %>
 <script>
 
   $(document).ready(function() {
-    $('.select-nbr').change(function() {
-      var multiplier = parseInt($('#count').val());
-      $('.qty').each(function() {
-        var qty = parseInt($(this).parent().siblings('.initial-qty').text());
-        $(this).html( qty * multiplier);
-      });
-    });
-  });
+    <% @recipe.doses.each_with_index do |dose, index| %>
+      <% if dose.ingredient.can_change %>
+       var qty = <%= dose.quantity %>
+       var result = document.getElementById('qty <%=index%>')
+       result.innerHTML = qty * multiplier
+     <% end %>
+   <% end%>
+});
 </script>
 <% end %>
- -->
 
-    <%= render "recipes/showimproved" %>
 
-<!--  -->
+
+
