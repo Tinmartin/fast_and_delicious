@@ -12,16 +12,14 @@
             <%if @profile.first_name%>
             <div class="title"> Bienvenue, <%="#{@profile.first_name}"%>  !</div>
             <%end%>
+           <div class="desc"> email : <%=current_user.email %></div>
+
             <%if @profile.age%>
-            <div class="desc"><%= "#{@profile.age} ans"%></div>
-            <%end%>
-            <%if @profile.first_name && @profile.last_name%>
-            <div class="desc"><%= "#{@profile.first_name} #{@profile.last_name}"%></div>
+            <div class="desc"><%= "age : #{@profile.age} y.o"%></div>
             <%end%>
             <%if @profile.quote%>
-            <div class="desc"> Your favorite ingredient is the <%=@profile.quote%></div>
+            <div class="desc"> favorite ingredient : the <%=@profile.quote%></div>
             <%end%>
-            <div class="desc"> email : <%=current_user.email %></div>
             <br>
             <b><%= link_to "customize your profile !", edit_profile_path(@profile), class: "btn-danger btn-goback"%></b>
           </div>
