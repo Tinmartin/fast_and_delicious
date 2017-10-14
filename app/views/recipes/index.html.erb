@@ -84,6 +84,7 @@
   var client = algoliasearch("AMLNOKWPBJ", "5b8cb611c7a8bc80b876e4f7abbb1517");
   var index_recipe = client.initIndex('Recipe_production');
   var index_ingredient = client.initIndex("Ingredient_production");
+  var current_user = <% current_user %>
 
   const searchbar = document.getElementById("aa-search-input");
   const recipes = document.getElementById('recipes');
@@ -95,6 +96,12 @@
   var banner_html = banner.innerHTML;
   var marketing_promise_html = marketing_promise.innerHTML;
 
+  function capitalize(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+  function downcase(string) {
+    return string.charAt(0).toLowerCase() + string.slice(1);
+  }
 
 
 
@@ -113,6 +120,7 @@
 
         if (!searchbar.textContent == "") {
           content.hits.forEach((hit) => {
+
             recipes.insertAdjacentHTML("beforeend", `
               <div class="col-xs-12 col-sm-3 col-md-3">
                 <div class="card-container">
@@ -143,7 +151,7 @@
   $('#aa-search-input').textcomplete([
     {
       // #3 - Regular expression used to trigger the autocomplete dropdown
-      match: /(^|\s)(\w*(?:\s*\w*))$/,
+      match: /(^|\s)[^\s](\w*(?:\s*\w*))$/,
       // #4 - Function called at every new keystroke
       search: function(query, callback) {
         lastQuery = query;
@@ -161,14 +169,15 @@
       template: function (hit) {
         // Returns the highlighted version of the name attribute
         // if (!searchbar.value == "") {
-          return '<img src="'+ hit.picture.picture.url +'" /></div>' + hit._highlightResult.name.value + '';
+          return '<img src="'+ hit.picture.picture.url +'" /></div>' + downcase(hit._highlightResult.name.value) + '';
         // }
       },
       // #6 - Template used to display the selected result in the textarea
       replace: function (hit) {
         var html = '<a class="tag-item" href="">';
         html += '<div class="picture-wrapper"><img src="'+ hit.picture.picture.url +'" /></div>';
-        html += '<span class="label">' + hit.name + '</span></a>';
+        html += '<span class="label">' + capitalize(hit.name) + '</span></a>';
+        html += " "
         return html;
       },
 
