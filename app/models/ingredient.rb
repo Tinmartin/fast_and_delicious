@@ -9,7 +9,7 @@ class Ingredient < ApplicationRecord
   # validates :name, presence: true
   # validates :picture, presence: true
 
-  # validates :can_change, presence: true
+  validates :can_change, presence: true
 
 
   mount_uploader :picture, PhotoUploader

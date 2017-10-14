@@ -1,5 +1,4 @@
 
-</br>
 
 
 <div class="col-xs-8 col-xs-offset-2 col-lg-6 col-lg-offset-3" >
@@ -13,8 +12,9 @@
       <% average = arr.inject{ |sum, el| sum + el }.to_f / arr.size %>
       <%end%>
 
-      Average rating on this recipe :
       <%if average %>
+
+      Average rating on this recipe :
 
       <% average.round(0).times do  %>
       <i class="fa fa-star"></i>
@@ -23,7 +23,11 @@
       <% (5-average.round(0)).times do %>
       <i class="fa fa-star-o"></i>
       <%end%>
-      <%end%>
+    <%else%>
+
+  Be the first to add a review !
+
+    <%end%>
 
     </br>
   </br>
