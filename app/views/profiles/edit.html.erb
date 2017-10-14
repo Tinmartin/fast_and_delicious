@@ -1,52 +1,80 @@
-          <div class="container">
-            <div class="row omb_row-sm-offset-3">
-            <div class="col-xs-12 col-sm-6">
-             <h3>update your profile</h3>
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+    <div class="flexi2">
+
+      <fieldset>
+
+        <%= simple_form_for(@profile) do |f| %>
 
 
-          <%= simple_form_for(@profile) do |f| %>
-          <div class="input-group">
-      <span class="input-group-addon"><i class="fa fa-user"></i></span>
-            <%= f.input :picture_cache, as: :hidden, class: "form-control" %> %>
+        <div class='kickass_field'>
+          <span class= "adapt"> First name</span>
+          <%= f.input :first_name , label:false%>
+        </div>
+
+        <div class='kickass_field'>
+            <span class= "adapt">Last name</span>
+          <%= f.input :last_name ,label:false%>
+        </div>
+
+    <div class='kickass_field'>
+       <span class= "adapt">Username</span>
+        <%= f.input :user_name ,label:false%>
       </div>
 
-            <%= f.input :picture %>
-             <%= f.input :first_name %>
-             <%= f.input :last_name %>
-             <%= f.input :user_name %>
-            <%= f.input :age %>
-            <%= f.input :quote %>
+      <div class='kickass_field'>
+         <span class= "adapt">How old are you ?</span>
+           <%= f.input :age,label:false %>
+        </div><b>
 
-            <%= f.submit "Update your profile"%>
-
-          <% end %>
-
-
-
-
-
-
-
-
-        <div class="input-group">
-          <span class="input-group-addon"><i class="fa fa-user"></i></span>
-
-          <%= f.input :email, required: false, placeholder: 'Email',label: false, autofocus: true, class: "form-control" %>
+      <div class='kickass_field'>
+          <span class= "adapt">Favorite ingredient?</span>
+        <%= f.input :quote, label:false %>
         </div>
-        <span class="help-block"></span>
+        <div class="row">
+        <div class="col-xs-12 col-sm-9 col-sm-offset-1">
 
-        <div class="input-group">
-          <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+       <%= f.submit "Update your profile", class: "button"%>
+      <%= f.input :picture %>
+      <%= f.input :picture_cache, as: :hidden, class: "form-control" %>
 
-          <%= f.input :password, required: false, placeholder: 'Password',label: false, class: 'form-control' %>
+      </div>
+    </div>
 
-        </div>
-
-        <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-        <%= f.button :submit, "Log in", class: 'btn btn-lg btn-primary btn-block' %>
-      <% end %>
-
+        <% end %>
+      </fieldset>
+      </div>
     </div>
   </div>
-    <%= render "devise/shared/links" %>
 </div>
+
+
+<!--
+
+<fieldset>
+<div class='kickass_field'>
+<input maxlength='30' required='required'>
+<lable>
+Username
+<span>Your chosen username</span>
+</lable>
+</div>
+<div class='kickass_field'>
+<input maxlength='30' required='required' type='email'>
+<lable>
+Email address
+<span>Your current email address</span>
+</lable>
+</div>
+<div class='kickass_field'>
+<input maxlength='30' pattern='.{6,}' required='required' type='password'>
+<lable>
+Password
+<span>Minimum of 6 characters</span>
+</lable>
+</div>
+<button>Sign up</button>
+</fieldset>
+-->

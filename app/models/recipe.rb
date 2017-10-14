@@ -10,6 +10,16 @@ class Recipe < ApplicationRecord
   validates :name, presence: true
   mount_uploader :picture, PhotoUploader
 
+   algoliasearch per_environment: true do
+    attribute :name
+    attribute :picture
+    attribute :ingredients
+    searchableAttributes ['ingredients']
+  end
+
+  def inline_ingredients
+    ingredients.to_a.map(&:name).join(' ')
+  end
 end
 
 

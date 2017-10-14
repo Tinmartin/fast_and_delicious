@@ -1,45 +1,33 @@
 
 <div class="containerr">
   <div class="row">
-    <div class="col-xs-12 col-lg-3">
-      <div class="kard hoverkard">
-        <div class="kardheader">
-          <% avatar_url = @profile.picture.url || "http://placehold.it/150x150" %>
-          <%= image_tag avatar_url, class: "avatare" %>
-        </div>
+    <div class="col-xs-12 col-lg-3 stick">
+        <div class="kard hoverkard">
+          <div class="kardheader">
+            <% avatar_url = @profile.picture.url || "http://placehold.it/150x150" %>
+            <%= image_tag avatar_url, class: "avatare" %>
+          </div>
 
-        <div class="infoe">
-          <%if @profile.first_name%>
-          <div class="title"> Bienvenue, <%="#{@profile.first_name}"%>  !</div>
-          <%end%>
-          <%if @profile.age%>
-          <div class="desc"><%= "#{@profile.age} ans"%></div>
-          <%end%>
-          <%if @profile.first_name && @profile.last_name%>
-          <div class="desc"><%= "#{@profile.first_name} #{@profile.last_name}"%></div>
-          <%end%>
-          <%if @profile.quote%>
-          <div class="desc"> Your favorite ingredient is the <%=@profile.quote%></div>
-          <%end%>
-          <div class="desc"> email : <%=current_user.email %></div>
-          <br>
-          <b><%= link_to "customize your profile !", edit_profile_path(@profile), class: "btn-danger btn-goback"%></b>
-        </div>
-        <div class="bottom">
-          <a class="btn btn-round btn-primary btn-twitter btn-sm" href="https://twitter.com/webmaniac">
-            <i class="fa fa-twitter"></i>
-          </a>
-          <a class="btn btn-round btn-danger btn-sm" rel="publisher"
-          href="https://plus.google.com/+ahmshahnuralam">
-          <i class="fa fa-google-plus"></i>
-        </a>
-        <a class="btn btn-round btn-primary btn-sm" rel="publisher"
-        href="https://plus.google.com/shahnuralam">
-        <i class="fa fa-facebook"></i>
-      </a>
+          <div class="infoe">
+            <%if @profile.first_name%>
+            <div class="title"> Bienvenue, <%="#{@profile.first_name}"%>  !</div>
+            <%end%>
+            <%if @profile.age%>
+            <div class="desc"><%= "#{@profile.age} ans"%></div>
+            <%end%>
+            <%if @profile.first_name && @profile.last_name%>
+            <div class="desc"><%= "#{@profile.first_name} #{@profile.last_name}"%></div>
+            <%end%>
+            <%if @profile.quote%>
+            <div class="desc"> Your favorite ingredient is the <%=@profile.quote%></div>
+            <%end%>
+            <div class="desc"> email : <%=current_user.email %></div>
+            <br>
+            <b><%= link_to "customize your profile !", edit_profile_path(@profile), class: "btn-danger btn-goback"%></b>
+          </div>
+
+
     </div>
-
-  </div>
 </div>
 <div class="col-xs-12 col-lg-9">
   <div class="kard favorite-section">
@@ -84,12 +72,17 @@
     <% else %>
     <h4><b>You don't have any favorite recipes?  <%= link_to 'Go Back', root_path, class: 'btn-danger btn-goback' %> and pick some as shown below !</b> </h4>
 
-    <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('<%= cl_image_path("GIFF_h3ubwd.gif")%>')">
+        <div class="card-containerbigger">
+    <div class="cardbigger" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('<%= cl_image_path("GIFF_h3ubwd.gif")%>')">
     </div>
-
+</div>
     <% end %>
   </div>
 </div>
 </div>
 </div>
+</div>
+</div>
+</div>
+
 

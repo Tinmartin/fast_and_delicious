@@ -1,14 +1,17 @@
 
 
 .containerr  {
-margin:auto;
-width:100%;
+margin-left: auto;
+margin-right: auto;
+padding-left: 15px;
+padding-right: 15px;
+padding-bottom: 30px;
 
 }
 
 
 .favorite-section {
-  margin-top: 20px;
+  margin-top: 40px;
   text-align:center;
   display:flex;
   flex-direction:column;
@@ -16,27 +19,69 @@ width:100%;
 
 
 }
-.stick {
-    height: 80vh;
-    -webkit-box-flex: 0;
-    -ms-flex: 0 0 500px;
-    flex: 0 0 500px;
-    position: -webkit-sticky !important;
-    position: sticky !important;
-    top: 145px !important;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
+
+
+
+.btn .agrandir{
+  font-size:15px;
+  padding-top:10px;
+  padding-bottom:10px;
+}
+.pinned-item {
+  position:absolute;
+ right: 30px;
+ top:45px;
 }
 
 
+a.pinned-item.colorblue {
+  padding:10px;
+  font-size:13px;
+  color:white;
+  border-radius:20px;
+
+  &:hover{
+    opacity: 0.8;
+    text-decoration: none;
+    text-align: center;
+    text-justify:center;
+  }
+}
+
+.recipe-info-and-review-container{
+ position: relative;
+}
+
+.fa-pencil-square-o{
+  color:#222222;
+}
+.addon2 {
+
+    color: #000000;
+    text-align: center;
+    background-color: white;
+    border-radius: 20px;
+    border:none;
+}
+
+#review_content.form-control{
+
+    border: none !important;
+    height:110%;
+}
+
+#review_rating.form-control {
+  border: none !important;
+  height:110%;
+}
+
+
+.fa-star-half-o{
+  color:#FFAF00;
+}
+.photoreview {
+  margin-top: 8px;
+}
 
 
 .card-gif {
@@ -47,11 +92,10 @@ width:100%;
 
 .btn-goback{
   margin:0;
-  padding:5px;
+  padding:7px;
   font-size:15px;
-  background: #e96443; /* fallback for old browsers */
-  background: -webkit-linear-gradient(to left, #e96443, #904e95); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to left, #e96443, #904e95);
+  background: #FC624D; /* fallback for old browsers */
+
   border-radius:5px;
   font-family: "Work Sans", sans-serif;
 
@@ -61,7 +105,7 @@ width:100%;
   margin-bottom: 30px;
   text-align: center;
   position:absolute;
-  bottom:-13px;
+  bottom:-6px;
   left:0;
   width:100%;
   text-align:center;
@@ -92,7 +136,6 @@ width:100%;
     padding-top: 20px;
     padding-right:0px;
     padding-left:0px;
-    margin: 10px 0 20px 0;
     background-color: white;
     border-top-width: 0;
     border-bottom-width: 2px;
@@ -148,8 +191,8 @@ width:100%;
     display: block;
     margin: 8px 14px 0 14px;
     overflow: hidden;
-    font-size: 12px;
-    line-height: 30px;
+    font-size: 8px;
+    line-height: 20px;
     color: #737373;
     text-overflow: ellipsis;
 }
@@ -169,17 +212,16 @@ width:100%;
 }
 
 .kard.hoverkard {
-    position: relative;
+    // position: relative;
     padding-top: 0;
     overflow: hidden;
     text-align: center;
     background-color: white;
+    height: 73vh;
 }
 
 .kard.hoverkard .kardheader{
-    background: #e96443; /* fallback for old browsers */
-  background: -webkit-linear-gradient(to left, #e96443, #904e95); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to left, #e96443, #904e95); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #FC624D; /* fallback for old browsers */
     background-size: cover;
     height: 135px;
 }
@@ -205,7 +247,7 @@ width:100%;
 
 .kard.hoverkard .infoe {
     padding: 4px 8px 10px;
-    margin-top:130px;
+    margin-top:80px;
 }
 
 .kard.hoverkard .infoe .title {
@@ -218,8 +260,8 @@ width:100%;
 
 .kard.hoverkard .infoe .desc {
     overflow: hidden;
-    font-size: 20px;
-    line-height: 30px;
+    font-size: 15px;
+    line-height: 25px;
     color: #737373;
     text-overflow: ellipsis;
 }
@@ -245,4 +287,186 @@ width:100%;
   margin-bottom: 50px;
   margin-top: 30px;
   border-radius: 3px;
+}
+
+
+.card-containerbigger{
+  padding: 40px;
+}
+
+.cardbigger{
+    height: 500px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+    background-size: cover !important;
+    background-position: center;
+    color: white;
+    position: relative;
+    margin-top: 0px;
+    border-radius: 3px;
+     }
+
+
+
+.stick {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 500px;
+    flex: 0 0 500px;
+    position: -webkit-sticky !important;
+    position: sticky !important;
+    top: 105px !important;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+
+
+
+// form-control
+
+.kickass_field:hover{
+color:#ee5953;
+    text-decoration: none;
+    text-align: center;
+    text-justify:center;
+    transition: all 0.1s ease;
+      font-weight:bolder;
+
+
+
+
+}
+
+
+body .kickass_field {
+  margin: auto;
+  position: relative;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  height: 100px;
+  right: 0;
+  width: 280px;
+}
+body .kickass_field lable {
+  font-size: 14px;
+  position: absolute;
+  height: 100px;
+  overflow: hidden;
+  left: 0;
+  width: 100%;
+  top: 50px;
+  text-align: left;
+  color: #F65252;
+  font-family: "Lato", sans-serif;
+  pointer-events: none;
+  -webkit-transition: all .2s .3s;
+  transition: all .2s .3s;
+}
+body .kickass_field lable span {
+  font-size: 10px;
+  color: #9f9fb5;
+  clear: left;
+  opacity: 0;
+  line-height:3;
+  margin-bottom:10px;
+  display: block;
+  -webkit-transition: opacity .5s .0s;
+  transition: opacity .5s .0s;
+}
+
+.kickass_field{
+}
+body .kickass_field lable:after {
+  width: 4px;
+  content: '';
+  height: 8px;
+  border-bottom: 2px solid #f65252;
+  border-right: 2px solid #f65252;
+  -webkit-transform: translateX(-10px) rotate(45deg);
+          transform: translateX(-10px) rotate(45deg);
+  position: absolute;
+  left: 120%;
+  top: 30px;
+  -webkit-transition: all .2s;
+  transition: all .2s;
+}
+body .kickass_field input {
+  border: none;
+  color: #6E738A;
+  padding: 40px 0px 10px 0px;
+  background: transparent;
+  letter-spacing: 1px;
+  outline: none;
+  font-family: "Lato", sans-serif;
+  height: 30px;
+  width: 280px;
+  -webkit-transition-property: -webkit-transform;
+  transition-property: -webkit-transform;
+  transition-property: transform;
+  transition-property: transform, -webkit-transform;
+  font-size: 14px;
+  box-shadow: 0px 2px #f65252;
+}
+body .kickass_field input:focus + lable {
+  color: #F65252;
+  font-size: 10px;
+  top: 10px;
+  -webkit-transition: all .2s .0s;
+  transition: all .2s .0s;
+}
+body .kickass_field input:focus + lable span {
+  opacity: 1;
+  -webkit-transition: opacity .5s .3s;
+  transition: opacity .5s .3s;
+}
+body .kickass_field input:valid + lable {
+  font-size: 10px;
+  top: 10px;
+  color: #f65252;
+}
+body .kickass_field input[type="password"]:valid + lable span {
+  color: #99B62F;
+}
+body .kickass_field input:valid + lable span {
+  opacity: 1;
+  -webkit-transition: opacity .3s 0s;
+  transition: opacity .3s 0s;
+}
+body .kickass_field input:valid + lable::after {
+  display: block;
+  left: 100%;
+}
+
+
+.simple_form.edit_profile{
+  margin: 40px;
+}
+body fieldset:valid .button {
+  opacity: 1;
+}
+body fieldset:valid .button:hover {
+  opacity: 1;
+  background: #ee5953;
+}
+ .button {
+  width: 280px;
+  opacity: .5;
+  cursor: pointer;
+  -webkit-transition: all .4s;
+  transition: all .4s;
+  border: none;
+  font-family: "Lato", sans-serif;
+  padding: 20px;
+  background-color: #ee5953;
+  color: white;
+  outline: none;
+  margin-top: 15px;
 }

@@ -4,7 +4,7 @@
 
 <!-- <h2 class="text-center">ALL OUR RECIPES:</h2> -->
 
-<div class="container container-recipes">
+<div class="container container-recipes" id="container-recipes">
 
   <div class="row" id="recipes">
 
@@ -14,7 +14,7 @@
 
     <% @recipes.each do |recipe| %>
 
-      <div class="col-xs-12 col-sm-6 col-md-4">
+      <div class="col-xs-12 col-sm-3 col-md-3">
 
         <div class="card-container">
 
@@ -28,7 +28,6 @@
             </div>
           <% end %>
 
-
           <div class="card-description">
             <% arr = [] %>
             <%if recipe.reviews.size != 0 %>
@@ -36,21 +35,28 @@
                 <% arr << review.rating %>
               <% end %>
               <% average = arr.inject{ |sum, el| sum + el }.to_f / arr.size %>
-              <p> rating : <%= average.round(1) if average %> / 5</p>
+              <% average.round(0).times do %>
+              <p class="fa fa-star"></p>
+              <%end%>
+
+              <% (5-average.round(0)).times do %>
+              <p class="fa fa-star-o"></p>
+              <%end%>
+
             <%end%>
           </div>
 
           <div class="link-box">
             <%= link_to recipe_path(recipe) do %>
-              <%=recipe.name.capitalize %> &nbsp &nbsp
+              <%=recipe.name.capitalize %>
               <% if current_user %>
                 <% if Favorite.where(recipe_id: recipe.id, user_id: current_user.id).count > 0 %>
                   <%= link_to favorite_path(recipe), :method => :delete, remote: true, class: "favorite" do %>
-                    <span class="fa fa-heart info"></span>
+                     &nbsp &nbsp<span class="fa fa-heart info"></span>
                   <% end %>
                 <% else %>
                   <%= link_to favorites_path(recipe_id: recipe.id), :method => :post, remote: true, class: "favorite" do %>
-                    <span class="fa fa-heart-o"></span>
+                   &nbsp &nbsp <span class="fa fa-heart-o"></span>
                   <% end %>
                 <% end %>
               <% end %>
@@ -70,133 +76,129 @@
 <%= content_for :after_js do %>
 
   <script>
-    var client = algoliasearch("AMLNOKWPBJ", "5b8cb611c7a8bc80b876e4f7abbb1517", {protocol: 'https:'});
-    var index = client.initIndex('Ingredient_production');
-
-    const searchbar = document.getElementById("aa-search-input");
-    const recipes = document.getElementById('recipes');
-    const banner = document.getElementById("banner");
-    const marketing_promise = document.getElementById("marketing-promise");
-    var recipe_html = recipes.innerHTML;
-    var banner_class = banner.classList;
-    var banner_html = banner.innerHTML;
-    var marketing_promise_html = marketing_promise.innerHTML;
+  const btns = document.querySelectorAll('.favorite');
+  btns.forEach((btn) => {
+    btn.addEventListener('click', (event) => {
+        const span = btn.querySelector('span');
+        span.classList.toggle('fa-heart');
+        span.classList.toggle('fa-heart-o');
+    });
+  });
 
 
-    const search = (event) => {
-      index.search(
-        {
-          query: searchbar.value,
-          hitsPerPage: 10,
-        },
-        function searchDone(err, content) {
-          if (err) {
-            console.error(err);
-            return;
-          }
-          // console.log(content)
-          recipes.innerHTML = "";
-          marketing_promise.innerHTML = "<br><br><br><br>";
-          banner.classList.remove("banner");
-          banner.classList.add("banner-search");
-          if (!searchbar.value == "") {
-            const displayed_recipes = [];
-            content.hits.forEach((hit) => {
-              hit['ingredient_recipes'].forEach((recipe, i) => {
-                // if (!displayed_recipes.includes(hit["ingredient_recipes"][i]["id"])) {
-                if (hit.name.includes(searchbar.value)) {
-                  displayed_recipes.push(hit["ingredient_recipes"][i]["id"])
-                  recipes.insertAdjacentHTML("beforeend", `
-                    <div class="col-xs-12 col-sm-6 col-md-4">
-                      <a href="/recipes/${hit["ingredient_recipes"][i]["id"]}">
-                        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('${hit["ingredient_recipes"][i]["picture"]["url"]}')">
-                        </div>
-                      </a>
-                      <div class="link-box">
-                        <a href="/recipes/${hit["ingredient_recipes"][i]["id"]}">${hit["ingredient_recipes"][i]["name"]}</a>
-                      </div>
+  // ALGOLIA
+  var client = algoliasearch("AMLNOKWPBJ", "5b8cb611c7a8bc80b876e4f7abbb1517");
+  var index_recipe = client.initIndex('Recipe_production');
+  var index_ingredient = client.initIndex("Ingredient_production");
+
+  const searchbar = document.getElementById("aa-search-input");
+  const recipes = document.getElementById('recipes');
+
+  const banner = document.getElementById("banner");
+  const marketing_promise = document.getElementById("marketing-promise");
+  var recipe_html = recipes.innerHTML;
+  var banner_class = banner.classList;
+  var banner_html = banner.innerHTML;
+  var marketing_promise_html = marketing_promise.innerHTML;
+
+  function capitalize(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+  function downcase(string) {
+    return string.charAt(0).toLowerCase() + string.slice(1);
+  }
+
+
+
+  const search = (event) => {
+    index_recipe.search(
+      {
+        query: searchbar.textContent,
+        hitsPerPage: 10,
+        ignorePlurals: true,
+      },
+      function searchDone(err, content) {
+        recipes.innerHTML = "";
+        marketing_promise.innerHTML = "<br><br>";
+        banner.classList.remove("banner");
+        banner.classList.add("banner-search");
+
+        if (!searchbar.textContent == "") {
+          content.hits.forEach((hit) => {
+
+            recipes.insertAdjacentHTML("beforeend", `
+              <div class="col-xs-12 col-sm-3 col-md-3">
+                <div class="card-container">
+                  <a href="/recipes/${hit.objectID}">
+                    <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('${hit.picture.picture.url}')">
                     </div>
-                  `)
-                }
-                // }
-              })
-            })
-          } else {
-            recipes.insertAdjacentHTML("beforeend", `${recipe_html}`);
-            banner.classList.remove('banner-search');
-            banner.classList.add("banner");
-            marketing_promise.innerHTML = marketing_promise_html;
-          }
+                  </a>
+                  <div class="link-box">
+                    <a href="/recipes/${hit.objectID}">${hit.name}</a>
+                  </div>
+                </div>
+              </div>
+            `)
+          })
+        } else {
+          recipes.insertAdjacentHTML("beforeend", `${recipe_html}`);
+          banner.classList.remove('banner-search');
+          banner.classList.add("banner");
+          marketing_promise.innerHTML = marketing_promise_html;
         }
-      );
+      }
+    );
+  }
+
+  searchbar.addEventListener("keyup", search);
+
+  var lastQuery = '';
+  $('#aa-search-input').textcomplete([
+    {
+      // #3 - Regular expression used to trigger the autocomplete dropdown
+      match: /(^|\s)[^\s](\w*(?:\s*\w*))$/,
+      // #4 - Function called at every new keystroke
+      search: function(query, callback) {
+        lastQuery = query;
+        index_ingredient.search(lastQuery, { hitsPerPage: 5 })
+          .then(function searchSuccess(content) {
+            if (content.query === lastQuery) {
+              callback(content.hits);
+            }
+          })
+          .catch(function searchFailure(err) {
+            console.error(err);
+          });
+      },
+      // #5 - Template used to display each result obtained by the Algolia API
+      template: function (hit) {
+        // Returns the highlighted version of the name attribute
+        // if (!searchbar.value == "") {
+          return '<img src="'+ hit.picture.picture.url +'" /></div>' + downcase(hit._highlightResult.name.value) + '';
+        // }
+      },
+      // #6 - Template used to display the selected result in the textarea
+      replace: function (hit) {
+        var html = '<a class="tag-item" href="">';
+        html += '<div class="picture-wrapper"><img src="'+ hit.picture.picture.url +'" /></div>';
+        html += '<span class="label">' + capitalize(hit.name) + '</span></a>';
+        html += " "
+        return html;
+      },
+
     }
+  ], {
+      // #7 - Special adapter to handle HTMLContentEditable divs
+      adapter: $.fn.textcomplete.HTMLContentEditable,
+  });
 
-    searchbar.addEventListener("keyup", search);
-
-    //initialize Algolia autocomplete on search input (ID selector must match)
-
-    autocomplete('#aa-search-input',
-    { hint: false,
-    autoselect: true }, {
-        source: autocomplete.sources.hits(index, {hitsPerPage: 3}),
-        //value to be displayed in input control after user's suggestion selection
-        displayKey: 'name',
-        //hash of templates used when rendering dataset
-        templates: {
-          //'suggestion' templating function used to render a single suggestion
-          suggestion: function(suggestion) {
-            // if (suggestion.name.includes(searchbar.value)) {
-            // console.log(suggestion)
-             return '<span>' +
-            suggestion._highlightResult.name.value+ '</span>';
-
-          }
-        }
+  // prevent default behaviour of the search form (i.e prevent from refreshing)
+  const bindConfirm = (element) => {
+    element.addEventListener("submit", (event) => {
+        event.preventDefault();
     });
-
-
-
-    const bindConfirm = (element) => {
-      element.addEventListener("submit", (event) => {
-          event.preventDefault();
-      });
-    };
-
-    document.querySelectorAll(".confirmable").forEach(bindConfirm);
-
-
-
-    const btns = document.querySelectorAll('.favorite');
-    btns.forEach((btn) => {
-      btn.addEventListener('click', (event) => {
-          const span = btn.querySelector('span');
-          span.classList.toggle('fa-heart');
-          span.classList.toggle('fa-heart-o');
-      });
-    });
-
-    // When the user scrolls down 20px from the top of the document, show the button
-//window.onscroll = function() {scrollFunction()};
-
-//function scrollFunction() {
-  //  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    //    document.getElementById("topbtn").style.display = "block";
-   // } else {
-     //   document.getElementById("topbtn").style.display = "none";
-   // }
-//}
-
-// When the user clicks on the button, scroll to the top of the document
-//function topFunction() {
-  //  document.body.scrollTop = 0;
-    //document.documentElement.scrollTop = 0;
-//}
-
-
+  };
+  document.querySelectorAll(".confirmable").forEach(bindConfirm)
 
   </script>
 <% end %>
-
-
-
-
