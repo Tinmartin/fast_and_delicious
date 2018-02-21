@@ -10,9 +10,9 @@ Fichiers à créer et à push dans le repo Github :
 
 Models :
 [x] recette
-  has_many ingredients
+  - has_many ingredients
 [ ] ingredient
-  belongs_to recette
+  - belongs_to recette
 [ ] doses
 [ ] user (devise)
 [ ] review
